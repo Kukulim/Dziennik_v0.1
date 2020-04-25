@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace Dziennik_v0._1.Models
+namespace Dziennik_v0._1.Core.ViewModels
 {
     public class IndexViewModel
     {

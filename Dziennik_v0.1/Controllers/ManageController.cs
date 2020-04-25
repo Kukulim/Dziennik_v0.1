@@ -3,10 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Dziennik_v0._1.Models;
 
 namespace Dziennik_v0._1.Controllers
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Dziennik_v0._1.Models
+namespace Dziennik_v0._1.Core.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {

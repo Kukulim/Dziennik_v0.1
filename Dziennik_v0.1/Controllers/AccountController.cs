@@ -8,7 +8,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Dziennik_v0._1.Models;
+using Dziennik_v0._1.Core.Models;
+using Dziennik_v0._1.Core.ViewModels;
 
 namespace Dziennik_v0._1.Controllers
 {

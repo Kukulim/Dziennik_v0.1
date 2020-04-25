@@ -10,7 +10,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Dziennik_v0._1.Models;
+using Dziennik_v0._1.Core.Models;
+using Dziennik_v0._1.Persistence;
 
 namespace Dziennik_v0._1
 {

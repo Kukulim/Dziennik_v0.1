@@ -5,7 +5,8 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Dziennik_v0._1.Models;
+using Dziennik_v0._1.Persistence;
+using Dziennik_v0._1.Core.Models;
 
 namespace Dziennik_v0._1
 {

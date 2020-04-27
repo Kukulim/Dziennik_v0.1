@@ -182,6 +182,10 @@
     <Compile Include="Migrations\202004271504392_initial.Designer.cs">
       <DependentUpon>202004271504392_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004271517032_WorkoutUserConnection.cs" />
+    <Compile Include="Migrations\202004271517032_WorkoutUserConnection.Designer.cs">
+      <DependentUpon>202004271517032_WorkoutUserConnection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
@@ -280,6 +284,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004271504392_initial.resx">
       <DependentUpon>202004271504392_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004271517032_WorkoutUserConnection.resx">
+      <DependentUpon>202004271517032_WorkoutUserConnection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

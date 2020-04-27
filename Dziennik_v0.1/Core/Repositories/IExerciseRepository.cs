@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dziennik_v0._1.Core.Repositories
 {
-    interface IExerciseRepository
+    public interface IExerciseRepository
     {
         Exercise GetExercise(int ExerciseId);
         IEnumerable<Exercise> GetAllExercises();

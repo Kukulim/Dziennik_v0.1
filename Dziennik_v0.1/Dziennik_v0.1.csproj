@@ -182,6 +182,7 @@
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Presistence\IApplicationDbContext.cs" />
     <Compile Include="Presistence\Repositories\ExerciseRepository.cs" />
     <Compile Include="Presistence\Repositories\WorkoutRepository.cs" />
     <Compile Include="Presistence\UnitOfWork.cs" />

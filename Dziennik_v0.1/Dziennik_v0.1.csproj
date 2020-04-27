@@ -171,7 +171,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />
-    <Compile Include="Core\Models\TreningModel.cs" />
+    <Compile Include="Core\Models\WorkoutModel.cs" />
+    <Compile Include="Core\Repositories\IExerciseRepository.cs" />
+    <Compile Include="Core\Repositories\IWorkoutRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +182,8 @@
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Presistence\Repositories\ExerciseRepository.cs" />
+    <Compile Include="Presistence\Repositories\WorkoutRepository.cs" />
     <Compile Include="Presistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -253,8 +257,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Core\Repositories\" />
-    <Folder Include="Presistence\Repositories\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

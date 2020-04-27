@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Dziennik_v0._1.Core.Models
 {
-    public class ExerciseModel
+    public class Exercise
     {
         public int Id { get; set; }
         public int TreningId { get; set; }

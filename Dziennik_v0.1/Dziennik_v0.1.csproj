@@ -178,6 +178,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Core\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Migrations\202004271504392_initial.cs" />
+    <Compile Include="Migrations\202004271504392_initial.Designer.cs">
+      <DependentUpon>202004271504392_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
@@ -271,6 +276,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004271504392_initial.resx">
+      <DependentUpon>202004271504392_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

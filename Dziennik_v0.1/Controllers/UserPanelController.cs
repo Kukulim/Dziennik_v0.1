@@ -23,5 +23,9 @@ namespace Dziennik_v0._1.Controllers
             var viewModel = _unitOfWork.Workouts.GetAllWorkouts(userId);
             return View(viewModel);
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }

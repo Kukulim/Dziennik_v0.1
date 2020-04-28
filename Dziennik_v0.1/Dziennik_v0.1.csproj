@@ -222,6 +222,10 @@
     <Compile Include="Migrations\202004281243083_UserIdIsString.Designer.cs">
       <DependentUpon>202004281243083_UserIdIsString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004281310194_WorkoutValidationAdded.cs" />
+    <Compile Include="Migrations\202004281310194_WorkoutValidationAdded.Designer.cs">
+      <DependentUpon>202004281310194_WorkoutValidationAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
@@ -428,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004281243083_UserIdIsString.resx">
       <DependentUpon>202004281243083_UserIdIsString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004281310194_WorkoutValidationAdded.resx">
+      <DependentUpon>202004281310194_WorkoutValidationAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

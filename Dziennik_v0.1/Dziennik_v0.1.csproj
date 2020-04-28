@@ -218,6 +218,10 @@
     <Compile Include="Migrations\202004281008226_fixWorkoutAndExercise.Designer.cs">
       <DependentUpon>202004281008226_fixWorkoutAndExercise.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004281243083_UserIdIsString.cs" />
+    <Compile Include="Migrations\202004281243083_UserIdIsString.Designer.cs">
+      <DependentUpon>202004281243083_UserIdIsString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
@@ -402,10 +406,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\UserPanel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\UserPanel\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -421,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004281008226_fixWorkoutAndExercise.resx">
       <DependentUpon>202004281008226_fixWorkoutAndExercise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004281243083_UserIdIsString.resx">
+      <DependentUpon>202004281243083_UserIdIsString.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

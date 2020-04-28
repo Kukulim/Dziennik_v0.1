@@ -11,7 +11,7 @@ namespace Dziennik_v0._1.Core.Models
         public DateTime Date { get; set; }
         public string LengthOfTraining { get; set; }
         public List<Exercise> Exercises { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public ApplicationUser User { get; set; }
     }
 }

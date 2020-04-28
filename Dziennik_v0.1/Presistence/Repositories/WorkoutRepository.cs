@@ -2,10 +2,8 @@
 using Dziennik_v0._1.Core.Repositories;
 using Dziennik_v0._1.Persistence;
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Dziennik_v0._1.Presistence.Repositories
 {
@@ -17,6 +15,7 @@ namespace Dziennik_v0._1.Presistence.Repositories
         {
             _context = context;
         }
+
         public void AddWorkout()
         {
             throw new NotImplementedException();
@@ -32,9 +31,9 @@ namespace Dziennik_v0._1.Presistence.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Workout> GetAllWorkouts()
+        public IEnumerable<Workout> GetAllWorkouts(string id)
         {
-            return _context.Workouts.ToList();
+            return _context.Workouts.Where(x => x.UserId == id).ToList();
         }
 
         public Workout GetWorkout(int WorkoutId)

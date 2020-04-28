@@ -16,9 +16,9 @@ namespace Dziennik_v0._1.Presistence.Repositories
             _context = context;
         }
 
-        public void AddWorkout()
+        public void AddWorkout(Workout workout)
         {
-            throw new NotImplementedException();
+            _context.Workouts.Add(workout);
         }
 
         public void DeleteWorkout()

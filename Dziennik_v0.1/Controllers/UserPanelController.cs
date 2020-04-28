@@ -1,9 +1,8 @@
 ﻿using Dziennik_v0._1.Core;
+using Dziennik_v0._1.Core.Models;
+using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Dziennik_v0._1.Controllers
@@ -25,7 +24,29 @@ namespace Dziennik_v0._1.Controllers
         }
         public ActionResult Create()
         {
-            return View();
+            var buffor = new Exercise 
+            {
+                Name = "imie"
+            };
+            var newlist = new List<Exercise>();
+            newlist.Add(buffor);
+
+            var viewModel = new Workout();
+            viewModel.Exercises = newlist;
+
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult Create(Workout workout)
+        {
+            if (ModelState.IsValid)
+            {
+                workout.UserId = User.Identity.GetUserId();
+                _unitOfWork.Workouts.AddWorkout(workout);
+                _unitOfWork.Complete();
+                return RedirectToAction("Index");
+            }
+            return View(workout);
         }
     }
 }

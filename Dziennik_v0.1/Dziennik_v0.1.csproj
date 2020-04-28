@@ -202,6 +202,7 @@
     <Compile Include="Core\Models\WorkoutModel.cs" />
     <Compile Include="Core\Repositories\IExerciseRepository.cs" />
     <Compile Include="Core\Repositories\IWorkoutRepository.cs" />
+    <Compile Include="Core\ViewModels\WorkoutCreateViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,6 +226,10 @@
     <Compile Include="Migrations\202004281310194_WorkoutValidationAdded.cs" />
     <Compile Include="Migrations\202004281310194_WorkoutValidationAdded.Designer.cs">
       <DependentUpon>202004281310194_WorkoutValidationAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004281453401_ExerciseNameAdded.cs" />
+    <Compile Include="Migrations\202004281453401_ExerciseNameAdded.Designer.cs">
+      <DependentUpon>202004281453401_ExerciseNameAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
@@ -411,6 +416,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\UserPanel\Index.cshtml" />
+    <Content Include="Views\UserPanel\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -435,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004281310194_WorkoutValidationAdded.resx">
       <DependentUpon>202004281310194_WorkoutValidationAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004281453401_ExerciseNameAdded.resx">
+      <DependentUpon>202004281453401_ExerciseNameAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

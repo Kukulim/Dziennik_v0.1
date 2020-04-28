@@ -11,7 +11,7 @@ namespace Dziennik_v0._1.Core.Repositories
     {
         Workout GetWorkout(int WorkoutId);
         IEnumerable<Workout> GetAllWorkouts(string id);
-        void AddWorkout();
+        void AddWorkout(Workout workout);
         void DeleteWorkout();
         void EditWorkout(int WorkoutId);
     }

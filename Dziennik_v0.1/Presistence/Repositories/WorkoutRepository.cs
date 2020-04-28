@@ -34,7 +34,7 @@ namespace Dziennik_v0._1.Presistence.Repositories
 
         public IEnumerable<Workout> GetAllWorkouts()
         {
-            throw new NotImplementedException();
+            return _context.Workouts.ToList();
         }
 
         public Workout GetWorkout(int WorkoutId)

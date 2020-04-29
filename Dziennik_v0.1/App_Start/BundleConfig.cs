@@ -24,7 +24,7 @@ namespace Dziennik_v0._1
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-slate.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
         }
     }
 }

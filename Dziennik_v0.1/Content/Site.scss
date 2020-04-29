@@ -1,24 +1,47 @@
-﻿body {
+﻿/*VARIBLES*/
+
+$flameColor: #632A50;
+
+/*DEFAULT*/
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
-
-/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/*BOOTSTRAP OVERLOADS*/
+
+.navbar-inverse .navbar-brand {
+    color: $flameColor;
+    text-shadow: none;
+
+    &:hover {
+        color: $flameColor;
+        text-shadow: none;
+    }
+}
+
+.navbar-brand {
+    font-size: 25px;
+}
+.navbar-inverse .navbar-nav {
+    li {
+        a {
+            color: black;
+            text-shadow:none;
+        }
+    }
 }

@@ -18,10 +18,10 @@ textarea {
 
 /*BOOTSTRAP OVERLOADS*/
 .navbar-inverse .navbar-brand {
-  color: #632A50;
+  color: #53131E;
   text-shadow: none; }
   .navbar-inverse .navbar-brand:hover {
-    color: #632A50;
+    color: #53131E;
     text-shadow: none; }
 
 .navbar-brand {
@@ -30,3 +30,18 @@ textarea {
 .navbar-inverse .navbar-nav li a {
   color: black;
   text-shadow: none; }
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif; }

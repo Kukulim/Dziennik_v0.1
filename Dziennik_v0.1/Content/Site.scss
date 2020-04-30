@@ -1,9 +1,12 @@
 ﻿/*VARIBLES*/
 
-$flameColor: #53131E;
+$paleBud: #E5F77D;
+$mirando: #F4F7BE;
+$gold: #DEBA6F;
+$solidpink: #823038;
+$xkinetic: #1E000E;
 
 /*DEFAULT*/
-
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -26,11 +29,12 @@ textarea {
 
 /*BOOTSTRAP OVERLOADS*/
 .navbar-inverse .navbar-brand {
-    color: $flameColor;
+    color: $gold;
     text-shadow: none;
+    font-weight: 700;
 
     &:hover {
-        color: $flameColor;
+        color: $gold;
         text-shadow: none;
     }
 }
@@ -41,8 +45,8 @@ textarea {
 .navbar-inverse .navbar-nav {
     li {
         a {
-            color: black;
-            text-shadow:none;
+            color: #F4F7BE;
+            text-shadow: none;
         }
     }
 }

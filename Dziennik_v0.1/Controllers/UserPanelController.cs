@@ -37,6 +37,7 @@ namespace Dziennik_v0._1.Controllers
                 {
                     viewModel.Exercises.Add(new Exercise());
                 }
+                return View();
             }
             return View(viewModel);
         }

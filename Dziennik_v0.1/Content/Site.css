@@ -19,17 +19,18 @@ textarea {
 /*MY CSS*/
 /*BOOTSTRAP OVERLOADS*/
 .navbar-inverse .navbar-brand {
-  color: #53131E;
-  text-shadow: none; }
+  color: #DEBA6F;
+  text-shadow: none;
+  font-weight: 700; }
   .navbar-inverse .navbar-brand:hover {
-    color: #53131E;
+    color: #DEBA6F;
     text-shadow: none; }
 
 .navbar-brand {
   font-size: 25px; }
 
 .navbar-inverse .navbar-nav li a {
-  color: black;
+  color: #F4F7BE;
   text-shadow: none; }
 
 body,

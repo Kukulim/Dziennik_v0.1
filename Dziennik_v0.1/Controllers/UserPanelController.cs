@@ -30,6 +30,7 @@ namespace Dziennik_v0._1.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Workout viewModel)
         {
             viewModel.UserId = User.Identity.GetUserId();

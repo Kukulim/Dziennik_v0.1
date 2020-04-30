@@ -12,11 +12,7 @@ namespace Dziennik_v0._1.Core.Models
     {
         public Workout()
         {
-            this.Exercises = new List<Exercise>()
-            {
-                new Exercise(),
-                new Exercise()
-            };
+            this.Exercises = new List<Exercise>();
         }
         [Required]
         public int Id { get; set; }

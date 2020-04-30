@@ -22,8 +22,9 @@ textarea {
     max-width: 280px;
 }
 
-/*BOOTSTRAP OVERLOADS*/
+/*MY CSS*/
 
+/*BOOTSTRAP OVERLOADS*/
 .navbar-inverse .navbar-brand {
     color: $flameColor;
     text-shadow: none;
@@ -61,3 +62,9 @@ h6,
 .h6 {
     font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.wrokoutExerciseCountButton {
+    min-width: 50px;
+}
+
+

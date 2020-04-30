@@ -1,5 +1,6 @@
 ﻿using Dziennik_v0._1.Core;
 using Dziennik_v0._1.Core.Models;
+using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -23,18 +24,34 @@ namespace Dziennik_v0._1.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(int? ExersisesCount)
         {
-            var viewModel = new Workout();
+            var viewModel = new WorkoutCreateViewModel
+            {
+                Workout = new Workout(),
+                Exercises = new List<Exercise>()
+            };
+            if (ExersisesCount != null)
+            {
+                for (int i = 0; i < ExersisesCount; i++)
+                {
+                    viewModel.Exercises.Add(new Exercise());
+                }
+            }
             return View(viewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Workout viewModel)
+        public ActionResult Create(WorkoutCreateViewModel viewModel)
         {
-            viewModel.UserId = User.Identity.GetUserId();
-            _unitOfWork.Workouts.AddWorkout(viewModel);
+            viewModel.Workout.UserId = User.Identity.GetUserId();
+            foreach (var item in viewModel.Exercises)
+            {
+                viewModel.Workout.Exercises.Add(item);
+            }
+
+            _unitOfWork.Workouts.AddWorkout(viewModel.Workout);
             _unitOfWork.Complete();
             return RedirectToAction("Index");
         }

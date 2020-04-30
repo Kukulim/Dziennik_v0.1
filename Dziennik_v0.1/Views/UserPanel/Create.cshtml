@@ -1,11 +1,10 @@
-﻿@model Dziennik_v0._1.Core.Models.Workout
+﻿@model Dziennik_v0._1.Core.ViewModels.WorkoutCreateViewModel
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
+<h2>Dodaj nowy trening:</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,82 +12,92 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Workout</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Workout.Date, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Workout.Date, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Workout.Date, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.LengthOfTraining, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Workout.LengthOfTraining, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.LengthOfTraining, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.LengthOfTraining, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Workout.LengthOfTraining, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Workout.LengthOfTraining, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Exercises[0].Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Exercises[0].Series)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Exercises[0].Repetitions)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Exercises[0].Weight)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Exercises[0].Volume)
-            </th>
-        </tr>
+    <div class="form-group">
 
-        @for (var i = 0; i < Model.Exercises.Count; i++)
-        {
-    <tr>
-        <td>
-            @Html.EditorFor(x => x.Exercises[i].Name, new { htmlAttributes = new { @class = "form-control" } })
-        </td>
-        <td>
-            @Html.EditorFor(x => x.Exercises[i].Series, new { htmlAttributes = new { @class = "form-control" } })
-        </td>
-        <td>
-            @Html.EditorFor(x => x.Exercises[i].Repetitions, new { htmlAttributes = new { @class = "form-control" } })
-        </td>
-        <td>
-            @Html.EditorFor(x => x.Exercises[i].Weight, new { htmlAttributes = new { @class = "form-control" } })
-        </td>
-        <td>
-            @Html.DisplayFor(x => x.Exercises[i].Volume, new { htmlAttributes = new { @class = "form-control" } })
-        </td>
-    </tr>
-        }
+        @Html.Label("Ilość Ćwiczeń:", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @for (int i = 1; i < 13; i++)
+            {
+                @Html.ActionLink(i.ToString(), "create", "userpanel", new { ExersisesCount = i }, new { @class = "btn btn-default wrokoutExerciseCountButton" })
+            }
+        </div>
+    </div>
 
-    </table>
-    @*@for (var i = 0; i < Model.Exercises.Count; i++)
-    {
+
+        <table class="table">
+            <tr>
+                <th>
+                    nr.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Exercises[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Exercises[0].Series)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Exercises[0].Repetitions)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Exercises[0].Weight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Exercises[0].Volume)
+                </th>
+            </tr>
+
+            @for (var i = 0; i < Model.Exercises.Count; i++)
+            {
+
+                <tr>
+                    <td class="text-center">
+                        @(i+1)
+                    </td>
+                    <td>
+                        @Html.EditorFor(x => x.Exercises[i].Name, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.EditorFor(x => x.Exercises[i].Series, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.EditorFor(x => x.Exercises[i].Repetitions, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.EditorFor(x => x.Exercises[i].Weight, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.Exercises[i].Volume, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                </tr>
+
+            }
+
+        </table>
+
         <div class="form-group">
-            <div class="col-md-10">
-                Name: @Html.EditorFor(x => x.Exercises[i].Name, new { htmlAttributes = new { @class = "form-control" } })<br />
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz trening" class="btn btn-success" />
             </div>
         </div>
-    }*@
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
     </div>
-</div>
 }
 
 <div>

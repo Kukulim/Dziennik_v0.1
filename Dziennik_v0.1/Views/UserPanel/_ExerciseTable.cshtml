@@ -1,0 +1,50 @@
+﻿@model Dziennik_v0._1.Core.ViewModels.WorkoutCreateViewModel
+
+<table class="table">
+
+    <tr>
+        <th>
+            nr.
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exercises[0].Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exercises[0].Series)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exercises[0].Repetitions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exercises[0].Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Exercises[0].Volume)
+        </th>
+    </tr>
+    @for (var i = 0; i < Model.Exercises.Count; i++)
+    {
+
+        <tr>
+            <td class="text-center">
+                @(i+1)
+            </td>
+            <td>
+                @Html.EditorFor(x => x.Exercises[i].Name, new { htmlAttributes = new { @class = "form-control" } })
+            </td>
+            <td>
+                @Html.EditorFor(x => x.Exercises[i].Series, new { htmlAttributes = new { @class = "form-control" } })
+            </td>
+            <td>
+                @Html.EditorFor(x => x.Exercises[i].Repetitions, new { htmlAttributes = new { @class = "form-control" } })
+            </td>
+            <td>
+                @Html.EditorFor(x => x.Exercises[i].Weight, new { htmlAttributes = new { @class = "form-control" } })
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(x => x.Exercises[i].Volume, new { htmlAttributes = new { @class = "form-control text-center" } })
+            </td>
+        </tr>
+
+    }
+</table>

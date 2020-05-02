@@ -24,23 +24,29 @@ namespace Dziennik_v0._1.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Create(int? ExersisesCount)
+        public ActionResult Create()
         {
             var viewModel = new WorkoutCreateViewModel
             {
                 Workout = new Workout(),
                 Exercises = new List<Exercise>()
             };
-            if (ExersisesCount != null)
+            return View(viewModel);
+        }
+        public ActionResult UpdateExerciseTable(int ExersisesCount)
+        {
+            var viewModel = new WorkoutCreateViewModel
             {
+                Exercises = new List<Exercise>()
+            };
                 for (int i = 0; i < ExersisesCount; i++)
                 {
                     viewModel.Exercises.Add(new Exercise());
                 }
-                return View();
-            }
-            return View(viewModel);
+
+            return PartialView("_ExerciseTable", viewModel);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

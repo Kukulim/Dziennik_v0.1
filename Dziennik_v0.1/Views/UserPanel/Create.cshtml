@@ -6,107 +6,68 @@
 
 <h2>Dodaj nowy trening:</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Workout.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Workout.Date, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Workout.Date, "", new { @class = "text-danger" })
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Workout.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Workout.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Workout.Date, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Workout.LengthOfTraining, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Workout.LengthOfTraining, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Workout.LengthOfTraining, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-
-        @Html.Label("Ilość Ćwiczeń:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @for (int i = 1; i < 13; i++)
-            {
-                @Html.ActionLink(i.ToString(), "create", "userpanel", new { ExersisesCount = i }, new { @class = "btn btn-default wrokoutExerciseCountButton" })
-            }
-        </div>
-    </div>
-
-
-        <table class="table">
-            <tr>
-                <th>
-                    nr.
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Exercises[0].Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Exercises[0].Series)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Exercises[0].Repetitions)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Exercises[0].Weight)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Exercises[0].Volume)
-                </th>
-            </tr>
-
-            @for (var i = 0; i < Model.Exercises.Count; i++)
-            {
-
-                <tr>
-                    <td class="text-center">
-                        @(i+1)
-                    </td>
-                    <td>
-                        @Html.EditorFor(x => x.Exercises[i].Name, new { htmlAttributes = new { @class = "form-control" } })
-                    </td>
-                    <td>
-                        @Html.EditorFor(x => x.Exercises[i].Series, new { htmlAttributes = new { @class = "form-control" } })
-                    </td>
-                    <td>
-                        @Html.EditorFor(x => x.Exercises[i].Repetitions, new { htmlAttributes = new { @class = "form-control" } })
-                    </td>
-                    <td>
-                        @Html.EditorFor(x => x.Exercises[i].Weight, new { htmlAttributes = new { @class = "form-control" } })
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(x => x.Exercises[i].Volume, new { htmlAttributes = new { @class = "form-control text-center" } })
-                    </td>
-                </tr>
-
-            }
-
-        </table>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10 text-right">
-                <input type="submit" value="Zapisz trening" class="btn btn-success " />
+            @Html.LabelFor(model => model.Workout.LengthOfTraining, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Workout.LengthOfTraining, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Workout.LengthOfTraining, "", new { @class = "text-danger" })
             </div>
-            <div class="col-md-offset-2 col-md-10 text-right">
-                @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
+        </div>
+
+        <div class="form-group">
+
+            @Html.Label("Ilość Ćwiczeń:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @for (int i = 1; i < 13; i++)
+                {
+                    @Ajax.ActionLink(i.ToString(), "UpdateExerciseTable",
+                   new { ExersisesCount = i },
+                   new AjaxOptions
+                      {
+                          UpdateTargetId = "exerciseTable",
+                          InsertionMode = InsertionMode.Replace,
+                          HttpMethod = "POST"
+                      },
+                   new { @class = "btn btn-default wrokoutExerciseCountButton" })
+                }
             </div>
+        </div>
+    </div>
+
+    <div id="exerciseTable">
+        @{ Html.RenderPartial("_ExerciseTable", Model); }
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 text-right">
+            <input type="submit" value="Zapisz trening" class="btn btn-success " />
+        </div>
+        <div class="col-md-offset-2 col-md-10 text-right">
+            @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
         </div>
     </div>
 }
 
-@*<div>
+<div>
     @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
-</div>*@
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
 }

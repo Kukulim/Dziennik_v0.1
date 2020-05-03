@@ -33,18 +33,27 @@
                 @Html.EditorFor(x => x.Exercises[i].Name, new { htmlAttributes = new { @class = "form-control" } })
             </td>
             <td>
-                @Html.EditorFor(x => x.Exercises[i].Series, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(x => x.Exercises[i].Series, new { htmlAttributes = new { @class = "form-control buffor" } })
             </td>
             <td>
-                @Html.EditorFor(x => x.Exercises[i].Repetitions, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(x => x.Exercises[i].Repetitions, new { htmlAttributes = new { @class = "form-control buffor2" } })
             </td>
             <td>
-                @Html.EditorFor(x => x.Exercises[i].Weight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(x => x.Exercises[i].Weight, new { htmlAttributes = new { @class = "form-control buffor3" } })
             </td>
             <td class="text-center">
-                @Html.DisplayFor(x => x.Exercises[i].Volume, new { htmlAttributes = new { @class = "form-control text-center" } })
+                @Html.EditorFor(x => x.Exercises[i].Volume, new { htmlAttributes = new { @class = "form-control text-center js-sum", @disabled = true } })
             </td>
         </tr>
 
     }
 </table>
+<script>
+    $(document).ready(function () {
+        $(".buffor, .buffor2, .buffor3")
+            .change(function () {
+                var sum = parseInt($(".buffor").val()) * parseInt($(".buffor2").val()) * parseInt($(".buffor3").val());
+                $(".js-sum").val(sum);
+            })
+    });
+</script>

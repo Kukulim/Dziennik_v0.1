@@ -240,6 +240,10 @@
     <Compile Include="Migrations\202004281453401_ExerciseNameAdded.Designer.cs">
       <DependentUpon>202004281453401_ExerciseNameAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005030927540_AddVolumeToWorkout.cs" />
+    <Compile Include="Migrations\202005030927540_AddVolumeToWorkout.Designer.cs">
+      <DependentUpon>202005030927540_AddVolumeToWorkout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
@@ -456,6 +460,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004281453401_ExerciseNameAdded.resx">
       <DependentUpon>202004281453401_ExerciseNameAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005030927540_AddVolumeToWorkout.resx">
+      <DependentUpon>202005030927540_AddVolumeToWorkout.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -22,6 +22,8 @@ namespace Dziennik_v0._1.Core.Models
         [Required]
         [Display(Name = "Czas treningu:")]
         public string LengthOfTraining { get; set; }
+        [Display(Name = "Objętość treningu:")]
+        public int WorkoutVolume { get; set; }
         public List<Exercise> Exercises { get; set; }
         [ScaffoldColumn(false)]
         public string UserId { get; set; }

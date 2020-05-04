@@ -29,7 +29,9 @@ textarea {
 }
 
 /*MY CSS*/
-
+.js-myform{
+    max-width:70px;
+}
 /*BOOTSTRAP OVERLOADS*/
 .navbar-inverse .navbar-brand {
     color: $gold;
@@ -75,5 +77,20 @@ h6,
     background-color: black;
     margin-right: 2px;
 }
+.form-control {
+        &:focus {
+            border-color: $maximum-green;
+        }
+}
 
 
+.form-control[readonly] {
+    max-width:100px;
+    background-color: $olive;
+    opacity: 1;
+
+    &:focus {
+        border: 1px solid black;
+        box-shadow: none;
+    }
+}

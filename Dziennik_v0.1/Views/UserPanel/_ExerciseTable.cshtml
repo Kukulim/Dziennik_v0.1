@@ -33,27 +33,36 @@
                 @Html.EditorFor(x => x.Exercises[i].Name, new { htmlAttributes = new { @class = "form-control" } })
             </td>
             <td>
-                @Html.EditorFor(x => x.Exercises[i].Series, new { htmlAttributes = new { @class = "form-control buffor" } })
+                @Html.EditorFor(x => x.Exercises[i].Series, new { htmlAttributes = new { @class = "form-control "+ "js-series-" + (i + 1) } })
             </td>
             <td>
-                @Html.EditorFor(x => x.Exercises[i].Repetitions, new { htmlAttributes = new { @class = "form-control buffor2" } })
+                @Html.EditorFor(x => x.Exercises[i].Repetitions, new { htmlAttributes = new { @class = "form-control " + "js-repeitions-" + (i + 1) } })
             </td>
             <td>
-                @Html.EditorFor(x => x.Exercises[i].Weight, new { htmlAttributes = new { @class = "form-control buffor3" } })
+                @Html.EditorFor(x => x.Exercises[i].Weight, new { htmlAttributes = new { @class = "form-control " + "js-weight-" + (i + 1) } })
             </td>
             <td class="text-center">
-                @Html.EditorFor(x => x.Exercises[i].Volume, new { htmlAttributes = new { @class = "form-control text-center js-sum", @disabled = true } })
+                @Html.EditorFor(x => x.Exercises[i].Volume, 
+               new { htmlAttributes = new { @class = "form-control text-center " + "js-sum-" + (i + 1), @readonly = true } })
             </td>
         </tr>
 
     }
 </table>
+@for ( var k = 1; k < Model.Exercises.Count+1; k++)
+{
 <script>
+    var suma = 0;
     $(document).ready(function () {
-        $(".buffor, .buffor2, .buffor3")
+        $(".js-series-@k, .js-repeitions-@k, .js-weight-@k")
             .change(function () {
-                var sum = parseInt($(".buffor").val()) * parseInt($(".buffor2").val()) * parseInt($(".buffor3").val());
-                $(".js-sum").val(sum);
+                var sum = parseInt($(".js-series-@k").val()) * parseInt($(".js-repeitions-@k").val()) * parseInt($(".js-weight-@k").val());
+                $(".js-sum-@k").val(sum);
+                suma += sum;
+                $(".calasuma").val(suma);
             })
+        $(".calasuma").val(suma);
     });
+
 </script>
+}

@@ -52,16 +52,16 @@
 @for ( var k = 1; k < Model.Exercises.Count+1; k++)
 {
 <script>
-    var suma = 0;
+    var workoutVolume = 0;
     $(document).ready(function () {
         $(".js-series-@k, .js-repeitions-@k, .js-weight-@k")
             .change(function () {
                 var sum = parseInt($(".js-series-@k").val()) * parseInt($(".js-repeitions-@k").val()) * parseInt($(".js-weight-@k").val());
                 $(".js-sum-@k").val(sum);
-                suma += sum;
-                $(".calasuma").val(suma);
+                workoutVolume += sum;
+                $(".workoutVolume").val(workoutVolume);
             })
-        $(".calasuma").val(suma);
+        $(".workoutVolume").val(workoutVolume);
     });
 
 </script>

@@ -56,7 +56,6 @@ namespace Dziennik_v0._1.Controllers
             foreach (var item in viewModel.Exercises)
             {
                 viewModel.Workout.Exercises.Add(item);
-                viewModel.Workout.WorkoutVolume += item.Volume;
             }
 
             _unitOfWork.Workouts.AddWorkout(viewModel.Workout);

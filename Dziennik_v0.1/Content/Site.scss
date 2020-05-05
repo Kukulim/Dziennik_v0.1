@@ -38,6 +38,11 @@ textarea {
     min-width: 180px;
     text-align: center;
 }
+#timepicker {
+    background-color: $mirando;
+    max-width: 100px;
+    text-align: center;
+}
 /*BOOTSTRAP OVERLOADS*/
 .navbar-inverse .navbar-brand {
     color: $gold;
@@ -84,9 +89,10 @@ h6,
     margin-right: 2px;
 }
 .form-control {
-        &:focus {
-            border-color: $maximum-green;
-        }
+    &:focus {
+        border-color: $maximum-green;
+        box-shadow:none;
+    }
 }
 
 

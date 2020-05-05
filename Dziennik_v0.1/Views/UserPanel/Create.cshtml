@@ -24,7 +24,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Workout.LengthOfTraining, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Workout.LengthOfTraining, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Workout.LengthOfTraining,
+                    new { htmlAttributes = new { @class = "form-control", @id = "timepicker" } })
                 @Html.ValidationMessageFor(model => model.Workout.LengthOfTraining, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -63,15 +64,16 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10 text-right">
-            <input type="submit" value="Zapisz trening" class="btn btn-success " />
-        </div>
-        <div class="col-md-offset-2 col-md-10 text-right">
-            @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
+            <input type="submit" value="Zapisz trening" id="js-submit" class="btn btn-success btn-lg" ,
+                   @if (Model.Exercises.Count == 0)
+                   {
+                       <text>disabled</text>
+                   } />
         </div>
     </div>
 }
 
-<div>
+<div class="text-center">
     @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
 </div>
 
@@ -90,6 +92,7 @@
 
             $(this).css("background-image", "none")
                 .css("background-color", "#679436");
+            $("#js-submit").removeAttr("disabled");
 
         });
     </script>
@@ -110,22 +113,21 @@
     @for (var k = 1; k < 13; k++)
     {
         <script>
-    $(document).ready(function () {
-        $(".js-series-@k, .js-repeitions-@k, .js-weight-@k")
-            .change(function () {
-                var sum = parseInt($(".js-series-@k").val()) * parseInt($(".js-repeitions-@k").val()) * parseInt($(".js-weight-@k").val());
-                var workoutVolume = 0;
-                $(".js-sum-@k").val(sum);
-                $('table .js-myRows').each(function () {
-                    var lasttd = $(this).find(':last-child');
-                    var number = parseInt(lasttd.find('input').val());
-                    workoutVolume += number;
-                });
-                $(".workoutVolume").val(workoutVolume);
-            })
-        $(".workoutVolume").val(0);
-    });
-
+            $(document).ready(function () {
+                $(".js-series-@k, .js-repeitions-@k, .js-weight-@k")
+                    .change(function () {
+                        var sum = parseInt($(".js-series-@k").val()) * parseInt($(".js-repeitions-@k").val()) * parseInt($(".js-weight-@k").val());
+                        var workoutVolume = 0;
+                        $(".js-sum-@k").val(sum);
+                        $('table .js-myRows').each(function () {
+                            var lasttd = $(this).find(':last-child');
+                            var number = parseInt(lasttd.find('input').val());
+                            workoutVolume += number;
+                        });
+                        $(".workoutVolume").val(workoutVolume);
+                    })
+                $(".workoutVolume").val(0);
+            });
         </script>
     }
-}
+    }

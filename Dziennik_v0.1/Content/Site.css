@@ -25,6 +25,11 @@ textarea {
   min-width: 180px;
   text-align: center; }
 
+#timepicker {
+  background-color: #F4F7BE;
+  max-width: 100px;
+  text-align: center; }
+
 /*BOOTSTRAP OVERLOADS*/
 .navbar-inverse .navbar-brand {
   color: #DEBA6F;
@@ -62,7 +67,8 @@ h6,
   margin-right: 2px; }
 
 .form-control:focus {
-  border-color: #679436; }
+  border-color: #679436;
+  box-shadow: none; }
 
 .form-control[readonly] {
   max-width: 100px;

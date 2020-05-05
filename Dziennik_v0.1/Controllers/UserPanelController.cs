@@ -2,6 +2,7 @@
 using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -28,7 +29,7 @@ namespace Dziennik_v0._1.Controllers
         {
             var viewModel = new WorkoutCreateViewModel
             {
-                Workout = new Workout(),
+                Workout = new Workout(),               
                 Exercises = new List<Exercise>()
             };
             return View(viewModel);
@@ -59,7 +60,14 @@ namespace Dziennik_v0._1.Controllers
             }
 
             _unitOfWork.Workouts.AddWorkout(viewModel.Workout);
-            _unitOfWork.Complete();
+            try
+            {
+                _unitOfWork.Complete();
+            }
+            catch
+            {
+                return View(viewModel);
+            }
             return RedirectToAction("Index");
         }
     }

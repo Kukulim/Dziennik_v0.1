@@ -4,7 +4,7 @@
 
     <tr>
         <th>
-            nr.
+            Nr:
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Exercises[0].Name)
@@ -30,28 +30,38 @@
                 @(i+1)
             </td>
             <td>
-                @Html.EditorFor(x => x.Exercises[i].Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(x => x.Exercises[i].Name,
+                    new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Exercises[i].Name, "", new { @class = "text-danger" })
             </td>
             <td>
-                @Html.EditorFor(x => x.Exercises[i].Series, new { htmlAttributes = new { @class = "js-myform form-control " + "js-series-" + (i + 1) } })
+                @Html.EditorFor(x => x.Exercises[i].Series,
+                    new { htmlAttributes = new { @class = "js-myform form-control " + "js-series-" + (i + 1) } })
+                @Html.ValidationMessageFor(model => model.Exercises[i].Series, "", new { @class = "text-danger" })
             </td>
             <td>
-                @Html.EditorFor(x => x.Exercises[i].Repetitions, new { htmlAttributes = new { @class = "js-myform form-control " + "js-repeitions-" + (i + 1) } })
+                @Html.EditorFor(x => x.Exercises[i].Repetitions,
+                    new { htmlAttributes = new { @class = "js-myform form-control " + "js-repeitions-" + (i + 1) } })
+                @Html.ValidationMessageFor(model => model.Exercises[i].Repetitions, "", new { @class = "text-danger" })
             </td>
             <td>
-                @Html.EditorFor(x => x.Exercises[i].Weight, new { htmlAttributes = new { @class = "js-myform form-control " + "js-weight-" + (i + 1) } })
+                @Html.EditorFor(x => x.Exercises[i].Weight,
+                    new { htmlAttributes = new { @class = "js-myform form-control " + "js-weight-" + (i + 1) } })
+                @Html.ValidationMessageFor(model => model.Exercises[i].Weight, "", new { @class = "text-danger" })
             </td>
-            <td class="text-center">
-                @Html.EditorFor(x => x.Exercises[i].Volume, 
-               new { htmlAttributes = new { @class = "form-control text-center " + "js-sum-" + (i + 1), @readonly = true } })
+            <td>
+                @Html.EditorFor(x => x.Exercises[i].Volume,
+                    new { htmlAttributes = new { @class = "form-control " + "js-sum-" + (i + 1), @readonly = true } })
+                @Html.ValidationMessageFor(model => model.Exercises[i].Volume, "", new { @class = "text-danger" })
             </td>
         </tr>
 
     }
 </table>
-@for ( var k = 1; k < Model.Exercises.Count+1; k++)
+
+@for (var k = 1; k < Model.Exercises.Count + 1; k++)
 {
-<script>
+    <script>
     $(document).ready(function () {
         $(".js-series-@k, .js-repeitions-@k, .js-weight-@k")
             .change(function () {
@@ -68,5 +78,5 @@
         $(".workoutVolume").val(0);
     });
 
-</script>
+    </script>
 }

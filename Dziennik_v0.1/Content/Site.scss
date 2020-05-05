@@ -32,6 +32,12 @@ textarea {
 .js-myform{
     max-width:70px;
 }
+
+#datepicker {
+    background-color: $mirando;
+    min-width: 180px;
+    text-align: center;
+}
 /*BOOTSTRAP OVERLOADS*/
 .navbar-inverse .navbar-brand {
     color: $gold;

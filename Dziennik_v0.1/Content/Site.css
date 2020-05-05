@@ -20,6 +20,11 @@ textarea {
 .js-myform {
   max-width: 70px; }
 
+#datepicker {
+  background-color: #F4F7BE;
+  min-width: 180px;
+  text-align: center; }
+
 /*BOOTSTRAP OVERLOADS*/
 .navbar-inverse .navbar-brand {
   color: #DEBA6F;

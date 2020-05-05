@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,14 +10,14 @@ namespace Dziennik_v0._1.Core.Models
         public Workout()
         {
             this.Exercises = new List<Exercise>();
-            this.Date = DateTime.Now;
+            this.Date = DateTime.Today;
             this.LengthOfTraining = "60";
         }
 
         [Required]
         public int Id { get; set; }
 
-        [Required]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Data:")]
         public DateTime Date { get; set; }
 

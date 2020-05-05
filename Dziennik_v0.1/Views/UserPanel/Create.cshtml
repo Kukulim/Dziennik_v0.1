@@ -16,8 +16,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Workout.Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Workout.Date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Workout.Date, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Workout.Date,
+               new { htmlAttributes = new { @class = "form-control", @id = "datepicker", @readonly = true } })
             </div>
         </div>
 
@@ -78,6 +78,9 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
+    @Scripts.Render("~/Scripts/datepicker-pl.js")
+
     <script>
         $(".wrokoutExerciseCountButton").click(function () {
             $(".wrokoutExerciseCountButton")
@@ -87,6 +90,20 @@
             $(this).css("background-image", "none")
                 .css("background-color", "#679436");
 
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#datepicker').datepicker($.datepicker.regional["pl"]);
+        });
+    </script>
+    <script>
+        $
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
         });
     </script>
 }

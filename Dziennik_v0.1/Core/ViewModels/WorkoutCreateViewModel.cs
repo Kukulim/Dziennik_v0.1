@@ -10,5 +10,6 @@ namespace Dziennik_v0._1.Core.ViewModels
     {
         public Workout Workout { get; set; }
         public List<Exercise> Exercises { get; set; }
+
     }
 }

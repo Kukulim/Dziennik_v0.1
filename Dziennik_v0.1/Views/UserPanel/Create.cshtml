@@ -80,6 +80,7 @@
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
     @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
     @Scripts.Render("~/Scripts/datepicker-pl.js")
+    @Styles.Render("~/Content/themes/base/datepickercustom.css")
 
     <script>
         $(".wrokoutExerciseCountButton").click(function () {
@@ -106,5 +107,25 @@
             });
         });
     </script>
+    @for (var k = 1; k < 13; k++)
+    {
+        <script>
+    $(document).ready(function () {
+        $(".js-series-@k, .js-repeitions-@k, .js-weight-@k")
+            .change(function () {
+                var sum = parseInt($(".js-series-@k").val()) * parseInt($(".js-repeitions-@k").val()) * parseInt($(".js-weight-@k").val());
+                var workoutVolume = 0;
+                $(".js-sum-@k").val(sum);
+                $('table .js-myRows').each(function () {
+                    var lasttd = $(this).find(':last-child');
+                    var number = parseInt(lasttd.find('input').val());
+                    workoutVolume += number;
+                });
+                $(".workoutVolume").val(workoutVolume);
+            })
+        $(".workoutVolume").val(0);
+    });
+
+        </script>
+    }
 }
-<link href="~/Content/themes/base/datepickercustom.css" rel="stylesheet" />

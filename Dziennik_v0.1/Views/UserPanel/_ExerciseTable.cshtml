@@ -58,25 +58,3 @@
 
     }
 </table>
-
-@for (var k = 1; k < Model.Exercises.Count + 1; k++)
-{
-    <script>
-    $(document).ready(function () {
-        $(".js-series-@k, .js-repeitions-@k, .js-weight-@k")
-            .change(function () {
-                var sum = parseInt($(".js-series-@k").val()) * parseInt($(".js-repeitions-@k").val()) * parseInt($(".js-weight-@k").val());
-                var workoutVolume = 0;
-                $(".js-sum-@k").val(sum);
-                $('table .js-myRows').each(function () {
-                    var lasttd = $(this).find(':last-child');
-                    var number = parseInt(lasttd.find('input').val());
-                    workoutVolume += number;
-                });
-                $(".workoutVolume").val(workoutVolume);
-            })
-        $(".workoutVolume").val(0);
-    });
-
-    </script>
-}

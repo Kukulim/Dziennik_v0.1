@@ -44,6 +44,10 @@ textarea {
     text-align: center;
 }
 /*BOOTSTRAP OVERLOADS*/
+th {
+    text-align: center;
+}
+
 .navbar-inverse .navbar-brand {
     color: $gold;
     text-shadow: none;

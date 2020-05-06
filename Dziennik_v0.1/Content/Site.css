@@ -31,6 +31,9 @@ textarea {
   text-align: center; }
 
 /*BOOTSTRAP OVERLOADS*/
+th {
+  text-align: center; }
+
 .navbar-inverse .navbar-brand {
   color: #DEBA6F;
   text-shadow: none;

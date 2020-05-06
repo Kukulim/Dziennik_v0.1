@@ -207,8 +207,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserPanelController.cs" />
+    <Compile Include="Core\Models\CardioModel.cs" />
+    <Compile Include="Core\Models\Enums\CardioType.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />
     <Compile Include="Core\Models\WorkoutModel.cs" />
+    <Compile Include="Core\Repositories\ICardioRepository.cs" />
     <Compile Include="Core\Repositories\IExerciseRepository.cs" />
     <Compile Include="Core\Repositories\IWorkoutRepository.cs" />
     <Compile Include="Core\ViewModels\WorkoutCreateViewModel.cs" />
@@ -254,6 +257,7 @@
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Presistence\IApplicationDbContext.cs" />
+    <Compile Include="Presistence\Repositories\CardioRepository.cs" />
     <Compile Include="Presistence\Repositories\ExerciseRepository.cs" />
     <Compile Include="Presistence\Repositories\WorkoutRepository.cs" />
     <Compile Include="Presistence\UnitOfWork.cs" />

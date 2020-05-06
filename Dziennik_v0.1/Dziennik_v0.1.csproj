@@ -214,6 +214,7 @@
     <Compile Include="Core\Repositories\ICardioRepository.cs" />
     <Compile Include="Core\Repositories\IExerciseRepository.cs" />
     <Compile Include="Core\Repositories\IWorkoutRepository.cs" />
+    <Compile Include="Core\ViewModels\IndexUserPanelViewModel.cs" />
     <Compile Include="Core\ViewModels\WorkoutCreateViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

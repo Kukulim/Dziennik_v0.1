@@ -3,6 +3,7 @@ using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Dziennik_v0._1.Controllers
@@ -20,7 +21,20 @@ namespace Dziennik_v0._1.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var viewModel = _unitOfWork.Workouts.GetAllWorkouts(userId);
+            var viewModel = new IndexUserPanelViewModel();
+            viewModel.CardioList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
+            viewModel.WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
+
+            viewModel.AllWorkouts = new List<object>();
+            foreach (var item in viewModel.CardioList)
+            {
+                viewModel.AllWorkouts.Add(item);
+            }
+            foreach (var item in viewModel.WorkoutList)
+            {
+                viewModel.AllWorkouts.Add(item);
+            }
+
             return View(viewModel);
         }
 

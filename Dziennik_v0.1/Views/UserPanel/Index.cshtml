@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Dziennik_v0._1.Core.Models.Workout>
+﻿@model Dziennik_v0._1.Core.ViewModels.IndexUserPanelViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -12,13 +12,13 @@
 <table class="table text-center">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.CardioList[0].Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LengthOfTraining)
+            @Html.DisplayNameFor(model => model.CardioList[0].LengthOfTraining)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WorkoutVolume)
+            Objętość/Rodzaj cardio:
         </th>
         <th>
             Rodzaj treningu:
@@ -26,7 +26,7 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.WorkoutList)
     {
         <tr>
             <td>
@@ -56,5 +56,36 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
-    }
-</table>
+                    }
+        @foreach (var model in Model.CardioList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => model.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => model.LengthOfTraining)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => model.CardioType)
+                </td>
+                <td>
+                    @{
+                        if (model is Dziennik_v0._1.Core.Models.Workout)
+                        {
+                            <i class="fas fa-dumbbell"></i>
+                        }
+                        else
+                        {
+                            <i class="fas fa-heartbeat"></i>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = model.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = model.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = model.Id })
+                </td>
+            </tr>
+        }
+    </table>

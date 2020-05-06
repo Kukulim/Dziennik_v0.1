@@ -12,5 +12,6 @@ namespace Dziennik_v0._1.Presistence
     {
         DbSet<Workout> Workouts { get; set; }
         DbSet<Exercise> Exercises { get; set; }
+        DbSet<Cardio> Cardios { get; set; }
     }
 }

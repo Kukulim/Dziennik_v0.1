@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Dziennik_v0._1.Core.Models
 {
-    public class CardioModel
+    public class Cardio
     {
         [Required]
         public int Id { get; set; }

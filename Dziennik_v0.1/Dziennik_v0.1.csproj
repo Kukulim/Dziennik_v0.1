@@ -251,6 +251,10 @@
     <Compile Include="Migrations\202005050910599_ExerciseValidations.Designer.cs">
       <DependentUpon>202005050910599_ExerciseValidations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005061257118_AddCardio.cs" />
+    <Compile Include="Migrations\202005061257118_AddCardio.Designer.cs">
+      <DependentUpon>202005061257118_AddCardio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
@@ -522,6 +526,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005050910599_ExerciseValidations.resx">
       <DependentUpon>202005050910599_ExerciseValidations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005061257118_AddCardio.resx">
+      <DependentUpon>202005061257118_AddCardio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

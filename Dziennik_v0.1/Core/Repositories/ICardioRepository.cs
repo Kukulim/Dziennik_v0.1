@@ -8,8 +8,8 @@ namespace Dziennik_v0._1.Core.Repositories
 {
     public interface ICardioRepository
     {
-        CardioModel GetCardio(int CardioId);
-        IEnumerable<CardioModel> GetAllCardios();
+        Cardio GetCardio(int CardioId);
+        IEnumerable<Cardio> GetAllCardios();
 
         void AddCardio();
         void DeleteCardio();

@@ -18,6 +18,7 @@ namespace Dziennik_v0._1.Persistence
 
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
+        public DbSet<Cardio> Cardios { get; set; }
 
         public static ApplicationDbContext Create()
         {

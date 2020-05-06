@@ -24,12 +24,12 @@ namespace Dziennik_v0._1.Presistence.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<CardioModel> GetAllCardios()
+        public IEnumerable<Cardio> GetAllCardios()
         {
             throw new NotImplementedException();
         }
 
-        public CardioModel GetCardio(int CardioId)
+        public Cardio GetCardio(int CardioId)
         {
             throw new NotImplementedException();
         }

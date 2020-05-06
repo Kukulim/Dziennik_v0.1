@@ -3,6 +3,7 @@
 $paleBud: #E5F77D;
 $mirando: #F4F7BE;
 $gold: #DEBA6F;
+$goldhover: #a5884c; 
 $solidpink: #823038;
 $xkinetic: #1E000E;
 
@@ -42,6 +43,13 @@ textarea {
     background-color: $mirando;
     max-width: 100px;
     text-align: center;
+}
+#btn-cardio {
+    background-image:none;
+    background-color:$gold;
+    &:hover{
+        background-color:$goldhover;
+    }
 }
 /*BOOTSTRAP OVERLOADS*/
 th {

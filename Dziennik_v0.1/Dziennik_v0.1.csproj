@@ -493,6 +493,7 @@
     <Content Include="Views\UserPanel\Index.cshtml" />
     <Content Include="Views\UserPanel\Create.cshtml" />
     <Content Include="Views\UserPanel\_ExerciseTable.cshtml" />
+    <Content Include="Views\UserPanel\CreateCardio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

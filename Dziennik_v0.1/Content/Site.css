@@ -30,6 +30,12 @@ textarea {
   max-width: 100px;
   text-align: center; }
 
+#btn-cardio {
+  background-image: none;
+  background-color: #DEBA6F; }
+  #btn-cardio:hover {
+    background-color: #a5884c; }
+
 /*BOOTSTRAP OVERLOADS*/
 th {
   text-align: center; }

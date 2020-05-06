@@ -9,6 +9,11 @@ namespace Dziennik_v0._1.Core.Models
 {
     public class Cardio
     {
+        public Cardio()
+        {
+            this.Date = DateTime.Today;
+            this.LengthOfTraining = "60";
+        }
         [Required]
         public int Id { get; set; }
 
@@ -21,6 +26,7 @@ namespace Dziennik_v0._1.Core.Models
         public string LengthOfTraining { get; set; }
 
         [Required]
+        [Display(Name = "Rodzaj treningu:")]
         public CardioType CardioType { get; set; }
 
         [ScaffoldColumn(false)]

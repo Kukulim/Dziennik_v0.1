@@ -68,5 +68,19 @@ namespace Dziennik_v0._1.Controllers
             }
             return RedirectToAction("Index");
         }
+        public ActionResult CreateCardio()
+        {
+            var viewModel = new Cardio();
+            return View(viewModel);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateCardio(Cardio viewModel)
+        {
+            viewModel.UserId = User.Identity.GetUserId();
+            _unitOfWork.Cardios.AddCardio(viewModel);
+            _unitOfWork.Complete();
+            return RedirectToAction("Index");
+        }
     }
 }

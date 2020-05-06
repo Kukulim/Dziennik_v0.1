@@ -3,11 +3,10 @@
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Moje Treningi:</h2>
 
 <p>
-    @Html.ActionLink("Dodaj nowy trening", "Create", null, new { @class = "btn btn-success m-3" })
+    @Html.ActionLink("Dodaj trening siłowy", "Create", null, new { @class = "btn btn-success m-3" })
 </p>
 <table class="table">
     <tr>
@@ -20,26 +19,41 @@
         <th>
             @Html.DisplayNameFor(model => model.WorkoutVolume)
         </th>
+        <th>
+            Rodzaj treningu:
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Date)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.LengthOfTraining)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.WorkoutVolume)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LengthOfTraining)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkoutVolume)
+            </td>
+            <td>
+                @{
+                    if (item is Dziennik_v0._1.Core.Models.Workout)
+                    {
+                        <i class="fas fa-dumbbell"></i>
+                    }
+                    else
+                    {
+                        <i class="fas fa-heartbeat"></i>
+                    }
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 </table>

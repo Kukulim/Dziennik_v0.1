@@ -77,3 +77,8 @@ h6,
   .form-control[readonly]:focus {
     border: 1px solid black;
     box-shadow: none; }
+
+/*FONT ICONS OVERLOADS*/
+.fa, .fas {
+  font-weight: 900;
+  font-size: 20px; }

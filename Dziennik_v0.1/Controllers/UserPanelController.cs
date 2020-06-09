@@ -108,5 +108,10 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Complete();
             return RedirectToAction("Index");
         }
+        public ActionResult DetailsCardio(int id)
+        {
+            var model = _unitOfWork.Cardios.GetCardio(id);
+            return View(model);
+        }
     }
 }

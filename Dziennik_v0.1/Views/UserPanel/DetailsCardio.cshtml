@@ -1,0 +1,41 @@
+﻿@model Dziennik_v0._1.Core.Models.Cardio
+
+@{
+    ViewBag.Title = "DetailsCardio";
+}
+
+<div class="container">
+    <h2 class="m-4 text-center">Szczegóły Treningu:</h2>
+
+    <div class="col m-auto">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LengthOfTraining)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LengthOfTraining)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CardioType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CardioType)
+            </dd>
+        </dl>
+
+        <div class="text-center">
+            @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
+        </div>
+    </div>

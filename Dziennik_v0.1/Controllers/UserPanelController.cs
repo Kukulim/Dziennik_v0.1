@@ -113,5 +113,19 @@ namespace Dziennik_v0._1.Controllers
             var model = _unitOfWork.Cardios.GetCardio(id);
             return View(model);
         }
+        public ActionResult EditCardio(int id)
+        {
+            var model = _unitOfWork.Cardios.GetCardio(id);
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult EditCardio(Cardio cardio)
+        {
+            _unitOfWork.Cardios.EditCardio(cardio);
+            _unitOfWork.Complete();
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

@@ -13,6 +13,6 @@ namespace Dziennik_v0._1.Core.Repositories
 
         void AddCardio(Cardio cardio);
         void DeleteCardio(int id);
-        void EditCardio(int CardioId);
+        void EditCardio(Cardio cardio);
     }
 }

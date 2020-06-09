@@ -3,6 +3,7 @@ using Dziennik_v0._1.Core.Repositories;
 using Dziennik_v0._1.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -27,9 +28,10 @@ namespace Dziennik_v0._1.Presistence.Repositories
             _context.Cardios.Remove(CardioToDelete);
         }
 
-        public void EditCardio(int CardioId)
+        public void EditCardio(Cardio cardio)
         {
-            throw new NotImplementedException();
+            var Cardioedit = _context.Entry(cardio);
+            Cardioedit.State = EntityState.Modified;
         }
 
         public IEnumerable<Cardio> GetAllCardios(string id)

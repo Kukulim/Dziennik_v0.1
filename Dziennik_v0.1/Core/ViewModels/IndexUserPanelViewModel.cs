@@ -10,6 +10,6 @@ namespace Dziennik_v0._1.Core.ViewModels
     {
         public List<Workout> WorkoutList;
         public List<Cardio> CardioList;
-        public List<object> AllWorkouts;
+        //public List<object> AllWorkouts;
     }
 }

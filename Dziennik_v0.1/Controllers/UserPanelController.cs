@@ -25,15 +25,15 @@ namespace Dziennik_v0._1.Controllers
             viewModel.CardioList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
             viewModel.WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
 
-            viewModel.AllWorkouts = new List<object>();
-            foreach (var item in viewModel.CardioList)
-            {
-                viewModel.AllWorkouts.Add(item);
-            }
-            foreach (var item in viewModel.WorkoutList)
-            {
-                viewModel.AllWorkouts.Add(item);
-            }
+            //viewModel.AllWorkouts = new List<object>();
+            //foreach (var item in viewModel.CardioList)
+            //{
+            //    viewModel.AllWorkouts.Add(item);
+            //}
+            //foreach (var item in viewModel.WorkoutList)
+            //{
+            //    viewModel.AllWorkouts.Add(item);
+            //}
 
             return View(viewModel);
         }

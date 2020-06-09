@@ -36,7 +36,7 @@
             @Html.LabelFor(model => model.CardioType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.CardioType, new SelectList(Enum.GetValues(typeof(CardioType))),
-             new { htmlAttributes = new { @class = "form-control" } })
+             new  { @class = "form-control", @id="cardiodropdown", @style= "option:hover{background-color:yellow;}" } )
                 @Html.ValidationMessageFor(model => model.CardioType, "", new { @class = "text-danger" })
             </div>
         </div>

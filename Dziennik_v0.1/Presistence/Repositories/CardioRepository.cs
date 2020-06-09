@@ -21,9 +21,10 @@ namespace Dziennik_v0._1.Presistence.Repositories
             _context.Cardios.Add(cardio);
         }
 
-        public void DeleteCardio()
+        public void DeleteCardio(int id)
         {
-            throw new NotImplementedException();
+            var CardioToDelete = _context.Cardios.Find(id);
+            _context.Cardios.Remove(CardioToDelete);
         }
 
         public void EditCardio(int CardioId)
@@ -38,7 +39,7 @@ namespace Dziennik_v0._1.Presistence.Repositories
 
         public Cardio GetCardio(int CardioId)
         {
-            throw new NotImplementedException();
+            return _context.Cardios.Where(c => c.Id == CardioId).FirstOrDefault();
         }
     }
 }

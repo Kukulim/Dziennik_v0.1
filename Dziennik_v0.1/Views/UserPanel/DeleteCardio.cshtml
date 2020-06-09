@@ -1,0 +1,56 @@
+﻿@model Dziennik_v0._1.Core.Models.Cardio
+
+@{
+    ViewBag.Title = "DeleteCardio";
+}
+
+<div class="container">
+    <h2 class="m-4 text-center">Usuwanie Treningu:</h2>
+
+    <h3 class="text-danger text-center">Czy napewno chcesz usunąć trening ?</h3>
+    <div class="col m-auto">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LengthOfTraining)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LengthOfTraining)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CardioType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CardioType)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color m-3">
+                <input type="submit" value="Usuń" class="btn btn-danger m-1" />
+            </div>
+            <div class="text-center">
+                @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
+            </div>
+        }
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</div>
+

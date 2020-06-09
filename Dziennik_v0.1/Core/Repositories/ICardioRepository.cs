@@ -12,7 +12,7 @@ namespace Dziennik_v0._1.Core.Repositories
         IEnumerable<Cardio> GetAllCardios(string id);
 
         void AddCardio(Cardio cardio);
-        void DeleteCardio();
+        void DeleteCardio(int id);
         void EditCardio(int CardioId);
     }
 }

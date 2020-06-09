@@ -96,5 +96,17 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Complete();
             return RedirectToAction("Index");
         }
+        public ActionResult DeleteCardio(int id)
+        {
+            var model = _unitOfWork.Cardios.GetCardio(id);
+            return View(model);
+        }
+        [HttpPost, ActionName("DeleteCardio")]
+        public ActionResult DeleteCardioConfirmed(int id)
+        {
+            _unitOfWork.Cardios.DeleteCardio(id);
+            _unitOfWork.Complete();
+            return RedirectToAction("Index");
+        }
     }
 }

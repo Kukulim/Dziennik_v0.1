@@ -37,7 +37,7 @@
 
             </dl>
 
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("DeleteCardio/" + Model.Id, "UserPanel"))
             {
                 @Html.AntiForgeryToken()
 

@@ -22,9 +22,10 @@ namespace Dziennik_v0._1.Presistence.Repositories
             _context.Workouts.Add(workout);
         }
 
-        public void DeleteWorkout()
+        public void DeleteWorkout(int WorkoutId)
         {
-            throw new NotImplementedException();
+            var WorkoutToRemove = _context.Workouts.Find(WorkoutId);
+            _context.Workouts.Remove(WorkoutToRemove);
         }
 
         public void EditWorkout(Workout workout)

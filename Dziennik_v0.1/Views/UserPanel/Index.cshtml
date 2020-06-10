@@ -84,7 +84,7 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = model.Id, type="cardio" }) |
                     @Html.ActionLink("Details", "DetailsCardio", new { id = model.Id }) |
-                    @Html.ActionLink("Delete", "DeleteCardio", new { id = model.Id })
+                    @Html.ActionLink("Delete", "Delete", new { id = model.Id, type = "cardio" })
                 </td>
             </tr>
         }

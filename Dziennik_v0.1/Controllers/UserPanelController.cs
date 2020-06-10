@@ -98,15 +98,30 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Complete();
             return RedirectToAction("Index");
         }
-        public ActionResult DeleteCardio(int id)
+        public ActionResult Delete(int id, string type)
         {
-            var model = _unitOfWork.Cardios.GetCardio(id);
-            return View(model);
+            if (type == "cardio")
+            {
+                var model = _unitOfWork.Cardios.GetCardio(id);
+                return View("DeleteCardio", model);
+            }
+            else
+            {
+                var model = _unitOfWork.Workouts.GetWorkout(id);
+                return View("DeleteWorkout", model);
+            }
         }
         [HttpPost, ActionName("DeleteCardio")]
         public ActionResult DeleteCardioConfirmed(int id)
         {
             _unitOfWork.Cardios.DeleteCardio(id);
+            _unitOfWork.Complete();
+            return RedirectToAction("Index");
+        }
+        [HttpPost, ActionName("DeleteWorkout")]
+        public ActionResult DeleteWorkoutConfirmed(int id)
+        {
+            _unitOfWork.Workouts.DeleteWorkout(id);
             _unitOfWork.Complete();
             return RedirectToAction("Index");
         }

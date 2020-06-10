@@ -499,6 +499,7 @@
     <Content Include="Views\UserPanel\DetailsCardio.cshtml" />
     <Content Include="Views\UserPanel\EditCardio.cshtml" />
     <Content Include="Views\UserPanel\EditWorkout.cshtml" />
+    <Content Include="Views\UserPanel\DeleteWorkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,9 +2,11 @@
 using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Dziennik_v0._1.Controllers
 {
@@ -113,15 +115,31 @@ namespace Dziennik_v0._1.Controllers
             var model = _unitOfWork.Cardios.GetCardio(id);
             return View(model);
         }
-        public ActionResult EditCardio(int id)
+        public ActionResult Edit(int id, string type)
         {
-            var model = _unitOfWork.Cardios.GetCardio(id);
-            return View(model);
+            if (type== "cardio")
+            {
+                var model = _unitOfWork.Cardios.GetCardio(id);
+                return View("EditCardio",model);
+            }
+            else
+            {
+                var model = _unitOfWork.Workouts.GetWorkout(id);
+                return View("EditWorkout",model);
+            }
+            
         }
         [HttpPost]
         public ActionResult EditCardio(Cardio cardio)
         {
             _unitOfWork.Cardios.EditCardio(cardio);
+            _unitOfWork.Complete();
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult EditWorkout(Workout workout)
+        {
+            _unitOfWork.Workouts.EditWorkout(workout);
             _unitOfWork.Complete();
             return RedirectToAction("Index");
         }

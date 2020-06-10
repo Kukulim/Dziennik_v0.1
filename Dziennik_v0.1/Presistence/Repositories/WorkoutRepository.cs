@@ -3,6 +3,7 @@ using Dziennik_v0._1.Core.Repositories;
 using Dziennik_v0._1.Persistence;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Dziennik_v0._1.Presistence.Repositories
@@ -26,9 +27,10 @@ namespace Dziennik_v0._1.Presistence.Repositories
             throw new NotImplementedException();
         }
 
-        public void EditWorkout(int WorkoutId)
+        public void EditWorkout(Workout workout)
         {
-            throw new NotImplementedException();
+            var Workoutedit = _context.Entry(workout);
+            Workoutedit.State = EntityState.Modified;
         }
 
         public IEnumerable<Workout> GetAllWorkouts(string id)
@@ -38,7 +40,7 @@ namespace Dziennik_v0._1.Presistence.Repositories
 
         public Workout GetWorkout(int WorkoutId)
         {
-            throw new NotImplementedException();
+            return _context.Workouts.Where(c => c.Id == WorkoutId).FirstOrDefault();
         }
     }
 }

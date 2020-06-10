@@ -13,6 +13,6 @@ namespace Dziennik_v0._1.Core.Repositories
         IEnumerable<Workout> GetAllWorkouts(string id);
         void AddWorkout(Workout workout);
         void DeleteWorkout();
-        void EditWorkout(int WorkoutId);
+        void EditWorkout(Workout workout);
     }
 }

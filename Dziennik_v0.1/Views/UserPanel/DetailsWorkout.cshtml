@@ -1,0 +1,50 @@
+﻿@model Dziennik_v0._1.Core.Models.Workout
+
+@{
+    ViewBag.Title = "DetailsWorkout";
+}
+
+<h2>DetailsWorkout</h2>
+
+<div>
+    <h4>Workout</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthOfTraining)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthOfTraining)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkoutVolume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkoutVolume)
+        </dd>
+
+    </dl>
+    <div class="text-center">
+        @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
+    </div>
+</div>
+

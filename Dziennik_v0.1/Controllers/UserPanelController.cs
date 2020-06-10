@@ -125,10 +125,18 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Complete();
             return RedirectToAction("Index");
         }
-        public ActionResult DetailsCardio(int id)
+        public ActionResult Details(int id, string type)
         {
-            var model = _unitOfWork.Cardios.GetCardio(id);
-            return View(model);
+            if (type == "cardio")
+            {
+                var model = _unitOfWork.Cardios.GetCardio(id);
+                return View("DetailsCardio", model);
+            }
+            else
+            {
+                var model = _unitOfWork.Workouts.GetWorkout(id);
+                return View("DetailsWorkout", model);
+            }
         }
         public ActionResult Edit(int id, string type)
         {

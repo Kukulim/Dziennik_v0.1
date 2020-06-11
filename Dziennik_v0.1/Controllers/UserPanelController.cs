@@ -86,16 +86,20 @@ namespace Dziennik_v0._1.Controllers
         }
         public ActionResult CreateCardio()
         {
-            var viewModel = new Cardio();
+            var viewModel = new CardioCreateViewModel();
+            viewModel.DistanceString = "0";
+            viewModel.Cardio = new Cardio();
             return View(viewModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateCardio(Cardio viewModel)
+        public ActionResult CreateCardio(CardioCreateViewModel viewModel)
         {
-            viewModel.UserId = User.Identity.GetUserId();
-            _unitOfWork.Cardios.AddCardio(viewModel);
+            viewModel.Cardio.UserId = User.Identity.GetUserId();
+            viewModel.Cardio.Distance = Convert.ToDecimal(viewModel.DistanceString);
+            _unitOfWork.Cardios.AddCardio(viewModel.Cardio);
             _unitOfWork.Complete();
+
             return RedirectToAction("Index");
         }
         public ActionResult Delete(int id, string type)

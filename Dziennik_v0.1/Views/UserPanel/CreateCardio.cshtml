@@ -1,6 +1,6 @@
 ﻿@using Dziennik_v0._1.Core.Models.Enums
 
-@model Dziennik_v0._1.Core.Models.Cardio
+@model Dziennik_v0._1.Core.ViewModels.CardioCreateViewModel
 
 @{
     ViewBag.Title = "CreateCardio";
@@ -15,41 +15,47 @@
 <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
     <div class="form-group">
-        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Cardio.Date, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Date,
+            @Html.EditorFor(model => model.Cardio.Date,
             new { htmlAttributes = new { @class = "form-control", @id = "datepicker", @readonly = true } })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.LengthOfTraining, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Cardio.LengthOfTraining, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.LengthOfTraining,
+            @Html.EditorFor(model => model.Cardio.LengthOfTraining,
          new { htmlAttributes = new { @class = "form-control timepicker col-md-2" } })<div class="control-label col-md-2 spanpicker">min.</div>
-            @Html.ValidationMessageFor(model => model.LengthOfTraining, "", new { @class = "text-danger" })
         </div>
+        <div class="col-md-6 text-center">
+        @Html.ValidationMessageFor(model => model.Cardio.LengthOfTraining, "", new { @class = "text-danger text-center" })
+    </div>
     </div>
 
     <div class="form-group">
-            @Html.LabelFor(model => model.Distance, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Distance,
-             new { htmlAttributes = new { @class = "form-control timepicker col-md-2" } })<div class="control-label col-md-2 spanpicker">km.</div>
-                @Html.ValidationMessageFor(model => model.Distance, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.DistanceString, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DistanceString,
+         new { htmlAttributes = new { @class = "form-control timepicker col-md-2" } })<div class="control-label col-md-2 spanpicker">km.</div>
+
+        </div>
+        <div class="col-md-6 text-center">
+            @Html.ValidationMessageFor(model => model.DistanceString, "", new { @class = "text-danger" })
             </div>
         </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.CardioType, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.CardioType, new SelectList(Enum.GetValues(typeof(CardioType))),
-         new { @class = "form-control", @id = "cardiodropdown", @style = "option:hover{background-color:yellow;}" })
-            @Html.ValidationMessageFor(model => model.CardioType, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cardio.CardioType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Cardio.CardioType, new SelectList(Enum.GetValues(typeof(CardioType))),
+             new { @class = "form-control", @id = "cardiodropdown", @style = "option:hover{background-color:yellow;}" })
+                @Html.ValidationMessageFor(model => model.Cardio.CardioType, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
-</div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10 text-right">

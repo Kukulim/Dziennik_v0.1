@@ -26,6 +26,10 @@ namespace Dziennik_v0._1.Core.Models
         public string LengthOfTraining { get; set; }
 
         [Required]
+        [Display(Name = "Dystans:")]
+        public double Distance { get; set; }
+
+        [Required]
         [Display(Name = "Rodzaj treningu:")]
         public CardioType CardioType { get; set; }
 

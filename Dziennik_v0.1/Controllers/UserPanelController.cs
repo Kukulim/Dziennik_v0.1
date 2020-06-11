@@ -147,7 +147,10 @@ namespace Dziennik_v0._1.Controllers
             if (type== "cardio")
             {
                 var model = _unitOfWork.Cardios.GetCardio(id);
-                return View("EditCardio",model);
+                var ViewModel = new CardioCreateViewModel();
+                ViewModel.Cardio = model;
+                ViewModel.DistanceString = model.Distance.ToString();
+                return View("EditCardio", ViewModel);
             }
             else
             {
@@ -157,9 +160,10 @@ namespace Dziennik_v0._1.Controllers
             
         }
         [HttpPost]
-        public ActionResult EditCardio(Cardio cardio)
+        public ActionResult EditCardio(CardioCreateViewModel viewModel)
         {
-            _unitOfWork.Cardios.EditCardio(cardio);
+            viewModel.Cardio.Distance = Convert.ToDecimal(viewModel.DistanceString);
+            _unitOfWork.Cardios.EditCardio(viewModel.Cardio);
             _unitOfWork.Complete();
             return RedirectToAction("Index");
         }

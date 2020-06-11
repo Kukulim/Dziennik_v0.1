@@ -40,16 +40,20 @@ textarea {
     min-width: 180px;
     text-align: center;
 }
-#timepicker {
+.timepicker {
     background-color: $mirando;
     max-width: 100px;
     text-align: center;
 }
+.spanpicker {
+    text-align: left !important;
+}
 #btn-cardio {
-    background-image:none;
-    background-color:$gold;
-    &:hover{
-        background-color:$goldhover;
+    background-image: none;
+    background-color: $gold;
+
+    &:hover {
+        background-color: $goldhover;
     }
 }
 #cardiodropdown {

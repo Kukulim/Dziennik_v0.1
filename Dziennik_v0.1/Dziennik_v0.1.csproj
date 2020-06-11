@@ -261,6 +261,10 @@
     <Compile Include="Migrations\202006110930225_AddDistanceToCardio.Designer.cs">
       <DependentUpon>202006110930225_AddDistanceToCardio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006111050312_AddDistanceToCardioDecimal.cs" />
+    <Compile Include="Migrations\202006111050312_AddDistanceToCardioDecimal.Designer.cs">
+      <DependentUpon>202006111050312_AddDistanceToCardioDecimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
@@ -546,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006110930225_AddDistanceToCardio.resx">
       <DependentUpon>202006110930225_AddDistanceToCardio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006111050312_AddDistanceToCardioDecimal.resx">
+      <DependentUpon>202006111050312_AddDistanceToCardioDecimal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

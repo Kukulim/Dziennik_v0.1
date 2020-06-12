@@ -24,6 +24,7 @@ namespace Dziennik_v0._1.Core.Models
 
         [Required]
         [Display(Name = "Czas treningu:")]
+        [RegularExpression("^(-?)(0|([1-9][0-9]*))(\\.[0-9]+)?$", ErrorMessage = "Czas musi być liczbą")]
         public string LengthOfTraining { get; set; }
 
         [Required]

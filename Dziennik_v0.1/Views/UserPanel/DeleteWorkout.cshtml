@@ -4,57 +4,108 @@
     ViewBag.Title = "DeleteWorkout";
 }
 
-<h2>DeleteWorkout</h2>
+    <h2>Usuwanie Treningu:</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Workout</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Name)
-        </dt>
+    <h3 class="text-danger text-center">Czy napewno chcesz usunąć trening ?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.User.Name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LengthOfTraining)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LengthOfTraining)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LengthOfTraining)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LengthOfTraining)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.WorkoutVolume)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.WorkoutVolume)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.WorkoutVolume)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.WorkoutVolume)
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm("DeleteWorkout/"+Model.Id, "UserPanel"))
-    {
-        @Html.AntiForgeryToken()
+        <table class="table">
 
-        <div class="form-actions no-color m-5 text-right">
-            <input type="submit" value="Usuń" class="btn btn-danger btn-lg m-5" />
-        </div>
-        <div class="text-center">
-            @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
-        </div>
-    }
+            <tr>
+                <th>
+                    Nr:
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Exercises[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Exercises[0].Series)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Exercises[0].Repetitions)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Exercises[0].Weight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Exercises[0].Volume)
+                </th>
+            </tr>
+            @for (var i = 0; i < Model.Exercises.Count; i++)
+            {
 
-</div>
+                <tr class="js-myRows text-center">
+                    <td>
+                        @(i+1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.Exercises[i].Name,
+                            new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Exercises[i].Name, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.Exercises[i].Series,
+                            new { htmlAttributes = new { @class = "js-myform form-control " } })
+                        @Html.ValidationMessageFor(model => model.Exercises[i].Series, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.Exercises[i].Repetitions,
+                            new { htmlAttributes = new { @class = "js-myform form-control " } })
+                        @Html.ValidationMessageFor(model => model.Exercises[i].Repetitions, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.Exercises[i].Weight,
+                            new { htmlAttributes = new { @class = "js-myform form-control " } })
+                        @Html.ValidationMessageFor(model => model.Exercises[i].Weight, "", new { @class = "text-danger" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(x => x.Exercises[i].Volume,
+                            new { htmlAttributes = new { @class = "form-control ", @readonly = true } })
+                        @Html.ValidationMessageFor(model => model.Exercises[i].Volume, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            }
+        </table>
+
+        @using (Html.BeginForm("DeleteWorkout/" + Model.Id, "UserPanel"))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color m-5 text-right">
+                <input type="submit" value="Usuń" class="btn btn-danger btn-lg m-5" />
+            </div>
+            <div class="text-center">
+                @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
+            </div>
+        }
+
+    </div>

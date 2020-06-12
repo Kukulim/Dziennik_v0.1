@@ -4,19 +4,12 @@
     ViewBag.Title = "DetailsWorkout";
 }
 
-<h2>DetailsWorkout</h2>
+<h2>Szczegóły treningu:</h2>
 
 <div>
-    <h4>Workout</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.User.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.User.Name)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Date)
@@ -43,6 +36,65 @@
         </dd>
 
     </dl>
+
+    <table class="table">
+
+        <tr>
+            <th>
+                Nr:
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercises[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercises[0].Series)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercises[0].Repetitions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercises[0].Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercises[0].Volume)
+            </th>
+        </tr>
+        @for (var i = 0; i < Model.Exercises.Count; i++)
+        {
+
+            <tr class="js-myRows text-center">
+                <td>
+                    @(i+1)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => x.Exercises[i].Name,
+                        new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Exercises[i].Name, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.DisplayFor(x => x.Exercises[i].Series,
+                        new { htmlAttributes = new { @class = "js-myform form-control "} })
+                    @Html.ValidationMessageFor(model => model.Exercises[i].Series, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.DisplayFor(x => x.Exercises[i].Repetitions,
+                        new { htmlAttributes = new { @class = "js-myform form-control "} })
+                    @Html.ValidationMessageFor(model => model.Exercises[i].Repetitions, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.DisplayFor(x => x.Exercises[i].Weight,
+                        new { htmlAttributes = new { @class = "js-myform form-control " } })
+                    @Html.ValidationMessageFor(model => model.Exercises[i].Weight, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.DisplayFor(x => x.Exercises[i].Volume,
+                        new { htmlAttributes = new { @class = "form-control ", @readonly = true } })
+                    @Html.ValidationMessageFor(model => model.Exercises[i].Volume, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        }
+    </table>
+
     <div class="text-center">
         @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
     </div>

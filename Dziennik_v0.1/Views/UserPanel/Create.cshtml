@@ -65,9 +65,7 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10 text-right">
             <input type="submit" value="Zapisz trening" id="js-submit" class="btn btn-success btn-lg" ,
-                   @if (Model.Exercises.Count == 0)
-                   {
-                       <text>disabled</text>
+                   @if (Model.Exercises.Count == 0) { <text> disabled</text>
                    } />
         </div>
     </div>
@@ -97,16 +95,9 @@
         });
     </script>
     <script>
-        $(document).ready(function () {
-            $('#datepicker').datepicker($.datepicker.regional["pl"]);
-        });
-    </script>
-    <script>
-        $
-        $(document).ready(function () {
-            $('input[type=datetime]').datepicker({
-                changeMonth: true,
-                changeYear: true
+        $(function () {
+            $('#datepicker').datepicker({
+                dateFormat: "yy.mm.dd"
             });
         });
     </script>
@@ -130,4 +121,4 @@
             });
         </script>
     }
-    }
+}

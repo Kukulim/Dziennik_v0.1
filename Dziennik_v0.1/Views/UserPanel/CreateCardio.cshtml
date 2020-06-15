@@ -72,20 +72,13 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
     @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
-   @* @Scripts.Render("~/Scripts/datepicker-pl.js")*@
+    @Scripts.Render("~/Scripts/datepicker-pl.js")
     @Styles.Render("~/Content/themes/base/datepickercustom.css")
 
     <script>
-        $(document).ready(function () {
-            $('#datepicker').datepicker($.datepicker.regional["de"]);
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('input[type=datetime]').datepicker({
-                changeMonth: false,
-                changeYear: true,
-                format: 'yyyy-mm-dd'
+        $(function () {
+            $('#datepicker').datepicker({
+                dateFormat:"yy.mm.dd"
             });
         });
     </script>

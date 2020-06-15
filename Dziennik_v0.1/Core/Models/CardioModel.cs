@@ -18,7 +18,7 @@ namespace Dziennik_v0._1.Core.Models
         [Required]
         public int Id { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Data:")]
         public DateTime Date { get; set; }
 

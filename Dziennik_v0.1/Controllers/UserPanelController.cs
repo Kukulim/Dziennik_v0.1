@@ -97,7 +97,7 @@ namespace Dziennik_v0._1.Controllers
         public ActionResult CreateCardio(CardioCreateViewModel viewModel)
         {
             viewModel.Cardio.UserId = User.Identity.GetUserId();
-            viewModel.Cardio.Distance = Convert.ToDecimal(viewModel.DistanceString);
+            viewModel.Cardio.Distance = Convert.ToDecimal(viewModel.DistanceString.Replace(".", ","));
             _unitOfWork.Cardios.AddCardio(viewModel.Cardio);
             _unitOfWork.Complete();
 
@@ -150,7 +150,7 @@ namespace Dziennik_v0._1.Controllers
                 var model = _unitOfWork.Cardios.GetCardio(id);
                 var ViewModel = new CardioCreateViewModel();
                 ViewModel.Cardio = model;
-                ViewModel.DistanceString = model.Distance.ToString();
+                ViewModel.DistanceString = model.Distance.ToString().Replace(",", ".");
                 return View("EditCardio", ViewModel);
             }
             else
@@ -164,7 +164,7 @@ namespace Dziennik_v0._1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditCardio(CardioCreateViewModel viewModel)
         {
-            viewModel.Cardio.Distance = Convert.ToDecimal(viewModel.DistanceString);
+            viewModel.Cardio.Distance = Convert.ToDecimal(viewModel.DistanceString.Replace(".", ","));
             _unitOfWork.Cardios.EditCardio(viewModel.Cardio);
             _unitOfWork.Complete();
             return RedirectToAction("Index");

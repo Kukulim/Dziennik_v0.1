@@ -24,19 +24,20 @@ namespace Dziennik_v0._1.Controllers
         {
             var userId = User.Identity.GetUserId();
             var viewModel = new IndexUserPanelViewModel();
-            viewModel.CardioList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
-            viewModel.WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
+            var CardioList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
+            var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
 
-            //viewModel.AllWorkouts = new List<object>();
-            //foreach (var item in viewModel.CardioList)
-            //{
-            //    viewModel.AllWorkouts.Add(item);
-            //}
-            //foreach (var item in viewModel.WorkoutList)
-            //{
-            //    viewModel.AllWorkouts.Add(item);
-            //}
+            viewModel.TraningList = new List<TrainigBaseModel>();
 
+            foreach (var item in CardioList)
+            {
+                viewModel.TraningList.Add(item);
+            }
+            foreach (var item in WorkoutList)
+            {
+                viewModel.TraningList.Add(item);
+            }
+            viewModel.TraningList = viewModel.TraningList.OrderByDescending(t => t.Date).ToList();
             return View(viewModel);
         }
 

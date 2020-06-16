@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Dziennik_v0._1.Core.Models
 {
-    public class Workout
+    public class Workout :TrainigBaseModel
     {
         public Workout()
         {
@@ -13,17 +13,6 @@ namespace Dziennik_v0._1.Core.Models
             this.Date = DateTime.Today;
             this.LengthOfTraining = "60";
         }
-
-        [Required]
-        public int Id { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Data:")]
-        public DateTime Date { get; set; }
-
-        [Required]
-        [Display(Name = "Czas treningu:")]
-        public string LengthOfTraining { get; set; }
 
         [Display(Name = "Objętość treningu:")]
         public int WorkoutVolume { get; set; }

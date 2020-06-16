@@ -13,12 +13,19 @@ namespace Dziennik_v0._1.Core.ViewModels
 
         string _DistanceString;
 
+
         [Required]
         [Display(Name = "Dystans:")]
         [RegularExpression("^(-?)(0|([1-9][0-9]*))(\\.[0-9]+)?$", ErrorMessage = "Dystans musi być liczbą")]
         public string DistanceString
         {
-            get { return _DistanceString; }
+            get {
+                if (_DistanceString !=null)
+                {
+                    return _DistanceString.Replace(",", ".");
+                }
+                else return _DistanceString;
+            }
             set {
                 _DistanceString = value.Replace(".", ",");
             }

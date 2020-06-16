@@ -8,24 +8,13 @@ using System.Web;
 
 namespace Dziennik_v0._1.Core.Models
 {
-    public class Cardio
+    public class Cardio : TrainigBaseModel
     {
         public Cardio()
         {
             this.Date = DateTime.Today;
             this.LengthOfTraining = "60";
         }
-        [Required]
-        public int Id { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Data:")]
-        public DateTime Date { get; set; }
-
-        [Required]
-        [Display(Name = "Czas treningu:")]
-        [RegularExpression("^(-?)(0|([1-9][0-9]*))(\\.[0-9]+)?$", ErrorMessage = "Czas musi być liczbą")]
-        public string LengthOfTraining { get; set; }
 
         [Required]
         [Display(Name = "Dystans:")]

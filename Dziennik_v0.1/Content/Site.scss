@@ -60,10 +60,15 @@ textarea {
     background-color: $mirando !important;
     max-width: 180px;
 }
-
+.cardioRow {
+    background-color: rgba(214, 157, 0, 0.08);
+}
+.workoutRow {
+    background-color: rgba(0, 255, 0, 0.03);
+}
 /*BOOTSTRAP OVERLOADS*/
 th {
-    text-align: center;
+    text-align: left;
 }
 
 .navbar-inverse .navbar-brand {
@@ -134,4 +139,12 @@ h6,
 .fa, .fas {
     font-weight: 900;
     font-size: 20px;
+}
+
+.fa-dumbbell {
+    color: #62c462;
+}
+
+.fa-heartbeat {
+    color: #DEBA6F;
 }

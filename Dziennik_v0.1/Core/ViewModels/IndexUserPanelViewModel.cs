@@ -8,8 +8,6 @@ namespace Dziennik_v0._1.Core.ViewModels
 {
     public class IndexUserPanelViewModel
     {
-        public List<Workout> WorkoutList;
-        public List<Cardio> CardioList;
-        //public List<object> AllWorkouts;
+        public List<TrainigBaseModel> TraningList;
     }
 }

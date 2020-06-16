@@ -10,117 +10,109 @@
         @Html.ActionLink("Dodaj trening cardio", "CreateCardio", null, new { @class = "btn btn-success m-3", @id = "btn-cardio" })
     </p>
 </div>
+
 <table class="table text-center">
     <tr>
         <th>
             Edycja:
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.CardioList[0].Date)
+            Data:
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.CardioList[0].LengthOfTraining)
+            Czas treningu:
         </th>
-        <th>
-            Objętość/Rodzaj cardio:
-        </th>
+
         <th>
             Rodzaj treningu:
         </th>
+
         <th>
             Szczegóły:
         </th>
+
         <th>
             Usuń:
         </th>
     </tr>
 
-    @foreach (var item in Model.WorkoutList)
+    @foreach (var model in Model.TraningList)
     {
-<tr>
-    <td>
-        <a href="@Url.Action("Edit","UserPanel",new { id = item.Id})" class="btn btn-success btn-sm">
-
-            <i class="fas fa-edit"></i>
-        </a>
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Date)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.LengthOfTraining)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.WorkoutVolume)
-    </td>
-    <td>
-        @{
-            if (item is Dziennik_v0._1.Core.Models.Workout)
-            {
-                <i class="fas fa-dumbbell"></i>
-            }
-            else
-            {
-                <i class="fas fa-heartbeat"></i>
-            }
-        }
-    </td>
-    <td>
-        <a href="@Url.Action("Details","UserPanel",new { id = item.Id })" class="btn btn-sm btn-primary">
-
-            <i class="fas fa-list-alt"></i>
-        </a>
-    </td>
-    <td>
-        <a href="@Url.Action("Delete","UserPanel",new { id = item.Id })" class="btn btn-danger btn-sm">
-
-            <i class="fas fa-trash"></i>
-        </a>
-    </td>
-</tr>
-                    }
-        @foreach (var model in Model.CardioList)
         {
-<tr>
-    <td>
-        <a href="@Url.Action("Edit","UserPanel",new { id = model.Id, type="cardio" })" class = "btn btn-success btn-sm", id= "btn-cardio">
-
-            <i class="fas fa-edit"></i>
-        </a>
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => model.Date)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => model.LengthOfTraining)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => model.CardioType)
-    </td>
-    <td>
-        @{
-            if (model is Dziennik_v0._1.Core.Models.Workout)
+            if (model is Dziennik_v0._1.Core.Models.Cardio)
             {
-                <i class="fas fa-dumbbell"></i>
+                <tr class="cardioRow">
+                    <td>
+                        <a href="@Url.Action("Edit", "UserPanel", new { id = model.Id, type = "cardio" })" class="btn btn-success btn-sm" , id="btn-cardio">
+
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => model.Date)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => model.LengthOfTraining)
+                    </td>
+
+                    <td>
+                        <i class="fas fa-heartbeat"></i>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Details", "UserPanel", new { id = model.Id, type = "cardio" })" class="btn btn-sm btn-primary">
+
+                            <i class="fas fa-list-alt"></i>
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("Delete", "UserPanel", new { id = model.Id, type = "cardio" })" class="btn btn-danger btn-sm">
+
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
             }
             else
             {
-                <i class="fas fa-heartbeat"></i>
+                <tr class="workoutRow">
+                    <td>
+                        <a href="@Url.Action("Edit", "UserPanel", new { id = model.Id, type = "workout" })" class="btn btn-success btn-sm">
+
+                            <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => model.Date)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => model.LengthOfTraining)
+                    </td>
+
+                    <td>
+                        <i class="fas fa-dumbbell"></i>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Details", "UserPanel", new { id = model.Id, type = "workout" })" class="btn btn-sm btn-primary">
+
+                            <i class="fas fa-list-alt"></i>
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("Delete", "UserPanel", new { id = model.Id, type = "workout" })" class="btn btn-danger btn-sm">
+
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
             }
         }
-    </td>
-    <td>
-        <a href="@Url.Action("Details","UserPanel",new { id = model.Id, type="cardio" })" class="btn btn-sm btn-primary">
-
-            <i class="fas fa-list-alt"></i>
-        </a>
-    </td>
-    <td>
-        <a href="@Url.Action("Delete","UserPanel",new { id = model.Id, type="cardio" })" class="btn btn-danger btn-sm">
-
-            <i class="fas fa-trash"></i>
-        </a>
-    </td>
-</tr>
-        }
-    </table>
+    }
+</table>

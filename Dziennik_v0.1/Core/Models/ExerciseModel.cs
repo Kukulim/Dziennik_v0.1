@@ -2,7 +2,7 @@
 
 namespace Dziennik_v0._1.Core.Models
 {
-    public class Exercise
+    public class Exercise 
     {
         [Required]
         public int Id { get; set; }

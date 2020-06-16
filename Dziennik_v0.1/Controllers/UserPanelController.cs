@@ -160,6 +160,7 @@ namespace Dziennik_v0._1.Controllers
             
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditCardio(CardioCreateViewModel viewModel)
         {
             viewModel.Cardio.Distance = Convert.ToDecimal(viewModel.DistanceString);
@@ -168,6 +169,7 @@ namespace Dziennik_v0._1.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditWorkout(Workout workout)
         {
             _unitOfWork.Workouts.EditWorkout(workout);

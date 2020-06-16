@@ -31,6 +31,10 @@ namespace Dziennik_v0._1.Presistence.Repositories
         public void EditWorkout(Workout workout)
         {
             var Workoutedit = _context.Entry(workout);
+            foreach (var item in workout.Exercises)
+            {
+                _context.Entry(item).State = EntityState.Modified;
+            }
             Workoutedit.State = EntityState.Modified;
         }
 

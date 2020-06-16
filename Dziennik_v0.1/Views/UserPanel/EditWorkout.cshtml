@@ -4,52 +4,147 @@
     ViewBag.Title = "EditWorkout";
 }
 
-<h2>EditWorkout</h2>
+<h2>Edycja treningu:</h2>
 
 @using (Html.BeginForm("EditWorkout", "UserPanel"))
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
-    <h4>Workout</h4>
     <hr />
+    @Html.HiddenFor(m => m.Id)
     @Html.HiddenFor(m => m.UserId)
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Id)
-
     <div class="form-group">
         @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Date,
+           new { htmlAttributes = new { @class = "form-control", @id = "datepicker", @readonly = true } })
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.LengthOfTraining, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.LengthOfTraining, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.LengthOfTraining,
+                new { htmlAttributes = new { @class = "form-control timepicker" } })
             @Html.ValidationMessageFor(model => model.LengthOfTraining, "", new { @class = "text-danger" })
         </div>
     </div>
 
+    <table class="table">
+
+        <tr>
+            <th>
+                Nr:
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercises[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercises[0].Series)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercises[0].Repetitions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercises[0].Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exercises[0].Volume)
+            </th>
+        </tr>
+        @for (var i = 0; i < Model.Exercises.Count; i++)
+        {
+
+
+    <tr class="js-myRows">
+        <td class="text-center">
+            @(i+1)
+        </td>
+        @Html.HiddenFor(model => model.Exercises[i].Id)
+        @Html.HiddenFor(model => model.Exercises[i].WorkoutId)
+        <td>
+            @Html.EditorFor(model => model.Exercises[i].Name,
+                new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Exercises[i].Name, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.EditorFor(model => model.Exercises[i].Series,
+                new { htmlAttributes = new { @class = "js-myform form-control " + "js-series-" + (i + 1) } })
+            @Html.ValidationMessageFor(model => model.Exercises[i].Series, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.EditorFor(model => model.Exercises[i].Repetitions,
+                new { htmlAttributes = new { @class = "js-myform form-control " + "js-repeitions-" + (i + 1) } })
+            @Html.ValidationMessageFor(model => model.Exercises[i].Repetitions, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.EditorFor(model => model.Exercises[i].Weight,
+                new { htmlAttributes = new { @class = "js-myform form-control " + "js-weight-" + (i + 1) } })
+            @Html.ValidationMessageFor(model => model.Exercises[i].Weight, "", new { @class = "text-danger" })
+        </td>
+        <td>
+            @Html.EditorFor(model => model.Exercises[i].Volume,
+                new { htmlAttributes = new { @class = "form-control " + "js-sum-" + (i + 1), @readonly = true } })
+            @Html.ValidationMessageFor(model => model.Exercises[i].Volume, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+
+        }
+    </table>
+
+</div>
     <div class="form-group">
         @Html.LabelFor(model => model.WorkoutVolume, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.WorkoutVolume, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.WorkoutVolume, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.WorkoutVolume,
+           new { htmlAttributes = new { @class = "form-control text-center workoutVolume", @readonly = true } })
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+        <div class="col-md-offset-2 col-md-10 text-right">
+            <input type="submit" value="Zapisz trening" id="js-submit" class="btn btn-success btn-lg" />
         </div>
     </div>
-</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="text-center">
+    @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
+    @Scripts.Render("~/Scripts/datepicker-pl.js")
+    @Styles.Render("~/Content/themes/base/datepickercustom.css")
+
+    <script>
+        $(function () {
+            $('#datepicker').datepicker({
+                dateFormat: "yy.mm.dd"
+            });
+        });
+    </script>
+    @for (var k = 1; k < 13; k++)
+    {
+        <script>
+        $(document).ready(function () {
+            $(".js-series-@k, .js-repeitions-@k, .js-weight-@k")
+                .change(function () {
+                    var sum = parseInt($(".js-series-@k").val()) * parseInt($(".js-repeitions-@k").val()) * parseInt($(".js-weight-@k").val());
+                    var workoutVolume = 0;
+                    $(".js-sum-@k").val(sum);
+                    $('table .js-myRows').each(function () {
+                        var lasttd = $(this).find(':last-child');
+                        var number = parseInt(lasttd.find('input').val());
+                        workoutVolume += number;
+                    });
+                    $(".workoutVolume").val(workoutVolume);
+                })
+        });
+        </script>
+    }
+}

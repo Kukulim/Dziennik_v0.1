@@ -207,7 +207,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
-    <Compile Include="Controllers\UserPanelController.cs" />
+    <Compile Include="Controllers\UserTraningsController.cs" />
     <Compile Include="Core\Models\CardioModel.cs" />
     <Compile Include="Core\Models\Enums\CardioType.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />
@@ -502,16 +502,16 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\UserPanel\Index.cshtml" />
-    <Content Include="Views\UserPanel\Create.cshtml" />
-    <Content Include="Views\UserPanel\_ExerciseTable.cshtml" />
-    <Content Include="Views\UserPanel\CreateCardio.cshtml" />
-    <Content Include="Views\UserPanel\DeleteCardio.cshtml" />
-    <Content Include="Views\UserPanel\DetailsCardio.cshtml" />
-    <Content Include="Views\UserPanel\EditCardio.cshtml" />
-    <Content Include="Views\UserPanel\EditWorkout.cshtml" />
-    <Content Include="Views\UserPanel\DeleteWorkout.cshtml" />
-    <Content Include="Views\UserPanel\DetailsWorkout.cshtml" />
+    <Content Include="Views\UserTranings\TrainingBoard.cshtml" />
+    <Content Include="Views\UserTranings\CreateWorkout.cshtml" />
+    <Content Include="Views\UserTranings\_ExerciseTable.cshtml" />
+    <Content Include="Views\UserTranings\CreateCardio.cshtml" />
+    <Content Include="Views\UserTranings\DeleteCardio.cshtml" />
+    <Content Include="Views\UserTranings\DetailsCardio.cshtml" />
+    <Content Include="Views\UserTranings\EditCardio.cshtml" />
+    <Content Include="Views\UserTranings\EditWorkout.cshtml" />
+    <Content Include="Views\UserTranings\DeleteWorkout.cshtml" />
+    <Content Include="Views\UserTranings\DetailsWorkout.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

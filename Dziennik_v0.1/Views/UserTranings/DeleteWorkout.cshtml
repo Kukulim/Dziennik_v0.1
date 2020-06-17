@@ -96,7 +96,7 @@
             }
         </table>
 
-        @using (Html.BeginForm("DeleteWorkout/" + Model.Id, "UserPanel"))
+        @using (Html.BeginForm("DeleteWorkout/" + Model.Id, "UserTranings"))
         {
             @Html.AntiForgeryToken()
 
@@ -104,7 +104,7 @@
                 <input type="submit" value="Usuń" class="btn btn-danger btn-lg m-5" />
             </div>
             <div class="text-center">
-                @Html.ActionLink("Powrót do listy treningów", "Index", null, null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Powrót do listy treningów", "TrainingBoard", null, null, new { @class = "btn btn-primary" })
             </div>
         }
 

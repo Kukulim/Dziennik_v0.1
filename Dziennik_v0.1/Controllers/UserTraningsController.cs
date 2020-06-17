@@ -11,16 +11,16 @@ using System.Web.UI.WebControls;
 namespace Dziennik_v0._1.Controllers
 {
     [Authorize]
-    public class UserPanelController : Controller
+    public class UserTraningsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public UserPanelController(IUnitOfWork unitOfWork)
+        public UserTraningsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public ActionResult Index()
+        public ActionResult TrainingBoard()
         {
             var userId = User.Identity.GetUserId();
             var viewModel = new IndexUserPanelViewModel();
@@ -41,7 +41,7 @@ namespace Dziennik_v0._1.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Create()
+        public ActionResult CreateWorkout()
         {
             var viewModel = new WorkoutCreateViewModel
             {
@@ -67,7 +67,7 @@ namespace Dziennik_v0._1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(WorkoutCreateViewModel viewModel)
+        public ActionResult CreateWorkout(WorkoutCreateViewModel viewModel)
         {
             viewModel.Workout.UserId = User.Identity.GetUserId();
             try
@@ -83,7 +83,7 @@ namespace Dziennik_v0._1.Controllers
             {
                 return View(viewModel);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("TrainingBoard");
         }
         public ActionResult CreateCardio()
         {
@@ -101,7 +101,7 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Cardios.AddCardio(viewModel.Cardio);
             _unitOfWork.Complete();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("TrainingBoard");
         }
         public ActionResult Delete(int id, string type)
         {
@@ -121,14 +121,14 @@ namespace Dziennik_v0._1.Controllers
         {
             _unitOfWork.Cardios.DeleteCardio(id);
             _unitOfWork.Complete();
-            return RedirectToAction("Index");
+            return RedirectToAction("TrainingBoard");
         }
         [HttpPost, ActionName("DeleteWorkout")]
         public ActionResult DeleteWorkoutConfirmed(int id)
         {
             _unitOfWork.Workouts.DeleteWorkout(id);
             _unitOfWork.Complete();
-            return RedirectToAction("Index");
+            return RedirectToAction("TrainingBoard");
         }
         public ActionResult Details(int id, string type)
         {
@@ -167,7 +167,7 @@ namespace Dziennik_v0._1.Controllers
             viewModel.Cardio.Distance = Convert.ToDecimal(viewModel.DistanceString.Replace(".", ","));
             _unitOfWork.Cardios.EditCardio(viewModel.Cardio);
             _unitOfWork.Complete();
-            return RedirectToAction("Index");
+            return RedirectToAction("TrainingBoard");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -175,7 +175,7 @@ namespace Dziennik_v0._1.Controllers
         {
             _unitOfWork.Workouts.EditWorkout(workout);
             _unitOfWork.Complete();
-            return RedirectToAction("Index");
+            return RedirectToAction("TrainingBoard");
         }
 
 

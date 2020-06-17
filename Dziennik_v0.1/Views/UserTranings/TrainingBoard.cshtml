@@ -1,12 +1,12 @@
 ﻿@model Dziennik_v0._1.Core.ViewModels.IndexUserPanelViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "TrainingBoard";
 }
 <h2>Moje Treningi:</h2>
 <div>
     <p>
-        @Html.ActionLink("Dodaj trening siłowy", "Create", null, new { @class = "btn btn-success m-3" })
+        @Html.ActionLink("Dodaj trening siłowy", "CreateWorkout", null, new { @class = "btn btn-success m-3" })
         @Html.ActionLink("Dodaj trening cardio", "CreateCardio", null, new { @class = "btn btn-success m-3", @id = "btn-cardio" })
     </p>
 </div>
@@ -45,7 +45,7 @@
             {
                 <tr class="cardioRow">
                     <td>
-                        <a href="@Url.Action("Edit", "UserPanel", new { id = model.Id, type = "cardio" })" class="btn btn-success btn-sm" , id="btn-cardio">
+                        <a href="@Url.Action("Edit", "UserTranings", new { id = model.Id, type = "cardio" })" class="btn btn-success btn-sm" , id="btn-cardio">
 
                             <i class="fas fa-edit"></i>
                         </a>
@@ -63,14 +63,14 @@
                         <i class="fas fa-heartbeat"></i>
                     </td>
                     <td>
-                        <a href="@Url.Action("Details", "UserPanel", new { id = model.Id, type = "cardio" })" class="btn btn-sm btn-primary">
+                        <a href="@Url.Action("Details", "UserTranings", new { id = model.Id, type = "cardio" })" class="btn btn-sm btn-primary">
 
                             <i class="fas fa-list-alt"></i>
                         </a>
                     </td>
 
                     <td>
-                        <a href="@Url.Action("Delete", "UserPanel", new { id = model.Id, type = "cardio" })" class="btn btn-danger btn-sm">
+                        <a href="@Url.Action("Delete", "UserTranings", new { id = model.Id, type = "cardio" })" class="btn btn-danger btn-sm">
 
                             <i class="fas fa-trash"></i>
                         </a>
@@ -81,7 +81,7 @@
             {
                 <tr class="workoutRow">
                     <td>
-                        <a href="@Url.Action("Edit", "UserPanel", new { id = model.Id, type = "workout" })" class="btn btn-success btn-sm">
+                        <a href="@Url.Action("Edit", "UserTranings", new { id = model.Id, type = "workout" })" class="btn btn-success btn-sm">
 
                             <i class="fas fa-edit"></i>
                         </a>
@@ -99,14 +99,14 @@
                         <i class="fas fa-dumbbell"></i>
                     </td>
                     <td>
-                        <a href="@Url.Action("Details", "UserPanel", new { id = model.Id, type = "workout" })" class="btn btn-sm btn-primary">
+                        <a href="@Url.Action("Details", "UserTranings", new { id = model.Id, type = "workout" })" class="btn btn-sm btn-primary">
 
                             <i class="fas fa-list-alt"></i>
                         </a>
                     </td>
 
                     <td>
-                        <a href="@Url.Action("Delete", "UserPanel", new { id = model.Id, type = "workout" })" class="btn btn-danger btn-sm">
+                        <a href="@Url.Action("Delete", "UserTranings", new { id = model.Id, type = "workout" })" class="btn btn-danger btn-sm">
 
                             <i class="fas fa-trash"></i>
                         </a>

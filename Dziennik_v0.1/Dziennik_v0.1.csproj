@@ -208,6 +208,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\UserTraningsController.cs" />
+    <Compile Include="Controllers\WelcomePageController.cs" />
     <Compile Include="Core\Models\CardioModel.cs" />
     <Compile Include="Core\Models\Enums\CardioType.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />
@@ -513,6 +514,7 @@
     <Content Include="Views\UserTranings\DeleteWorkout.cshtml" />
     <Content Include="Views\UserTranings\DetailsWorkout.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\WelcomePage\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

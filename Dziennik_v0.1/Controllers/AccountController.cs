@@ -80,7 +80,7 @@ namespace Dziennik_v0._1.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("TrainingBoard", "UserTranings");
+                    return RedirectToAction("Index", "WelcomePage");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

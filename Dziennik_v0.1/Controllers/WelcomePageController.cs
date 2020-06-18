@@ -25,7 +25,8 @@ namespace Dziennik_v0._1.Controllers
             var userId = User.Identity.GetUserId();
             var ViewModel = new WelcomePageViewModel();
 
-            ViewModel.Workouts = _unitOfWork.Workouts.GetAllWorkouts(userId).Where(c => c.Date.Month == CurrentMonth).ToList();
+            var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).Where(c => c.Date.Month == CurrentMonth).ToList();
+            ViewModel.Workouts = WorkoutList.Where(c => c.Date.Month == CurrentMonth).ToList();
 
             foreach (var item in ViewModel.Workouts)
             {
@@ -61,8 +62,12 @@ namespace Dziennik_v0._1.Controllers
             }
             ViewModel.MostCardioType = (CardioType)MaxEnum;
 
-            ViewModel.RuningBestDistance = CardioList.OrderByDescending(c => c.Distance).FirstOrDefault();
-        
+            ViewModel.RuningBestDistance = CardioList.Where(f =>f.CardioType==CardioType.Bieganie).OrderByDescending(c => c.Distance).FirstOrDefault();
+            ViewModel.RuningLongestTime = CardioList.Where(f => f.CardioType == CardioType.Bieganie).OrderByDescending(c => c.LengthOfTraining).FirstOrDefault();
+
+            ViewModel.WorkoutBestVolume = WorkoutList.OrderByDescending(w => w.WorkoutVolume).FirstOrDefault();
+            ViewModel.WorkoutLongestTrening = WorkoutList.OrderByDescending(w => w.LengthOfTraining).FirstOrDefault();
+
             return View(ViewModel);
         }
     }

@@ -21,5 +21,9 @@ namespace Dziennik_v0._1.Core.ViewModels
         public decimal DistanceSum { get; set; }
 
         public Cardio RuningBestDistance { get; set; }
+        public Cardio RuningLongestTime { get; set; }
+
+        public Workout WorkoutBestVolume { get; set; }
+        public Workout WorkoutLongestTrening { get; set; }
     }
 }

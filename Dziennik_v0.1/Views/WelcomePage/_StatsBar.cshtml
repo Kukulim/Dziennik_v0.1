@@ -21,8 +21,22 @@
     </div>
 
     <div class="statsBar text-center">
-        <h4>Rekordy życiowe - bieganie</h4>
-        <p>Najdłuższy dystans:</p>
-        <p>@Model.RuningBestDistance.Date.ToString("yyyy/MM/dd")  -  @Model.RuningBestDistance.Distance km.</p>
+        <div class="workoutStatsBarPanel">
+            <h4>Rekordy życiowe - trening siłowy</h4>
+            <p>Największy ciężar:</p>
+            <p>@Model.WorkoutBestVolume.Date.ToString("yyyy/MM/dd") - @Model.WorkoutBestVolume.WorkoutVolume kg.</p>
+            <p>Najdłuższy trening:</p>
+             <p>@Model.WorkoutLongestTrening.Date.ToString("yyyy/MM/dd")  -  @Model.WorkoutLongestTrening.LengthOfTraining min.</p>
+        </div>
+    </div>
+
+    <div class="statsBar text-center">
+        <div class="cardioStatsBarPanel">
+            <h4>Rekordy życiowe - bieganie</h4>
+            <p>Najdłuższy dystans:</p>
+            <p>@Model.RuningBestDistance.Date.ToString("yyyy/MM/dd")  -  @Model.RuningBestDistance.Distance km.</p>
+            <p>Najdłuższy bieg:</p>
+            <p>@Model.RuningLongestTime.Date.ToString("yyyy/MM/dd")  -  @Model.RuningLongestTime.LengthOfTraining min.</p>
+        </div>
     </div>
 </div>

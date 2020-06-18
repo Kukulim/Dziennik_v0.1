@@ -1,8 +1,28 @@
 ﻿@model Dziennik_v0._1.Core.ViewModels.WelcomePageViewModel
-
-    <div class="col-sm-3 text-center statsBar">
+<div class="col-sm-3">
+    <div class="text-center statsBar">
         <h4>Twoje statystyki miesiąc:</h4>
         <h4>@DateTime.Now.ToString("MMMM")</h4>
-        <p>Ilość treningów siłowych: @Model.Workouts.Count</p>
-        <p>Ilość treningów cardio: @Model.Cardios.Count</p>
+
+        <div class="workoutStatsBarPanel">
+            <h5>Trening siłowy:</h5>
+            <p>Ilość treningów: @Model.Workouts.Count</p>
+            <p>Łączny czas: @Model.LengthOfWorkoutSum min.</p>
+            <p>Łączny ciężar: @Model.VolumeSum ton.</p>
+        </div>
+
+        <div class="cardioStatsBarPanel">
+            <h5>Trening cardio:</h5>
+            <p>Ilość treningów: @Model.Cardios.Count</p>
+            <p>Łączny czas: @Model.LengthOfCardioSum min.</p>
+            <p>Łączny dystans: @Model.DistanceSum km.</p>
+            <p>Ulubiona atkywność: @Model.MostCardioType</p>
+        </div>
     </div>
+
+    <div class="statsBar text-center">
+        <h4>Rekordy życiowe - bieganie</h4>
+        <p>Najdłuższy dystans:</p>
+        <p>@Model.RuningBestDistance.Date.ToString("yyyy/MM/dd")  -  @Model.RuningBestDistance.Distance km.</p>
+    </div>
+</div>

@@ -62,8 +62,22 @@ textarea {
 .workoutRow {
     background-color: rgba(0, 255, 0, 0.03);
 }
+.workoutStatsBarPanel {
+    background-color: rgba(0, 255, 0, 0.03);
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+.cardioStatsBarPanel {
+    background-color: rgba(214, 157, 0, 0.08);
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
 .statsBar {
     margin:5px;
+    padding:10px;
     background-color: #3a3f46;
     border-radius:5px;
 }

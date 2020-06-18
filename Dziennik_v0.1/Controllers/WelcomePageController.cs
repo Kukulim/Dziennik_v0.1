@@ -1,4 +1,5 @@
 ﻿using Dziennik_v0._1.Core;
+using Dziennik_v0._1.Core.Models.Enums;
 using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
@@ -24,9 +25,44 @@ namespace Dziennik_v0._1.Controllers
             var userId = User.Identity.GetUserId();
             var ViewModel = new WelcomePageViewModel();
 
-            ViewModel.Cardios = _unitOfWork.Cardios.GetAllCardios(userId).Where(c => c.Date.Month == CurrentMonth).ToList();
             ViewModel.Workouts = _unitOfWork.Workouts.GetAllWorkouts(userId).Where(c => c.Date.Month == CurrentMonth).ToList();
 
+            foreach (var item in ViewModel.Workouts)
+            {
+                ViewModel.LengthOfWorkoutSum += Convert.ToInt32(item.LengthOfTraining);
+                ViewModel.VolumeSum += item.WorkoutVolume;
+            }
+
+            ViewModel.VolumeSum /= 1000;
+
+            var CardioList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
+            ViewModel.Cardios = CardioList.Where(c => c.Date.Month == CurrentMonth).ToList();
+
+            foreach (var item in ViewModel.Cardios)
+            {
+                ViewModel.LengthOfCardioSum += Convert.ToInt32(item.LengthOfTraining);
+                ViewModel.DistanceSum += item.Distance;
+            }
+
+            int Licznik, EnumCount = 0, MaxEnum = 0;
+
+            for (int i = 0; i < ViewModel.Cardios.Count(); i++)
+            {
+                Licznik = 0;
+                for (int j = 0; j < ViewModel.Cardios.Count(); j++)
+                {
+                    if (Convert.ToInt32(ViewModel.Cardios[j].CardioType) == Convert.ToInt32(ViewModel.Cardios[i].CardioType)) Licznik++;
+                }
+                if (Licznik > EnumCount)
+                {
+                    EnumCount = Licznik;
+                    MaxEnum = Convert.ToInt32(ViewModel.Cardios[i].CardioType);
+                }
+            }
+            ViewModel.MostCardioType = (CardioType)MaxEnum;
+
+            ViewModel.RuningBestDistance = CardioList.OrderByDescending(c => c.Distance).FirstOrDefault();
+        
             return View(ViewModel);
         }
     }

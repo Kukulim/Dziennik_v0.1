@@ -1,0 +1,8 @@
+﻿@model Dziennik_v0._1.Core.ViewModels.WelcomePageViewModel
+
+    <div class="col-sm-3 text-center statsBar">
+        <h4>Twoje statystyki miesiąc:</h4>
+        <h4>@DateTime.Now.ToString("MMMM")</h4>
+        <p>Ilość treningów siłowych: @Model.Workouts.Count</p>
+        <p>Ilość treningów cardio: @Model.Cardios.Count</p>
+    </div>

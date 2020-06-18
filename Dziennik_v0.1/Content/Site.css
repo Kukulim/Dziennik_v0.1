@@ -1,9 +1,5 @@
 ﻿/*VARIBLES*/
 /*DEFAULT*/
-/*body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}*/
 .body-content {
   min-height: 750px;
   padding-left: 15px;
@@ -49,6 +45,11 @@ textarea {
 
 .workoutRow {
   background-color: rgba(0, 255, 0, 0.03); }
+
+.statsBar {
+  margin: 5px;
+  background-color: #3a3f46;
+  border-radius: 5px; }
 
 /*BOOTSTRAP OVERLOADS*/
 th {

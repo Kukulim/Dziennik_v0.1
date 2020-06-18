@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Dziennik_v0._1.Core.ViewModels
 {
-    public class IndexUserPanelViewModel
+    public class TrainingBoardViewModel
     {
         public List<TrainigBaseModel> TraningList;
     }

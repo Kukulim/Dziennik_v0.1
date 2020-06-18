@@ -23,7 +23,7 @@ namespace Dziennik_v0._1.Controllers
         public ActionResult TrainingBoard()
         {
             var userId = User.Identity.GetUserId();
-            var viewModel = new IndexUserPanelViewModel();
+            var viewModel = new TrainingBoardViewModel();
             var CardioList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
             var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
 

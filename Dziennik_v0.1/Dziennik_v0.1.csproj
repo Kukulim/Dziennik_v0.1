@@ -518,6 +518,7 @@
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\WelcomePage\Index.cshtml" />
     <Content Include="Views\WelcomePage\_StatsBar.cshtml" />
+    <Content Include="Views\WelcomePage\_MainContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

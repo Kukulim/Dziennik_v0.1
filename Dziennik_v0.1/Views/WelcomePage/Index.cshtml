@@ -9,10 +9,12 @@
 
 </div>
 @section Scripts {
+    @Styles.Render("~/Content/fullcalendarcss")
+    @Scripts.Render("~/bundles/fullcalendarjs")
     <script>
         $(document).ready(function () {
             $("#calendar").fullCalendar({
-                theame:true,
+                theame: true,
                 header:
                 {
                     left: 'prev,next today',

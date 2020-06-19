@@ -33,7 +33,8 @@ namespace Dziennik_v0._1
             bundles.Add(new ScriptBundle("~/bundles/fullcalendarjs").Include(
                       "~/Scripts/jquery-ui-{version}.js",
                       "~/Scripts/moment.min.js",
-                      "~/Scripts/fullcalendar.min.js"));
+                      "~/Scripts/fullcalendar.min.js",
+                      "~/Scripts/locale/pl.js"));
 
 
         }

@@ -2,9 +2,30 @@
 @{
     ViewBag.Title = "Index";
 }
-    <div class="row" style="margin-top:30px">
+<div class="row" style="margin-top:30px">
 
-        @Html.Partial("_StatsBar", Model)
-        @Html.Partial("_MainContent", Model)
+    @Html.Partial("_StatsBar", Model)
+    @Html.Partial("_MainContent", Model)
 
-    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#calendar").fullCalendar({
+                theame:true,
+                header:
+                {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek'
+                },
+
+                defaultView: 'month',
+                editable: true,
+                allDaySlot: true,
+                selectable: true,
+                slotminutes: 15,
+            })
+        });
+    </script>
+}

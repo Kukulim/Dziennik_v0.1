@@ -25,6 +25,17 @@ namespace Dziennik_v0._1
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-slate.css",
                       "~/Content/Site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/fullcalendarcss").Include(
+                      "~/Content/theames/base/jquery-ui.min.css",
+                      "~/Content/fullcalendar.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendarjs").Include(
+                      "~/Scripts/jquery-ui-{version}.js",
+                      "~/Scripts/moment.min.js",
+                      "~/Scripts/fullcalendar.min.js"));
+
+
         }
     }
 }

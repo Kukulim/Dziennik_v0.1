@@ -126,3 +126,8 @@ h6,
 
 .fa-heartbeat {
   color: #DEBA6F; }
+
+/* FULLCALENDAR OVERLOADS*/
+.fc-unthemed td.fc-today {
+  background-color: gray !important;
+  position: relative; }

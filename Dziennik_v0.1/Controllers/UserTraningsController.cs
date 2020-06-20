@@ -2,6 +2,8 @@
 using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
+using PagedList;
+using PagedList.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,25 +22,26 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public ActionResult TrainingBoard()
+        public ActionResult TrainingBoard(int? page)
         {
             var userId = User.Identity.GetUserId();
-            var viewModel = new TrainingBoardViewModel();
+            //var viewModel = new TrainingBoardViewModel();
             var CardioList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
             var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
 
-            viewModel.TraningList = new List<TrainigBaseModel>();
+            var viewModel = new List<TrainigBaseModel>();
 
             foreach (var item in CardioList)
             {
-                viewModel.TraningList.Add(item);
+                viewModel.Add(item);
             }
             foreach (var item in WorkoutList)
             {
-                viewModel.TraningList.Add(item);
+                viewModel.Add(item);
             }
-            viewModel.TraningList = viewModel.TraningList.OrderByDescending(t => t.Date).ToList();
-            return View(viewModel);
+            viewModel = viewModel.OrderByDescending(t => t.Date).ToList();
+
+            return View(viewModel.ToPagedList(page ?? 1, 10));
         }
 
         public ActionResult CreateWorkout()

@@ -72,6 +72,12 @@
     <Reference Include="Ninject.Web.WebApi, Version=3.3.1.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.Web.WebApi.3.3.1\lib\net45\Ninject.Web.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -219,7 +225,6 @@
     <Compile Include="Core\Repositories\IExerciseRepository.cs" />
     <Compile Include="Core\Repositories\IWorkoutRepository.cs" />
     <Compile Include="Core\ViewModels\CardioCreateViewModel.cs" />
-    <Compile Include="Core\ViewModels\TrainingBoardViewModel.cs" />
     <Compile Include="Core\ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Core\ViewModels\WorkoutCreateViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -293,16 +298,12 @@
     <Content Include="Content\bootstrap-united.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\daygrid\main.css" />
-    <Content Include="Content\daygrid\main.esm.js" />
-    <Content Include="Content\daygrid\main.js" />
-    <Content Include="Content\daygrid\main.min.css" />
-    <Content Include="Content\daygrid\main.min.js" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.min.css" />
     <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\fullcalendar.print.min.css" />
     <Content Include="Content\images\workout.png" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css">
       <DependentUpon>Site.scss</DependentUpon>
     </Content>

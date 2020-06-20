@@ -1,8 +1,12 @@
-﻿@model Dziennik_v0._1.Core.ViewModels.TrainingBoardViewModel
+﻿@model PagedList.IPagedList<Dziennik_v0._1.Core.Models.TrainigBaseModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "TrainingBoard";
 }
+
+
+
 <h2>Moje Treningi:</h2>
 <div>
     <p>
@@ -38,7 +42,7 @@
         </th>
     </tr>
 
-    @foreach (var model in Model.TraningList)
+    @foreach (var model in Model)
     {
         {
             if (model is Dziennik_v0._1.Core.Models.Cardio)
@@ -116,3 +120,6 @@
         }
     }
 </table>
+<div class="text-center">
+    @Html.PagedListPager(Model, page => Url.Action("TrainingBoard", "UserTranings", new { page }))
+</div>

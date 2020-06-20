@@ -209,6 +209,7 @@
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\UserTraningsController.cs" />
     <Compile Include="Controllers\WelcomePageController.cs" />
+    <Compile Include="Core\Dtos\WorkoutDto.cs" />
     <Compile Include="Core\Models\CardioModel.cs" />
     <Compile Include="Core\Models\Enums\CardioType.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />

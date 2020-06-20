@@ -1,12 +1,17 @@
 ﻿using Dziennik_v0._1.Core;
+using Dziennik_v0._1.Core.Dtos;
+using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Core.Models.Enums;
 using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace Dziennik_v0._1.Controllers
 {
@@ -62,13 +67,43 @@ namespace Dziennik_v0._1.Controllers
             }
             ViewModel.MostCardioType = (CardioType)MaxEnum;
 
-            ViewModel.RuningBestDistance = CardioList.Where(f =>f.CardioType==CardioType.Bieganie).OrderByDescending(c => c.Distance).FirstOrDefault();
+            ViewModel.RuningBestDistance = CardioList.Where(f => f.CardioType == CardioType.Bieganie).OrderByDescending(c => c.Distance).FirstOrDefault();
             ViewModel.RuningLongestTime = CardioList.Where(f => f.CardioType == CardioType.Bieganie).OrderByDescending(c => c.LengthOfTraining).FirstOrDefault();
 
             ViewModel.WorkoutBestVolume = WorkoutList.OrderByDescending(w => w.WorkoutVolume).FirstOrDefault();
             ViewModel.WorkoutLongestTrening = WorkoutList.OrderByDescending(w => w.LengthOfTraining).FirstOrDefault();
 
             return View(ViewModel);
+        }
+        public JsonResult WorkoutTraningList()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var TraningList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
+
+            var DateTraningList = new List<WorkoutDto>();
+
+            foreach (var item in TraningList)
+            {
+                DateTraningList.Add(new WorkoutDto { Date = item.Date.ToString("MM-dd-yyyy") });
+            }
+
+            return Json(DateTraningList, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult CardioTraningList()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var TraningList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
+
+            var DateTraningList = new List<WorkoutDto>();
+
+            foreach (var item in TraningList)
+            {
+                DateTraningList.Add(new WorkoutDto { Date = item.Date.ToString("MM-dd-yyyy") });
+            }
+
+            return Json(DateTraningList, JsonRequestBehavior.AllowGet);
         }
     }
 }

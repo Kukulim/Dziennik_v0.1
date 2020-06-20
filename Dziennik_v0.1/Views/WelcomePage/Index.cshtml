@@ -6,27 +6,92 @@
 
     @Html.Partial("_StatsBar", Model)
     @Html.Partial("_MainContent", Model)
-
 </div>
 @section Scripts {
     @Styles.Render("~/Content/fullcalendarcss")
     @Scripts.Render("~/bundles/fullcalendarjs")
+
     <script>
         $(document).ready(function () {
-            $("#calendar").fullCalendar({
-                theame: true,
-                header:
-                {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek'
+            //$.ajax({
+            //    type: "POST",
+            //    contentType: "application/json",
+            //    data: "{}",
+            //    url: "/WelcomePage/WorkoutTraningList",
+            //    dataType: "json",
+            //    success: function (data) {
+            //        $('#calendar').fullCalendar({
+            //            editable: false,
+            //            eventColor: '#62c462',
+            //            textColor: 'white',
+            //            eventLimit: 3,
+            //            eventLimitText: 'More',
+            //            weekMode: 'liquid',
+            //            events: $.map(data, function (item, i) {
+            //                var event = new Object();
+            //                event.title = "Tr. siłowy";
+            //                event.start = moment(item.Date).utc();
+            //                return event;
+            //            })
+            //        });
+            //    },
+            //    error: function () {
+            //    }
+            //});
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                data: "{}",
+                url: "/WelcomePage/CardioTraningList",
+                dataType: "json",
+                success: function (datacardio) {
+                    $('#calendar').fullCalendar({
+                        editable: false,
+                        eventColor: '#DEBA6F',
+                        textColor: 'white',
+                        eventLimit: 3,
+                        eventLimitText: 'More',
+                        weekMode: 'liquid',
+                        events: $.map(datacardio, function (item, i) {
+                            var event = new Object();
+                            event.title = "Tr. cardio";
+                            event.start = moment(item.Date).utc();
+                            return event;
+                        })
+                    });
                 },
-
-                defaultView: 'month',
-                editable: true,
-                allDaySlot: true,
-                slotminutes: 15,
-            })
-        });
+                error: function () {
+                }
+            });
+        })
+            .done(function () {
+            });
     </script>
+    @*<script>
+        $(document).ready(function () {
+            $('#calendar').fullCalendar({
+                dayClick: function () {
+                    alert('a day has been clicked!');
+                },
+                editable: false,
+                eventColor: '#62c462',
+                textColor: 'white',
+                eventLimit: 3,
+                eventLimitText: 'More',
+                weekMode: 'liquid',
+                events: [
+                    {
+                        title: 'BCH237',
+                        start: '2019-08-12T10:30:00',
+                        end: '2019-08-12T11:30:00',
+                        extendedProps: {
+                            department: 'BioChemistry'
+                        },
+                        description: 'Lecture'
+                    }
+                ],
+            });
+        }
+    </script>*@
+
 }

@@ -12,86 +12,50 @@
     @Scripts.Render("~/bundles/fullcalendarjs")
 
     <script>
-        $(document).ready(function () {
-            //$.ajax({
-            //    type: "POST",
-            //    contentType: "application/json",
-            //    data: "{}",
-            //    url: "/WelcomePage/WorkoutTraningList",
-            //    dataType: "json",
-            //    success: function (data) {
-            //        $('#calendar').fullCalendar({
-            //            editable: false,
-            //            eventColor: '#62c462',
-            //            textColor: 'white',
-            //            eventLimit: 3,
-            //            eventLimitText: 'More',
-            //            weekMode: 'liquid',
-            //            events: $.map(data, function (item, i) {
-            //                var event = new Object();
-            //                event.title = "Tr. siłowy";
-            //                event.start = moment(item.Date).utc();
-            //                return event;
-            //            })
-            //        });
-            //    },
-            //    error: function () {
-            //    }
-            //});
-            $.ajax({
-                type: "POST",
-                contentType: "application/json",
-                data: "{}",
-                url: "/WelcomePage/CardioTraningList",
-                dataType: "json",
-                success: function (datacardio) {
-                    $('#calendar').fullCalendar({
-                        editable: false,
-                        eventColor: '#DEBA6F',
-                        textColor: 'white',
-                        eventLimit: 3,
-                        eventLimitText: 'More',
-                        weekMode: 'liquid',
-                        events: $.map(datacardio, function (item, i) {
-                            var event = new Object();
-                            event.title = "Tr. cardio";
-                            event.start = moment(item.Date).utc();
-                            return event;
+            $(document).ready(function () {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    data: "{}",
+                    url: "/WelcomePage/WorkoutTraningList",
+                    dataType: "json",
+                    success: function (data) {
+                        $('#calendar').fullCalendar({
+                            editable: false,
+                            eventLimit: 2,
+                            eventLimitText: 'More',
+                            weekMode: 'liquid',
+                            displayEventTime: false,
+                            events: $.map(data, function (item, i) {
+                                var color;
+                                var icon;
+                                if (item.Name === ' Tr. siłowy') {
+                                    color = '#62c462';
+                                    icon = 'dumbbell';
+                                }
+                                else {
+                                    color = '#DEBA6F';
+                                    icon = 'heartbeat';
+                                };
+                                var event = new Object();
+                                event.title = item.Name;
+                                event.start = item.Date;
+                                event.color = color;
+                                event.textColor = '#272b30';
+                                event.icon = icon;
+                                return event;
+                            }),
+                            eventRender: function (event, element) {
+                                if (event.icon) {
+                                    element.find(".fc-title").prepend("<i style='color: #272b30;font-size: 17px;margin-left:10px;' class='fa fa-" + event.icon + "'></i>")
+                                        .attr('style', 'font-size: 18px; !important');
+                                }
+                            }
                         })
-                    });
-                },
-                error: function () {
-                }
-            });
-        })
-            .done(function () {
-            });
-    </script>
-    @*<script>
-        $(document).ready(function () {
-            $('#calendar').fullCalendar({
-                dayClick: function () {
-                    alert('a day has been clicked!');
-                },
-                editable: false,
-                eventColor: '#62c462',
-                textColor: 'white',
-                eventLimit: 3,
-                eventLimitText: 'More',
-                weekMode: 'liquid',
-                events: [
-                    {
-                        title: 'BCH237',
-                        start: '2019-08-12T10:30:00',
-                        end: '2019-08-12T11:30:00',
-                        extendedProps: {
-                            department: 'BioChemistry'
-                        },
-                        description: 'Lecture'
+                    },
+                    error: function () {
                     }
-                ],
-            });
-        }
-    </script>*@
-
+                });
+            })
+        </script>
 }

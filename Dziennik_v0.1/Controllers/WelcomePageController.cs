@@ -80,28 +80,19 @@ namespace Dziennik_v0._1.Controllers
             var userId = User.Identity.GetUserId();
 
             var TraningList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
+            var CardioList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
 
-            var DateTraningList = new List<WorkoutDto>();
-
-            foreach (var item in TraningList)
-            {
-                DateTraningList.Add(new WorkoutDto { Date = item.Date.ToString("MM-dd-yyyy") });
-            }
-
-            return Json(DateTraningList, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult CardioTraningList()
-        {
-            var userId = User.Identity.GetUserId();
-
-            var TraningList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
-
-            var DateTraningList = new List<WorkoutDto>();
+            var DateTraningList = new List<CalendarTraningDto>();
 
             foreach (var item in TraningList)
             {
-                DateTraningList.Add(new WorkoutDto { Date = item.Date.ToString("MM-dd-yyyy") });
+                DateTraningList.Add(new CalendarTraningDto { Name=" Tr. siłowy", Date = item.Date.AddDays(1).ToString("MM-dd-yyyy")});
             }
+            foreach (var item in CardioList)
+            {
+                DateTraningList.Add(new CalendarTraningDto { Name = " Tr. cardio", Date = item.Date.AddDays(1).ToString("MM-dd-yyyy")});
+            }
+
 
             return Json(DateTraningList, JsonRequestBehavior.AllowGet);
         }

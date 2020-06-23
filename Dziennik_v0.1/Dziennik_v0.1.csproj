@@ -648,11 +648,10 @@
     <Content Include="Views\UserTranings\EditWorkout.cshtml" />
     <Content Include="Views\UserTranings\DeleteWorkout.cshtml" />
     <Content Include="Views\UserTranings\DetailsWorkout.cshtml" />
-    <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Statistics\AnnualStatistics.cshtml" />
     <Content Include="Views\WelcomePage\Index.cshtml" />
     <Content Include="Views\WelcomePage\_StatsBar.cshtml" />
     <Content Include="Views\WelcomePage\_MainContent.cshtml" />
-    <Content Include="Views\Statistics\_Chart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

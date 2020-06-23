@@ -18,7 +18,7 @@ namespace Dziennik_v0._1.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-        public ActionResult Index()
+        public ActionResult AnnualStatistics()
         {
             var userId = User.Identity.GetUserId();
             var CardioList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
@@ -37,7 +37,7 @@ namespace Dziennik_v0._1.Controllers
             viewModel.YearsWithTraning = viewModel.YearsWithTraning.Distinct().OrderBy(c =>c).ToList();
             return View(viewModel);
         }
-        public JsonResult TraningsLengthList()
+        public JsonResult TraningsLengthList(int? year)
         {
             var userId = User.Identity.GetUserId();
 
@@ -47,7 +47,7 @@ namespace Dziennik_v0._1.Controllers
 
             for (int i = 0; i < 12; i++)
             {
-                var buffor = WorkoutList.Where(c => c.Date.Month == (i + 1)).ToList();
+                var buffor = WorkoutList.Where(c => (c.Date.Month == (i + 1)) && (c.Date.Year==year)).ToList();
                 var buffor2 = 0;
                 foreach (var item in buffor)
                 {
@@ -60,7 +60,7 @@ namespace Dziennik_v0._1.Controllers
 
             for (int i = 0; i < 12; i++)
             {
-                var buffor = CardioList.Where(c => c.Date.Month == (i + 1)).ToList();
+                var buffor = CardioList.Where(c => (c.Date.Month == (i + 1)) && (c.Date.Year == year)).ToList();
                 var buffor2 = 0;
                 foreach (var item in buffor)
                 {

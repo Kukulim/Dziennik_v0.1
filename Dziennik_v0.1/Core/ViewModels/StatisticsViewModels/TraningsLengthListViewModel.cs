@@ -10,5 +10,6 @@ namespace Dziennik_v0._1.Core.ViewModels.StatisticsViewModels
     {
         public List<int> Cardios { get; set; } = new List<int>();
         public List<int> Workouts { get; set; } = new List<int>();
+        public List<int> YearsWithTraning { get; set; } = new List<int>();
     }
 }

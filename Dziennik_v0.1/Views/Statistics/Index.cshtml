@@ -1,4 +1,6 @@
-﻿<script src="https://code.highcharts.com/highcharts.js"></script>
+﻿@model Dziennik_v0._1.Core.ViewModels.StatisticsViewModels.TraningsLengthListViewModel
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -10,8 +12,15 @@
 
 
 <h2>Statystyki:</h2>
+<div>
+@foreach (var item in Model.YearsWithTraning)
+{
+    <button type="button" class="btn btn-primary" id="@item.ToString()"> @item.ToString()</button>
+}
+</div>
 
 @Html.Partial("_Chart")
+
 
 @section Scripts{
     <script>
@@ -49,7 +58,7 @@
                             text: 'Treningi'
                         },
                         xAxis: {
-                            categories: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru']
+                            categories: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierepień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
                         },
                         yAxis: {
                             min: 0,

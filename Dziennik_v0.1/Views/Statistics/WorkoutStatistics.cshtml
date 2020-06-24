@@ -1,16 +1,14 @@
-﻿
+﻿@model Dziennik_v0._1.Core.ViewModels.StatisticsViewModels.WorkoutStatisticsViewModel
+
 @{
     ViewBag.Title = "WorkoutStatistics";
 }
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-<script src="~/Content/chartthemes/dark-unica.src.js"></script>
 
 <h2>Statystyki treningu siłowego:</h2>
 
+@section Scripts{
+    @Scripts.Render("~/bundles/highchartjs")
+    @Scripts.Render("~/bundles/highchartcss")
+
+}

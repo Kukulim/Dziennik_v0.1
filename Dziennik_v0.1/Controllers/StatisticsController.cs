@@ -68,6 +68,10 @@ namespace Dziennik_v0._1.Controllers
                 }
                 viewModel.Cardios.Add(buffor2);
             }
+            foreach (var item in WorkoutList)
+            {
+                viewModel.YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
+            }
             foreach (var item in CardioList)
             {
                 viewModel.YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
@@ -78,7 +82,17 @@ namespace Dziennik_v0._1.Controllers
         }
         public ActionResult WorkoutStatistics()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+
+            var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
+            var viewModel = new WorkoutStatisticsViewModel();
+
+            foreach (var item in WorkoutList)
+            {
+                viewModel.YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
+            }
+
+            return View(viewModel);
         }
     }
 }

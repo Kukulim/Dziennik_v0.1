@@ -68,15 +68,6 @@ namespace Dziennik_v0._1.Controllers
                 }
                 viewModel.Cardios.Add(buffor2);
             }
-            foreach (var item in WorkoutList)
-            {
-                viewModel.YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
-            }
-            foreach (var item in CardioList)
-            {
-                viewModel.YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
-            }
-            viewModel.YearsWithTraning = viewModel.YearsWithTraning.Distinct().ToList();
 
             return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
@@ -91,8 +82,34 @@ namespace Dziennik_v0._1.Controllers
             {
                 viewModel.YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
             }
-
+            viewModel.YearsWithTraning = viewModel.YearsWithTraning.Distinct().OrderBy(c => c).ToList();
             return View(viewModel);
+        }
+        public JsonResult WorkoutVolumeList()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
+            var viewModel = new WorkoutStatisticsViewModel();
+
+            foreach (var item in WorkoutList)
+            {
+                viewModel.YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
+            }
+            viewModel.YearsWithTraning = viewModel.YearsWithTraning.Distinct().OrderBy(c => c).ToList();
+
+            for (int i = 0; i < viewModel.YearsWithTraning.Count(); i++)
+            {
+                var buffor = WorkoutList.Where(c => c.Date.Year == viewModel.YearsWithTraning[i]).ToList();
+                var buffor2 = 0;
+                foreach (var item in buffor)
+                {
+                    buffor2 += item.WorkoutVolume;
+                }
+                viewModel.WorkoutVolume.Add(buffor2);
+            }
+
+            return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
     }
 }

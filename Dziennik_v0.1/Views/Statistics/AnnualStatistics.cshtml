@@ -1,17 +1,9 @@
 ﻿@model Dziennik_v0._1.Core.ViewModels.StatisticsViewModels.TraningsLengthListViewModel
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/data.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://code.highcharts.com/modules/export-data.js"></script>
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-<script src="~/Content/chartthemes/dark-unica.src.js"></script>
-
 <h2>Statystyki:</h2>
 
 <h3>Roczne Podsumowanie:</h3>
+
 @if (Model.YearsWithTraning.Count() > 1)
 {
     <h4>Wybierz rok:</h4>
@@ -23,11 +15,21 @@
     </div>
 }
 
-<figure class="highcharts-figure" style="margin-top:15px">
+<figure class="highcharts-figure" style="margin-top:15px; margin-bottom:30px">
     <div id="container"></div>
 </figure>
 
+<h4>Statystyki szczegółowe wybierz rodzaj treningu:</h4>
+<div>
+    <p>
+        @Html.ActionLink("Trening siłowy", "WorkoutStatistics", null, new { @class = "btn btn-success m-3" })
+        @Html.ActionLink("Trening cardio", "CreateCardio", null, new { @class = "btn btn-success m-3", @id = "btn-cardio" })
+    </p>
+</div>
+
 @section Scripts{
+    @Scripts.Render("~/bundles/highchartjs")
+    @Scripts.Render("~/bundles/highchartcss")
     <script>
         Highcharts.setOptions({
             chart: {
@@ -74,7 +76,7 @@
                                 enabled: true,
                                 style: {
                                     fontWeight: 'bold',
-                                    color: ( // theme
+                                    color: ( 
                                         Highcharts.defaultOptions.title.style &&
                                         Highcharts.defaultOptions.title.style.color
                                     ) || 'gray'
@@ -95,7 +97,7 @@
                         },
                         tooltip: {
                             headerFormat: '<b>{point.x}</b><br />',
-                            pointFormat: '{series.name}: {point.y}<br />Łącznie: {point.stackTotal}'
+                            pointFormat: '{series.name}: {point.y} min.<br />Łącznie: {point.stackTotal} min.'
                         },
                         plotOptions: {
                             column: {
@@ -125,7 +127,7 @@
     {
         foreach (var item in Model.YearsWithTraning)
         {
-<script>
+            <script>
                     $("#@item.ToString()").click(function (){
                         $.ajax({
                             type: "POST",
@@ -161,7 +163,7 @@
                                             enabled: true,
                                             style: {
                                                 fontWeight: 'bold',
-                                                color: ( // theme
+                                                color: ( 
                                                     Highcharts.defaultOptions.title.style &&
                                                     Highcharts.defaultOptions.title.style.color
                                                 ) || 'gray'
@@ -182,7 +184,7 @@
                                     },
                                     tooltip: {
                                         headerFormat: '<b>{point.x}</b><br />',
-                                        pointFormat: '{series.name}: {point.y}<br />Łącznie: {point.stackTotal}'
+                                        pointFormat: '{series.name}: {point.y} min.<br />Łącznie: {point.stackTotal} min.'
                                     },
                                     plotOptions: {
                                         column: {
@@ -207,7 +209,7 @@
                             }
                             })
                     });
-</script>
-        }
+            </script>
         }
     }
+}

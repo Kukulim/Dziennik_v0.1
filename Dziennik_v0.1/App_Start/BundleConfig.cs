@@ -36,7 +36,17 @@ namespace Dziennik_v0._1
                       "~/Scripts/fullcalendar.min.js",
                       "~/Scripts/locale/pl.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/highchartjs").Include(
+                        "~/Scripts/highcharts/highcharts.js",
+                        "~/Scripts/highcharts/modules/data.js",
+                        "~/Scripts/highcharts/modules/series-label.js",
+                        "~/Scripts/highcharts/modules/exporting.js",
+                        "~/Scripts/highcharts/modules/export-data.js",
+                        "~/Scripts/highcharts/modules/accessibility.js",
+                        "~/Scripts/highcharts/themes/dark-unica.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/highchartcss").Include(
+                        "~/Scripts/highcharts/themes/dark-unica.js"));
         }
     }
 }

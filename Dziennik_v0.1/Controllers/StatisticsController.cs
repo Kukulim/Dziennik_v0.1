@@ -85,7 +85,7 @@ namespace Dziennik_v0._1.Controllers
             viewModel.YearsWithTraning = viewModel.YearsWithTraning.Distinct().OrderBy(c => c).ToList();
             return View(viewModel);
         }
-        public JsonResult WorkoutVolumeList()
+        public JsonResult WorkoutVolumeSumaryList()
         {
             var userId = User.Identity.GetUserId();
 
@@ -111,5 +111,11 @@ namespace Dziennik_v0._1.Controllers
 
             return Json(viewModel, JsonRequestBehavior.AllowGet);
         }
-    }
+        public JsonResult WorkoutVolumePerYearList(int? year, int? month)
+        {
+            var userId = User.Identity.GetUserId();
+            var viewModel = new WorkoutStatisticsViewModel();
+
+            return Json(viewModel, JsonRequestBehavior.AllowGet);
+        }
 }

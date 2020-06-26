@@ -78,6 +78,33 @@ namespace Dziennik_v0._1.Controllers.Api
 
             return Ok(viewModel);
         }
+        [Route("Api/StatisticsApi/WorkoutVolumePerYearList/{year}/{month}")]
+        [HttpGet]
+        public IHttpActionResult WorkoutVolumePerYearList(int year, int month)
+        {
+            var userId = User.Identity.GetUserId();
+
+            //var month = 6;
+
+            var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).Where(c => (c.Date.Month == month) && (c.Date.Year == year)).ToList();
+
+            var viewModel = new WorkoutStatisticsViewModel();
+
+            for (int i = 0; i < DateTime.Now.Month; i++)
+            {
+                if (WorkoutList.Where(w =>w.Date.Day == i)==null)
+                {
+                    viewModel.WorkoutVolume.Add(0);
+                }
+                else
+                {
+                    viewModel.WorkoutVolume.Add(1);
+                }
+
+            }
+
+            return Ok(viewModel);
+        }
     }
 
 }

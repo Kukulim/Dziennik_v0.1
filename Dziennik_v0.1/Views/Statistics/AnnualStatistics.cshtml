@@ -10,7 +10,9 @@
     <div>
         @foreach (var item in Model.YearsWithTraning)
         {
-            <button type="button" class="btn btn-primary" id="@item.ToString()"> @item.ToString()</button>
+            <a href="#" class="js-year btn btn-primary" data="@item.ToString()">
+                @item.ToString()
+            </a>
         }
     </div>
 }
@@ -114,14 +116,11 @@
 
                 })
     </script>
-    @if (Model.YearsWithTraning.Count() > 1)
-    {
-        foreach (var item in Model.YearsWithTraning)
-        {
-            <script>
-                $("#@item.ToString()").click(function () {
+
+    <script>
+        $(".js-year").click(function (e) {
             $.ajax({
-                url: "/Api/StatisticsApi/TraningsLengthList/" +@item.ToString(),
+                url: "/Api/StatisticsApi/TraningsLengthList/" + $(e.target).attr("data"),
                 method: "GET"
             })
                 .done(function (data) {
@@ -130,7 +129,7 @@
                             type: 'column'
                         },
                         title: {
-                            text: 'Czas Treningów w @item.ToString()'
+                            text: 'Czas Treningów w' + $(e.target).attr("data"),
                         },
                         xAxis: {
                             categories: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierepień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
@@ -190,8 +189,6 @@
                     alert("Something failed!");
                 });
 
-                })
-            </script>
-        }
-    }
+        })
+    </script>
 }

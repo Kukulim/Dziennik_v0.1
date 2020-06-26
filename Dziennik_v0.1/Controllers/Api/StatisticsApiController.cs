@@ -51,11 +51,32 @@ namespace Dziennik_v0._1.Controllers.Api
 
             return Ok(viewModel);
         }
-
         [HttpGet]
-        public IHttpActionResult test()
+        public IHttpActionResult WorkoutVolumeSumaryList()
         {
-            return Ok();
+            var userId = User.Identity.GetUserId();
+
+            var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
+            var viewModel = new WorkoutStatisticsViewModel();
+
+            foreach (var item in WorkoutList)
+            {
+                viewModel.YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
+            }
+            viewModel.YearsWithTraning = viewModel.YearsWithTraning.Distinct().OrderBy(c => c).ToList();
+
+            for (int i = 0; i < viewModel.YearsWithTraning.Count(); i++)
+            {
+                var buffor = WorkoutList.Where(c => c.Date.Year == viewModel.YearsWithTraning[i]).ToList();
+                var buffor2 = 0;
+                foreach (var item in buffor)
+                {
+                    buffor2 += item.WorkoutVolume;
+                }
+                viewModel.WorkoutVolume.Add(buffor2);
+            }
+
+            return Ok(viewModel);
         }
     }
 

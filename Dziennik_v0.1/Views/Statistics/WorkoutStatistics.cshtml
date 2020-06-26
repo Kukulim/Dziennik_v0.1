@@ -13,7 +13,9 @@
     <div>
         @foreach (var item in Model.YearsWithTraning)
         {
-            <button type="button" class="btn btn-primary" id="@item.ToString()"> @item.ToString()</button>
+            <a href="#" class="js-year btn btn-primary" data="@item.ToString()">
+                @item.ToString()
+            </a>
         }
     </div>
 }
@@ -22,7 +24,15 @@
     <div id="container"></div>
 </figure>
 
-<button type="button" class="btn btn-primary" id="styczen"> styczen</button>
+<h4>Wybierz miesiąc:</h4>
+<div>
+    @for (int i = 1; i < 13; i++)
+    {
+        <a href="#" class="js-month btn btn-primary" data="@(i-1)">
+            @i
+        </a>
+    }
+</div>
 
 <div>
     <p>
@@ -89,83 +99,234 @@
 
                 })
     </script>
+    <script>
+        var year = 2020;
+        var month = @DateTime.Now.Month;
 
-    @if (Model.YearsWithTraning.Count() > 1)
-    {
-        foreach (var item in Model.YearsWithTraning)
-        {
-            <script>
-                $("#@item.ToString()").click(function () {
-            $.ajax({
-                url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" +@item.ToString() +"/"+ @DateTime.Now.Month,
-                method: "GET"
-            })
-                .done(function (data) {
-                    Highcharts.chart('container', {
-                        chart: {
-                            type: 'column'
-                        },
-                        title: {
-                            text: 'Czas Treningów'
-                        },
-                        xAxis: {
-                            type: "datetime",
-                        },
-                        yAxis: {
-                            min: 0,
-                            title: {
-                                text: 'Ilość minut treningu'
+    </script>
+    <script>
+        $(".js-year").click(function (e) {
+            year = $(e.target).attr("data"),
+                $.ajax({
+                    url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + year + "/" + (parseInt(month) + 1),
+                    method: "GET"
+                })
+                    .done(function (data) {
+                        Highcharts.chart('container', {
+                            chart: {
+                                type: 'column'
                             },
-                            stackLabels: {
-                                enabled: true,
-                                style: {
-                                    fontWeight: 'bold',
-                                    color: (
-                                        Highcharts.defaultOptions.title.style &&
-                                        Highcharts.defaultOptions.title.style.color
-                                    ) || 'gray'
+                            title: {
+                                text: 'Czas Treningów w ' + $(e.target).attr("data"),
+                            },
+                            xAxis: {
+                                type: "datetime",
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'Ilość minut treningu'
+                                },
+                                stackLabels: {
+                                    enabled: true,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: (
+                                            Highcharts.defaultOptions.title.style &&
+                                            Highcharts.defaultOptions.title.style.color
+                                        ) || 'gray'
+                                    }
                                 }
-                            }
-                        },
-                        legend: {
-                            align: 'right',
-                            x: -30,
-                            verticalAlign: 'top',
-                            y: 25,
-                            floating: true,
-                            backgroundColor:
-                                Highcharts.defaultOptions.legend.backgroundColor || 'white',
-                            borderColor: '#CCC',
-                            borderWidth: 1,
-                            shadow: false
-                        },
-                        tooltip: {
-                            headerFormat: '<b>{point.x}</b><br />',
-                            pointFormat: '{series.name}: {point.y} min.<br />Łącznie: {point.stackTotal} min.'
-                        },
-                        plotOptions: {
-                            column: {
-                                stacking: 'normal',
-                                dataLabels: {
-                                    enabled: true
+                            },
+                            legend: {
+                                align: 'right',
+                                x: -30,
+                                verticalAlign: 'top',
+                                y: 25,
+                                floating: true,
+                                backgroundColor:
+                                    Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                                borderColor: '#CCC',
+                                borderWidth: 1,
+                                shadow: false
+                            },
+                            tooltip: {
+                                headerFormat: '<b>{point.x}</b><br />',
+                                pointFormat: '{series.name}: {point.y} min.<br />Łącznie: {point.stackTotal} min.'
+                            },
+                            plotOptions: {
+                                column: {
+                                    stacking: 'normal',
+                                    dataLabels: {
+                                        enabled: true
+                                    }
                                 }
-                            }
-                        },
-                        series: [{
-                            name: 'Objetość',
-                            data: data.workoutVolume,
-                            color: '#62c462',
-                            pointStart: Date.UTC(2020, 1, 1),
-                            pointInterval: 24 * 3600 * 1000 // one day
-                        }]
+                            },
+                            series: [{
+                                name: 'Objetość',
+                                data: data.workoutVolume,
+                                color: '#62c462',
+                                pointStart: Date.UTC(year, month, 1),
+                                pointInterval: 24 * 3600 * 1000 // one day
+                            }]
+                        });
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
                     });
-                })
-                .fail(function () {
-                    alert("Something failed!");
-                });
 
+        })
+    </script>
+    <script>
+        $(".js-month").click(function (e) {
+            month = $(e.target).attr("data"),
+                $.ajax({
+                    url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + year + "/" + (parseInt(month) + 1),
+                    method: "GET"
                 })
-            </script>
-        }
-    }
+                    .done(function (data) {
+                        Highcharts.chart('container', {
+                            chart: {
+                                type: 'column'
+                            },
+                            title: {
+                                text: 'Czas Treningów w ' + year,
+                            },
+                            xAxis: {
+                                type: "datetime",
+                            },
+                            yAxis: {
+                                min: 0,
+                                title: {
+                                    text: 'Ilość minut treningu'
+                                },
+                                stackLabels: {
+                                    enabled: true,
+                                    style: {
+                                        fontWeight: 'bold',
+                                        color: (
+                                            Highcharts.defaultOptions.title.style &&
+                                            Highcharts.defaultOptions.title.style.color
+                                        ) || 'gray'
+                                    }
+                                }
+                            },
+                            legend: {
+                                align: 'right',
+                                x: -30,
+                                verticalAlign: 'top',
+                                y: 25,
+                                floating: true,
+                                backgroundColor:
+                                    Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                                borderColor: '#CCC',
+                                borderWidth: 1,
+                                shadow: false
+                            },
+                            tooltip: {
+                                headerFormat: '<b>{point.x}</b><br />',
+                                pointFormat: '{series.name}: {point.y} min.<br />Łącznie: {point.stackTotal} min.'
+                            },
+                            plotOptions: {
+                                column: {
+                                    stacking: 'normal',
+                                    dataLabels: {
+                                        enabled: true
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: 'Objetość',
+                                data: data.workoutVolume,
+                                color: '#62c462',
+                                pointStart: Date.UTC(year, month, 1),
+                                pointInterval: 24 * 3600 * 1000 // one day
+                            }]
+                        });
+                    })
+                    .fail(function () {
+                        alert("Something failed!");
+                    });
+
+        })
+    </script>
+    @*@if (Model.YearsWithTraning.Count() > 1)
+            {
+                foreach (var item in Model.YearsWithTraning)
+                {
+                    <script>
+                        $("#@item.ToString()").click(function () {
+                    $.ajax({
+                        url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" +@item.ToString() +"/"+ @DateTime.Now.Month,
+                        method: "GET"
+                    })
+                        .done(function (data) {
+                            Highcharts.chart('container', {
+                                chart: {
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: 'Czas Treningów'
+                                },
+                                xAxis: {
+                                    type: "datetime",
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Ilość minut treningu'
+                                    },
+                                    stackLabels: {
+                                        enabled: true,
+                                        style: {
+                                            fontWeight: 'bold',
+                                            color: (
+                                                Highcharts.defaultOptions.title.style &&
+                                                Highcharts.defaultOptions.title.style.color
+                                            ) || 'gray'
+                                        }
+                                    }
+                                },
+                                legend: {
+                                    align: 'right',
+                                    x: -30,
+                                    verticalAlign: 'top',
+                                    y: 25,
+                                    floating: true,
+                                    backgroundColor:
+                                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                                    borderColor: '#CCC',
+                                    borderWidth: 1,
+                                    shadow: false
+                                },
+                                tooltip: {
+                                    headerFormat: '<b>{point.x}</b><br />',
+                                    pointFormat: '{series.name}: {point.y} min.<br />Łącznie: {point.stackTotal} min.'
+                                },
+                                plotOptions: {
+                                    column: {
+                                        stacking: 'normal',
+                                        dataLabels: {
+                                            enabled: true
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    name: 'Objetość',
+                                    data: data.workoutVolume,
+                                    color: '#62c462',
+                                    pointStart: Date.UTC(2020, 1, 1),
+                                    pointInterval: 24 * 3600 * 1000 // one day
+                                }]
+                            });
+                        })
+                        .fail(function () {
+                            alert("Something failed!");
+                        });
+
+                        })
+                    </script>
+                }
+            }
+        }*@
 }

@@ -88,7 +88,7 @@ namespace Dziennik_v0._1.Controllers.Api
 
             var viewModel = new WorkoutStatisticsViewModel();
 
-            for (int i = 0; i < DateTime.DaysInMonth(2020, 06); i++)
+            for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
             {
                 var buffor = WorkoutList.FirstOrDefault(w => w.Date.Day == i);
                 if (buffor==null)

@@ -109,7 +109,7 @@
                             text: 'Czas Treningów'
                         },
                         xAxis: {
-                            categories: []
+                            type: "datetime",
                         },
                         yAxis: {
                             min: 0,
@@ -155,6 +155,8 @@
                             name: 'Objetość',
                             data: data.workoutVolume,
                             color: '#62c462',
+                            pointStart: Date.UTC(2020, 1, 1),
+                            pointInterval: 24 * 3600 * 1000 // one day
                         }]
                     });
                 })
@@ -166,5 +168,4 @@
             </script>
         }
     }
-}
 }

@@ -43,20 +43,10 @@
     <script>
         $(document).ready(function () {
             $.ajax({
-                type: "POST",
-                contentType: "application/json",
-                data: "{}",
-                url: "/Statistics/TraningsLengthList/?year=@DateTime.Now.Year",
-                dataType: "json",
-                success: function (data) {
-                    var WorkoutLenght = [];
-                    for (var i = 0; i < 12; i++) {
-                        WorkoutLenght.push(parseInt(data.Workouts[i]));
-                    };
-                    var CardioLenght = [];
-                    for (var i = 0; i < 12; i++) {
-                        CardioLenght.push(parseInt(data.Cardios[i]));
-                    };
+                url: "/Api/StatisticsApi/TraningsLengthList/" +@DateTime.Now.Year,
+                method: "GET"
+            })
+                .done(function (data) {
                     Highcharts.chart('container', {
                         chart: {
                             type: 'column'
@@ -76,7 +66,7 @@
                                 enabled: true,
                                 style: {
                                     fontWeight: 'bold',
-                                    color: ( 
+                                    color: (
                                         Highcharts.defaultOptions.title.style &&
                                         Highcharts.defaultOptions.title.style.color
                                     ) || 'gray'
@@ -109,106 +99,98 @@
                         },
                         series: [{
                             name: 'Siłowy',
-                            data: WorkoutLenght,
+                            data: data.workouts,
                             color: '#62c462',
                         }, {
                             name: 'Cardio',
-                            data: CardioLenght,
+                            data: data.cardios,
                             color: '#DEBA6F',
                         }]
                     });
-                },
-                error: function () {
-                }
-            });
-        })
+                })
+                .fail(function () {
+                    alert("Something failed!");
+                });
+
+                })
     </script>
     @if (Model.YearsWithTraning.Count() > 1)
     {
         foreach (var item in Model.YearsWithTraning)
         {
             <script>
-                    $("#@item.ToString()").click(function (){
-                        $.ajax({
-                            type: "POST",
-                            contentType: "application/json",
-                            data: "{}",
-                            url: "/Statistics/TraningsLengthList/?year=@item.ToString()",
-                            dataType: "json",
-                            success: function (data) {
-                                var WorkoutLenght = [];
-                                for (var i = 0; i < 12; i++) {
-                                    WorkoutLenght.push(parseInt(data.Workouts[i]));
-                                };
-                                var CardioLenght = [];
-                                for (var i = 0; i < 12; i++) {
-                                    CardioLenght.push(parseInt(data.Cardios[i]));
-                                };
-                                Highcharts.chart('container', {
-                                    chart: {
-                                        type: 'column'
-                                    },
-                                    title: {
-                                        text: 'Czas Treningów w @item.ToString()'
-                                    },
-                                    xAxis: {
-                                        categories: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierepień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
-                                    },
-                                    yAxis: {
-                                        min: 0,
-                                        title: {
-                                            text: 'Ilość minut treningu'
-                                        },
-                                        stackLabels: {
-                                            enabled: true,
-                                            style: {
-                                                fontWeight: 'bold',
-                                                color: ( 
-                                                    Highcharts.defaultOptions.title.style &&
-                                                    Highcharts.defaultOptions.title.style.color
-                                                ) || 'gray'
-                                            }
-                                        }
-                                    },
-                                    legend: {
-                                        align: 'right',
-                                        x: -30,
-                                        verticalAlign: 'top',
-                                        y: 25,
-                                        floating: true,
-                                        backgroundColor:
-                                            Highcharts.defaultOptions.legend.backgroundColor || 'white',
-                                        borderColor: '#CCC',
-                                        borderWidth: 1,
-                                        shadow: false
-                                    },
-                                    tooltip: {
-                                        headerFormat: '<b>{point.x}</b><br />',
-                                        pointFormat: '{series.name}: {point.y} min.<br />Łącznie: {point.stackTotal} min.'
-                                    },
-                                    plotOptions: {
-                                        column: {
-                                            stacking: 'normal',
-                                            dataLabels: {
-                                                enabled: true
-                                            }
-                                        }
-                                    },
-                                    series: [{
-                                        name: 'Siłowy',
-                                        data: WorkoutLenght,
-                                        color: '#62c462',
-                                    }, {
-                                        name: 'Cardio',
-                                        data: CardioLenght,
-                                        color: '#DEBA6F',
-                                    }]
-                                });
+                $("#@item.ToString()").click(function () {
+            $.ajax({
+                url: "/Api/StatisticsApi/TraningsLengthList/" +@item.ToString(),
+                method: "GET"
+            })
+                .done(function (data) {
+                    Highcharts.chart('container', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Czas Treningów w @item.ToString()'
+                        },
+                        xAxis: {
+                            categories: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierepień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: 'Ilość minut treningu'
                             },
-                            error: function () {
+                            stackLabels: {
+                                enabled: true,
+                                style: {
+                                    fontWeight: 'bold',
+                                    color: (
+                                        Highcharts.defaultOptions.title.style &&
+                                        Highcharts.defaultOptions.title.style.color
+                                    ) || 'gray'
+                                }
                             }
-                            })
+                        },
+                        legend: {
+                            align: 'right',
+                            x: -30,
+                            verticalAlign: 'top',
+                            y: 25,
+                            floating: true,
+                            backgroundColor:
+                                Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                            borderColor: '#CCC',
+                            borderWidth: 1,
+                            shadow: false
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{point.x}</b><br />',
+                            pointFormat: '{series.name}: {point.y} min.<br />Łącznie: {point.stackTotal} min.'
+                        },
+                        plotOptions: {
+                            column: {
+                                stacking: 'normal',
+                                dataLabels: {
+                                    enabled: true
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Siłowy',
+                            data: data.workouts,
+                            color: '#62c462',
+                        }, {
+                            name: 'Cardio',
+                            data: data.cardios,
+                            color: '#DEBA6F',
+                        }]
                     });
+                })
+                .fail(function () {
+                    alert("Something failed!");
+                });
+
+                })
             </script>
         }
     }

@@ -12,6 +12,8 @@ namespace Dziennik_v0._1.App_Start
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
     using Ninject.Extensions.Conventions;
+    using System.Web.Http;
+    using Ninject.Web.WebApi;
 
     public static class NinjectWebCommon 
     {
@@ -54,6 +56,8 @@ namespace Dziennik_v0._1.App_Start
                         .SelectAllClasses()
                         .BindDefaultInterface();
                 });
+
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
 
                 return kernel;
             }

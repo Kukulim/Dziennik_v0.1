@@ -1,4 +1,5 @@
 ﻿using Dziennik_v0._1.Core;
+using Dziennik_v0._1.Core.Dtos;
 using Dziennik_v0._1.Core.ViewModels.StatisticsViewModels;
 using Microsoft.AspNet.Identity;
 using System;
@@ -86,23 +87,19 @@ namespace Dziennik_v0._1.Controllers.Api
 
             var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).Where(c => (c.Date.Month == month) && (c.Date.Year == year)).ToList();
 
-            var viewModel = new WorkoutStatisticsViewModel();
+            var viewModel = new WorkoutVolumePerYearListViewModel();
 
-            for (int i = 0; i < DateTime.DaysInMonth(year, month); i++)
+            foreach (var item in WorkoutList)
             {
-                var buffor = WorkoutList.FirstOrDefault(w => w.Date.Day == i);
-                if (buffor==null)
-                {
-                    viewModel.WorkoutVolume.Add(0);
-                }
-                else
-                {
-                    viewModel.WorkoutVolume.Add(buffor.WorkoutVolume);
-                }
-
+                var buffor = new WotkoutVolumeDto();
+                buffor.Year = item.Date.Year;
+                buffor.Month = item.Date.Month;
+                buffor.Day = item.Date.Day;
+                buffor.WorkoutVolume = item.WorkoutVolume;
+                viewModel.Volume.Add(buffor);
             }
 
-            return Ok(viewModel);
+            return Ok(viewModel.Volume);
         }
     }
 

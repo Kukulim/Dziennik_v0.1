@@ -6,6 +6,7 @@
 
 
 <h2>Statystyki treningu siłowego:</h2>
+@Html.ActionLink("Podsumowanie roczne", "WorkoutStatistics", null, new { @class = "btn btn-success m-3" })
 
 @if (Model.YearsWithTraning.Count() > 1)
 {
@@ -19,20 +20,20 @@
         }
     </div>
 }
+<h4>Wybierz miesiąc:</h4>
+<div>
+    @for (int i = 1; i < 13; i++)
+    {
+        <a href="#" class="js-month btn btn-primary" data="@i">
+            @i
+        </a>
+    }
+</div>
 
 <figure class="highcharts-figure" style="margin-top:15px; margin-bottom:30px">
     <div id="container"></div>
 </figure>
 
-<h4>Wybierz miesiąc:</h4>
-<div>
-    @for (int i = 1; i < 13; i++)
-    {
-        <a href="#" class="js-month btn btn-primary" data="@(i-1)">
-            @i
-        </a>
-    }
-</div>
 
 <div>
     <p>
@@ -65,7 +66,7 @@
                             type: 'column'
                         },
                         title: {
-                            text: 'Czas Treningów w @DateTime.Now.Year'
+                            text: 'Czas Treningów:'
                         },
                         xAxis: {
                             categories: data.yearsWithTraning
@@ -97,35 +98,45 @@
                     alert("Something failed!");
                 });
 
-                })
+        })
     </script>
     <script>
         var year = 2020;
         var month = @DateTime.Now.Month;
-
     </script>
     <script>
         $(".js-year").click(function (e) {
             year = $(e.target).attr("data"),
                 $.ajax({
-                    url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + year + "/" + (parseInt(month) + 1),
+                    url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + parseInt(year) + "/" + parseInt(month),
                     method: "GET"
                 })
                     .done(function (data) {
+                        var test;
+                        var chartdata = [];
+                        //chartdata.push([Date.UTC(parseInt(year), parseInt(month), 1), null]);
+                        //chartdata.push([Date.UTC(parseInt(year), parseInt(month) + 1, 0), null]);
+                        for (var i = 0; i < data.length; i++) {
+                            test = Date.UTC(data[i].year, data[i].month - 1, data[i].day);
+                            chartdata.push([test, data[i].workoutVolume]);
+                        }
+
                         Highcharts.chart('container', {
                             chart: {
                                 type: 'column'
                             },
                             title: {
-                                text: 'Czas Treningów w ' + $(e.target).attr("data"),
+                                text: 'Objętość treningów  ' + year + '.' + month,
                             },
                             xAxis: {
                                 type: "datetime",
+                                min: Date.UTC(parseInt(year), parseInt(month) - 1, 1),
+                                max: Date.UTC(parseInt(year), parseInt(month), 0),
                             },
                             yAxis: {
                                 min: 0,
                                 title: {
-                                    text: 'Ilość minut treningu'
+                                    text: 'Objętość w kg.'
                                 },
                                 stackLabels: {
                                     enabled: true,
@@ -164,10 +175,10 @@
                             },
                             series: [{
                                 name: 'Objetość',
-                                data: data.workoutVolume,
+                                data: chartdata,
                                 color: '#62c462',
-                                pointStart: Date.UTC(year, month, 1),
-                                pointInterval: 24 * 3600 * 1000 // one day
+                                //pointStart: Date.UTC(year, month, 1),
+                                //pointInterval: 24 * 3600 * 1000 // one day
                             }]
                         });
                     })
@@ -181,24 +192,35 @@
         $(".js-month").click(function (e) {
             month = $(e.target).attr("data"),
                 $.ajax({
-                    url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + year + "/" + (parseInt(month) + 1),
+                    url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + parseInt(year) + "/" + parseInt(month),
                     method: "GET"
                 })
                     .done(function (data) {
+                        var test;
+                        var chartdata = [];
+                        //chartdata.push([Date.UTC(parseInt(year), parseInt(month), 1), null]);
+                        //chartdata.push([Date.UTC(parseInt(year), parseInt(month) + 1, 0), null]);
+                        for (var i = 0; i < data.length; i++) {
+                            test = Date.UTC(data[i].year, data[i].month - 1, data[i].day);
+                            chartdata.push([test, data[i].workoutVolume]);
+                        }
+
                         Highcharts.chart('container', {
                             chart: {
                                 type: 'column'
                             },
                             title: {
-                                text: 'Czas Treningów w ' + year,
+                                text: 'Objętość treningów ' + year + '.' + month,
                             },
                             xAxis: {
                                 type: "datetime",
+                                min: Date.UTC(parseInt(year), parseInt(month) - 1, 1),
+                                max: Date.UTC(parseInt(year), parseInt(month), 0),
                             },
                             yAxis: {
                                 min: 0,
                                 title: {
-                                    text: 'Ilość minut treningu'
+                                    text: 'Objętość w kg.'
                                 },
                                 stackLabels: {
                                     enabled: true,
@@ -237,10 +259,10 @@
                             },
                             series: [{
                                 name: 'Objetość',
-                                data: data.workoutVolume,
+                                data: chartdata,
                                 color: '#62c462',
-                                pointStart: Date.UTC(year, month, 1),
-                                pointInterval: 24 * 3600 * 1000 // one day
+                                //pointStart: Date.UTC(year, month, 1),
+                                //pointInterval: 24 * 3600 * 1000 // one day
                             }]
                         });
                     })

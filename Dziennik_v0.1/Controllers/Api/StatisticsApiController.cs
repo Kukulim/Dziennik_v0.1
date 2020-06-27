@@ -100,6 +100,7 @@ namespace Dziennik_v0._1.Controllers.Api
             }
             return Ok(viewModel.Volume);
         }
+        [HttpGet]
         public IHttpActionResult WorkoutVolumePerYearList(int year)
         {
             var userId = User.Identity.GetUserId();

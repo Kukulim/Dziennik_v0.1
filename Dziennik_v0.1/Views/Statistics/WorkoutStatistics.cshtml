@@ -111,6 +111,8 @@
     <script>
         $(".js-year").click(function (e) {
             year = $(e.target).attr("data"),
+                $(".js-year").removeClass('btn-success');
+                $(e.target).addClass('btn-success');
                 $.ajax({
                     url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + parseInt(year) + "/" + parseInt(month),
                     method: "GET"
@@ -195,6 +197,8 @@
     <script>
         $(".js-month").click(function (e) {
             month = $(e.target).attr("data"),
+                $(".js-month").removeClass('btn-success');
+                $(e.target).addClass('btn-success');
                 $.ajax({
                     url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + parseInt(year) + "/" + parseInt(month),
                     method: "GET"

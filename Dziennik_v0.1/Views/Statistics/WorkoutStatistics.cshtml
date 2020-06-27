@@ -50,6 +50,15 @@
                 style: {
                     fontFamily: 'Lato'
                 },
+            },
+            lang: {
+                months: [
+                    'Styczeń', 'Luty', 'Marzec', 'Kwiecień',
+                    'Maj', 'Czerwiec', 'Lipiec', 'Sierpień',
+                    'Wrzesień', 'Pażdziernik', 'Listopad', 'Grudzień'
+                ],
+                shortMonths: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'],
+                noData: "Brak treningow w tym okresie",
             }
         });
     </script>
@@ -66,7 +75,7 @@
                             type: 'column'
                         },
                         title: {
-                            text: 'Czas Treningów:'
+                            text: 'Objętość treningowa:'
                         },
                         xAxis: {
                             categories: data.yearsWithTraning
@@ -74,21 +83,11 @@
                         yAxis: {
                             min: 0,
                             title: {
-                                text: 'Ilość minut treningu'
+                                text: 'Objętość w kg.'
                             },
-                            stackLabels: {
-                                enabled: true,
-                                style: {
-                                    fontWeight: 'bold',
-                                    color: (
-                                        Highcharts.defaultOptions.title.style &&
-                                        Highcharts.defaultOptions.title.style.color
-                                    ) || 'gray'
-                                }
-                            }
                         },
                         series: [{
-                            name: 'Siłowy',
+                            name: 'Trening siłowy',
                             data: data.workoutVolume,
                             color: '#62c462',
                         }]
@@ -103,6 +102,11 @@
     <script>
         var year = 2020;
         var month = @DateTime.Now.Month;
+        const monthNames = [
+            'Styczeń', 'Luty', 'Marzec', 'Kwiecień',
+            'Maj', 'Czerwiec', 'Lipiec', 'Sierpień',
+            'Wrzesień', 'Pażdziernik', 'Listopad', 'Grudzień'
+        ]
     </script>
     <script>
         $(".js-year").click(function (e) {
@@ -114,8 +118,6 @@
                     .done(function (data) {
                         var test;
                         var chartdata = [];
-                        //chartdata.push([Date.UTC(parseInt(year), parseInt(month), 1), null]);
-                        //chartdata.push([Date.UTC(parseInt(year), parseInt(month) + 1, 0), null]);
                         for (var i = 0; i < data.length; i++) {
                             test = Date.UTC(data[i].year, data[i].month - 1, data[i].day);
                             chartdata.push([test, data[i].workoutVolume]);
@@ -126,12 +128,16 @@
                                 type: 'column'
                             },
                             title: {
-                                text: 'Objętość treningów  ' + year + '.' + month,
+                                text: 'Objętość treningów ' + year + ' ' + monthNames[month - 1],
                             },
                             xAxis: {
                                 type: "datetime",
                                 min: Date.UTC(parseInt(year), parseInt(month) - 1, 1),
                                 max: Date.UTC(parseInt(year), parseInt(month), 0),
+                                labels: {
+                                    format: '{value:%e.%B}',
+                                    rotation: -45,
+                                },
                             },
                             yAxis: {
                                 min: 0,
@@ -177,8 +183,6 @@
                                 name: 'Objetość',
                                 data: chartdata,
                                 color: '#62c462',
-                                //pointStart: Date.UTC(year, month, 1),
-                                //pointInterval: 24 * 3600 * 1000 // one day
                             }]
                         });
                     })
@@ -198,8 +202,6 @@
                     .done(function (data) {
                         var test;
                         var chartdata = [];
-                        //chartdata.push([Date.UTC(parseInt(year), parseInt(month), 1), null]);
-                        //chartdata.push([Date.UTC(parseInt(year), parseInt(month) + 1, 0), null]);
                         for (var i = 0; i < data.length; i++) {
                             test = Date.UTC(data[i].year, data[i].month - 1, data[i].day);
                             chartdata.push([test, data[i].workoutVolume]);
@@ -210,12 +212,16 @@
                                 type: 'column'
                             },
                             title: {
-                                text: 'Objętość treningów ' + year + '.' + month,
+                                text: 'Objętość treningów ' + year + ' ' + monthNames[month-1],
                             },
                             xAxis: {
                                 type: "datetime",
                                 min: Date.UTC(parseInt(year), parseInt(month) - 1, 1),
                                 max: Date.UTC(parseInt(year), parseInt(month), 0),
+                                labels: {
+                                    format: '{value:%e.%b}',
+                                    rotation: -45,
+                                },
                             },
                             yAxis: {
                                 min: 0,
@@ -261,8 +267,6 @@
                                 name: 'Objetość',
                                 data: chartdata,
                                 color: '#62c462',
-                                //pointStart: Date.UTC(year, month, 1),
-                                //pointInterval: 24 * 3600 * 1000 // one day
                             }]
                         });
                     })
@@ -272,83 +276,4 @@
 
         })
     </script>
-    @*@if (Model.YearsWithTraning.Count() > 1)
-            {
-                foreach (var item in Model.YearsWithTraning)
-                {
-                    <script>
-                        $("#@item.ToString()").click(function () {
-                    $.ajax({
-                        url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" +@item.ToString() +"/"+ @DateTime.Now.Month,
-                        method: "GET"
-                    })
-                        .done(function (data) {
-                            Highcharts.chart('container', {
-                                chart: {
-                                    type: 'column'
-                                },
-                                title: {
-                                    text: 'Czas Treningów'
-                                },
-                                xAxis: {
-                                    type: "datetime",
-                                },
-                                yAxis: {
-                                    min: 0,
-                                    title: {
-                                        text: 'Ilość minut treningu'
-                                    },
-                                    stackLabels: {
-                                        enabled: true,
-                                        style: {
-                                            fontWeight: 'bold',
-                                            color: (
-                                                Highcharts.defaultOptions.title.style &&
-                                                Highcharts.defaultOptions.title.style.color
-                                            ) || 'gray'
-                                        }
-                                    }
-                                },
-                                legend: {
-                                    align: 'right',
-                                    x: -30,
-                                    verticalAlign: 'top',
-                                    y: 25,
-                                    floating: true,
-                                    backgroundColor:
-                                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
-                                    borderColor: '#CCC',
-                                    borderWidth: 1,
-                                    shadow: false
-                                },
-                                tooltip: {
-                                    headerFormat: '<b>{point.x}</b><br />',
-                                    pointFormat: '{series.name}: {point.y} min.<br />Łącznie: {point.stackTotal} min.'
-                                },
-                                plotOptions: {
-                                    column: {
-                                        stacking: 'normal',
-                                        dataLabels: {
-                                            enabled: true
-                                        }
-                                    }
-                                },
-                                series: [{
-                                    name: 'Objetość',
-                                    data: data.workoutVolume,
-                                    color: '#62c462',
-                                    pointStart: Date.UTC(2020, 1, 1),
-                                    pointInterval: 24 * 3600 * 1000 // one day
-                                }]
-                            });
-                        })
-                        .fail(function () {
-                            alert("Something failed!");
-                        });
-
-                        })
-                    </script>
-                }
-            }
-        }*@
 }

@@ -38,6 +38,13 @@
                 style: {
                     fontFamily: 'Lato'
                 }
+            },
+            lang: {
+                months: [
+                    'Styczeń', 'Luty', 'Marzec', 'Kwiecień',
+                    'Maj', 'Czerwiec', 'Lipiec', 'Sierpień',
+                    'Wrzesień', 'Pażdziernik', 'Listopad', 'Grudzień'
+                ]
             }
         });
     </script>
@@ -129,7 +136,7 @@
                             type: 'column'
                         },
                         title: {
-                            text: 'Czas Treningów w' + $(e.target).attr("data"),
+                            text: 'Czas Treningów w ' + $(e.target).attr("data"),
                         },
                         xAxis: {
                             categories: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierepień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']

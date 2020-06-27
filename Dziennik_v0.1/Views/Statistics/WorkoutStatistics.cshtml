@@ -24,7 +24,7 @@
 <div>
     @for (int i = 1; i < 13; i++)
     {
-        <a href="#" class="js-month btn btn-primary" data="@i">
+        <a href="#" class="js-month btn btn-primary disabled" data="@i">
             @i
         </a>
     }
@@ -112,9 +112,11 @@
         $(".js-year").click(function (e) {
             year = $(e.target).attr("data"),
                 $(".js-year").removeClass('btn-success');
+            $(".js-month").removeClass('btn-success');
+            $(".js-month").removeClass('disabled');
                 $(e.target).addClass('btn-success');
                 $.ajax({
-                    url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + parseInt(year) + "/" + parseInt(month),
+                    url: "/Api/StatisticsApi/WorkoutVolumePerMonthList/" + parseInt(year) + "/" + parseInt(month),
                     method: "GET"
                 })
                     .done(function (data) {
@@ -200,7 +202,7 @@
                 $(".js-month").removeClass('btn-success');
                 $(e.target).addClass('btn-success');
                 $.ajax({
-                    url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + parseInt(year) + "/" + parseInt(month),
+                    url: "/Api/StatisticsApi/WorkoutVolumePerMonthList/" + parseInt(year) + "/" + parseInt(month),
                     method: "GET"
                 })
                     .done(function (data) {

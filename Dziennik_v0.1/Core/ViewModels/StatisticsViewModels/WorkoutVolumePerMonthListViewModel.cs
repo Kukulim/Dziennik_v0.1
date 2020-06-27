@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Dziennik_v0._1.Core.ViewModels.StatisticsViewModels
 {
-    public class WorkoutVolumePerYearListViewModel
+    public class WorkoutVolumePerMonthListViewModel
     {
         public List<WotkoutVolumeDto> Volume { get; set; } = new List<WotkoutVolumeDto>();
         public List<int> YearsWithTraning { get; set; } = new List<int>();

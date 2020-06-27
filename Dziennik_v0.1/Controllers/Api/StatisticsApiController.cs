@@ -79,15 +79,15 @@ namespace Dziennik_v0._1.Controllers.Api
 
             return Ok(viewModel);
         }
-        [Route("Api/StatisticsApi/WorkoutVolumePerYearList/{year}/{month}")]
+        [Route("Api/StatisticsApi/WorkoutVolumePerMonthList/{year}/{month}")]
         [HttpGet]
-        public IHttpActionResult WorkoutVolumePerYearList(int year, int month)
+        public IHttpActionResult WorkoutVolumePerMonthList(int year, int month)
         {
             var userId = User.Identity.GetUserId();
 
             var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).Where(c => (c.Date.Month == month) && (c.Date.Year == year)).ToList();
 
-            var viewModel = new WorkoutVolumePerYearListViewModel();
+            var viewModel = new WorkoutVolumePerMonthListViewModel();
 
             foreach (var item in WorkoutList)
             {
@@ -98,8 +98,27 @@ namespace Dziennik_v0._1.Controllers.Api
                 buffor.WorkoutVolume = item.WorkoutVolume;
                 viewModel.Volume.Add(buffor);
             }
-
             return Ok(viewModel.Volume);
+        }
+        public IHttpActionResult WorkoutVolumePerYearList(int year)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).Where(c => c.Date.Year == year).ToList();
+
+            var viewModel = new WorkoutStatisticsViewModel();
+
+            for (int i = 0; i < 12; i++)
+            {
+                var buffor = WorkoutList.Where(c => (c.Date.Month == (i + 1)) && (c.Date.Year == year)).ToList();
+                var buffor2 = 0;
+                foreach (var item in buffor)
+                {
+                    buffor2 += item.WorkoutVolume;
+                }
+                viewModel.WorkoutVolume.Add(buffor2);
+            }
+            return Ok(viewModel);
         }
     }
 

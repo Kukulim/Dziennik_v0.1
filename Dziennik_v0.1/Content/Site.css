@@ -66,6 +66,12 @@ textarea {
   border-radius: 5px; }
 
 /*BOOTSTRAP OVERLOADS*/
+.btn-warning {
+  background-image: none !important;
+  background-color: #DEBA6F !important; }
+  .btn-warning:hover {
+    background-color: #a5884c !important; }
+
 th {
   text-align: left; }
 

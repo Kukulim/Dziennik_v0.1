@@ -52,6 +52,7 @@ textarea {
         background-color: $goldhover;
     }
 }
+
 #cardiodropdown {
     background-color: $mirando !important;
     max-width: 180px;
@@ -82,6 +83,14 @@ textarea {
     border-radius:5px;
 }
 /*BOOTSTRAP OVERLOADS*/
+.btn-warning {
+    background-image: none !important;
+    background-color: $gold !important;
+
+    &:hover {
+        background-color: $goldhover !important;
+    }
+}
 th {
     text-align: left;
 }

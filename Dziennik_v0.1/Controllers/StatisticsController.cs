@@ -51,5 +51,19 @@ namespace Dziennik_v0._1.Controllers
             viewModel.YearsWithTraning = viewModel.YearsWithTraning.Distinct().OrderBy(c => c).ToList();
             return View(viewModel);
         }
+        public ActionResult CardioStatistics()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var WorkoutList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
+            var viewModel = new WorkoutStatisticsViewModel();
+
+            foreach (var item in WorkoutList)
+            {
+                viewModel.YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
+            }
+            viewModel.YearsWithTraning = viewModel.YearsWithTraning.Distinct().OrderBy(c => c).ToList();
+            return View(viewModel);
+        }
     }
 }

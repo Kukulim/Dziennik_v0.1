@@ -259,5 +259,74 @@ namespace Dziennik_v0._1.Controllers.Api
 
             return Ok(viewModel.Distance);
         }
+        //--------------------------------------------------- czas treningow
+        public IHttpActionResult CardioLengthSumaryList()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var CardioList = _unitOfWork.Cardios.GetAllCardios(userId).ToList();
+            var viewModel = new WorkoutStatisticsViewModel();
+
+            foreach (var item in CardioList)
+            {
+                viewModel.YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
+            }
+            viewModel.YearsWithTraning = viewModel.YearsWithTraning.Distinct().OrderBy(c => c).ToList();
+
+            for (int i = 0; i < viewModel.YearsWithTraning.Count(); i++)
+            {
+                var buffor = CardioList.Where(c => c.Date.Year == viewModel.YearsWithTraning[i]).ToList();
+                var buffor2 = 0;
+                foreach (var item in buffor)
+                {
+                    buffor2 += Convert.ToInt32(item.LengthOfTraining);
+                }
+                viewModel.WorkoutVolume.Add(buffor2);
+            }
+            return Ok(viewModel);
+        }
+        [HttpGet]
+        public IHttpActionResult CardioLengthPerYearList(int year)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var CardioList = _unitOfWork.Cardios.GetAllCardios(userId).Where(c => c.Date.Year == year).ToList();
+
+            var viewModel = new WorkoutStatisticsViewModel();
+
+            for (int i = 0; i < 12; i++)
+            {
+                var buffor = CardioList.Where(c => (c.Date.Month == (i + 1)) && (c.Date.Year == year)).ToList();
+                var buffor2 = 0;
+                foreach (var item in buffor)
+                {
+                    buffor2 += Convert.ToInt32(item.LengthOfTraining);
+                }
+                viewModel.WorkoutVolume.Add(buffor2);
+            }
+            return Ok(viewModel);
+        }
+        [Route("Api/StatisticsApi/CardioLengthPerMonthList/{year}/{month}")]
+        [HttpGet]
+        public IHttpActionResult CardioLengthPerMonthList(int year, int month)
+        {
+            var userId = User.Identity.GetUserId();
+
+            var CardioList = _unitOfWork.Cardios.GetAllCardios(userId).Where(c => (c.Date.Month == month) && (c.Date.Year == year)).ToList();
+
+            var viewModel = new CarioDistancePerMonthListViewModel();
+
+            foreach (var item in CardioList)
+            {
+                var buffor = new CardioDistanceDto();
+                buffor.Year = item.Date.Year;
+                buffor.Month = item.Date.Month;
+                buffor.Day = item.Date.Day;
+                buffor.Distance =Convert.ToDecimal(item.LengthOfTraining);
+                viewModel.Distance.Add(buffor);
+            }
+
+            return Ok(viewModel.Distance);
+        }
     }
 }

@@ -6,7 +6,20 @@
 
 
 <h2>Statystyki treningu cardio:</h2>
+
 @Html.ActionLink("Podsumowanie roczne", "CardioStatistics", null, new { @class = "btn btn-success m-3", @id = "btn-cardio" })
+
+<span style="float:right">
+    <a href="#" class="js-type btn btn-primary btn-warning" data="Distance">
+        Dystans
+    </a>
+    <a href="#" class="js-type btn btn-primary" data="Count">
+        Ilość treningów
+    </a>
+    <a href="#" class="js-type btn btn-primary" data="Length">
+        Czas treningów
+    </a>
+</span>
 
 @if (Model.YearsWithTraning.Count() > 1)
 {
@@ -45,6 +58,23 @@
     @Scripts.Render("~/bundles/highchartjs")
     @Scripts.Render("~/bundles/highchartcss")
     <script>
+        var year = 2020;
+        var month = @DateTime.Now.Month;
+        const monthNames = [
+            'Styczeń', 'Luty', 'Marzec', 'Kwiecień',
+            'Maj', 'Czerwiec', 'Lipiec', 'Sierpień',
+            'Wrzesień', 'Pażdziernik', 'Listopad', 'Grudzień'
+        ];
+        var typeOfResult = "Distance";
+    </script>
+    <script>
+        $(".js-type").click(function (e) {
+            typeOfResult = $(e.target).attr("data"),
+                $(".js-type").removeClass('btn-warning');
+                $(e.target).addClass('btn-warning');
+        });
+    </script>
+    <script>
         Highcharts.setOptions({
             chart: {
                 style: {
@@ -62,11 +92,10 @@
             }
         });
     </script>
-
     <script>
         $(document).ready(function () {
             $.ajax({
-                url: "/Api/StatisticsApi/CardioDistanceSumaryList/",
+                url: "/Api/StatisticsApi/Cardio" + typeOfResult + "SumaryList/",
                 method: "GET"
             })
                 .done(function (data) {
@@ -100,15 +129,6 @@
         })
     </script>
     <script>
-        var year = 2020;
-        var month = @DateTime.Now.Month;
-        const monthNames = [
-            'Styczeń', 'Luty', 'Marzec', 'Kwiecień',
-            'Maj', 'Czerwiec', 'Lipiec', 'Sierpień',
-            'Wrzesień', 'Pażdziernik', 'Listopad', 'Grudzień'
-        ]
-    </script>
-    <script>
         $(".js-year").click(function (e) {
             year = $(e.target).attr("data"),
                 $(".js-year").removeClass('btn-warning');
@@ -116,7 +136,7 @@
             $(".js-month").removeClass('disabled');
             $(e.target).addClass('btn-warning');
             $.ajax({
-                url: "/Api/StatisticsApi/CardioDistancePerYearList/" + year,
+                url: "/Api/StatisticsApi/Cardio" + typeOfResult + "PerYearList/" + year,
                 method: "GET"
             })
                 .done(function (data) {
@@ -189,7 +209,7 @@
                 $(".js-month").removeClass('btn-warning');
             $(e.target).addClass('btn-warning');
             $.ajax({
-                url: "/Api/StatisticsApi/CarioDistancePerMonthList/" + parseInt(year) + "/" + parseInt(month),
+                url: "/Api/StatisticsApi/Cardio" + typeOfResult + "PerMonthList/" + parseInt(year) + "/" + parseInt(month),
                 method: "GET"
             })
                 .done(function (data) {
@@ -246,7 +266,7 @@
                         },
                         tooltip: {
                             headerFormat: '<b>{point.x}</b><br />',
-                            pointFormat: '{series.name}: {point.y} kg.<br />Łącznie: {point.stackTotal} kg.'
+                            pointFormat: '{series.name}: {point.y} km.<br />Łącznie: {point.stackTotal} km.'
                         },
                         plotOptions: {
                             column: {

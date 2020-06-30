@@ -17,7 +17,324 @@ namespace Dziennik_v0._1.Presistence.UserDbInitializer
 
             // seed Cardio Trenings
 
-            context.Cardios.Add(new Cardio { Date = new DateTime(2020, 01, 01), CardioType = CardioType.Bieganie, Distance = 5, UserId = "6d99442e-f680-4bef-bd30-6441f6238afa", LengthOfTraining = "57" });
+            context.Cardios.Add(new Cardio {
+                Date = new DateTime(2020, 01, 01),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57" });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 01, 04),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 01, 08),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 01, 14),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 01, 19),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 01, 23),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 01, 27),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 01, 30),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 02, 04),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 02, 09),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 02, 11),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 02, 19),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 03, 01),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 03, 04),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 03, 08),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 03, 14),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 03, 19),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 03, 23),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 03, 27),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 03, 30),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 04, 04),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 04, 09),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 04, 11),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 04, 19),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 04, 23),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 04, 27),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 05, 01),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 05, 04),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 05, 08),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 05, 14),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 05, 19),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 05, 23),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 05, 27),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 05, 30),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 06, 04),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 06, 09),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 06, 11),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 06, 19),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 06, 23),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
+            context.Cardios.Add(new Cardio
+            {
+                Date = new DateTime(2020, 06, 27),
+                CardioType = CardioType.Bieganie,
+                Distance = 5,
+                UserId = "6d99442e-f680-4bef-bd30-6441f6238afa",
+                LengthOfTraining = "57"
+            });
 
             // seed Workout Trenings
 

@@ -296,6 +296,7 @@
     <Compile Include="Presistence\Repositories\ExerciseRepository.cs" />
     <Compile Include="Presistence\Repositories\WorkoutRepository.cs" />
     <Compile Include="Presistence\UnitOfWork.cs" />
+    <Compile Include="Presistence\UserDbInitializer\UserDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

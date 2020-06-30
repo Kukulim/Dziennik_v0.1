@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Presistence;
+using Dziennik_v0._1.Presistence.UserDbInitializer;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -14,6 +15,7 @@ namespace Dziennik_v0._1.Persistence
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new UserDbInitializer());
         }
 
         public DbSet<Workout> Workouts { get; set; }

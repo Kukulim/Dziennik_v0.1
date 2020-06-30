@@ -21,8 +21,6 @@
     </a>
 </span>
 
-@if (Model.YearsWithTraning.Count() > 1)
-{
     <h4>Wybierz rok:</h4>
     <div>
         @foreach (var item in Model.YearsWithTraning)
@@ -32,7 +30,6 @@
             </a>
         }
     </div>
-}
 <h4>Wybierz miesiąc:</h4>
 <div>
     @for (int i = 1; i < 13; i++)

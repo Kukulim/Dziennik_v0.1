@@ -4,8 +4,7 @@
 
 <h3>Roczne Podsumowanie:</h3>
 
-@if (Model.YearsWithTraning.Count() > 1)
-{
+
     <h4>Wybierz rok:</h4>
     <div>
         @foreach (var item in Model.YearsWithTraning)
@@ -15,7 +14,7 @@
             </a>
         }
     </div>
-}
+
 
 <figure class="highcharts-figure" style="margin-top:15px; margin-bottom:30px">
     <div id="container"></div>

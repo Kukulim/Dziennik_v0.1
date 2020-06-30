@@ -63,12 +63,26 @@
             'Wrzesień', 'Pażdziernik', 'Listopad', 'Grudzień'
         ];
         var typeOfResult = "Distance";
+        var typeOfResultText = "Dystans";
+        var typeOfResultUnit = "km."
     </script>
     <script>
         $(".js-type").click(function (e) {
             typeOfResult = $(e.target).attr("data"),
                 $(".js-type").removeClass('btn-warning');
-                $(e.target).addClass('btn-warning');
+            $(e.target).addClass('btn-warning');
+            if (typeOfResult == "Distance") {
+                typeOfResultText = "Dystans";
+                typeOfResultUnit = "km.";
+            };
+            if (typeOfResult == "Count") {
+                typeOfResultText = "Ilość treningów";
+                typeOfResultUnit = "szt.";
+            };
+            if (typeOfResult == "Length") {
+                typeOfResultText = "Czas treningów";
+                typeOfResultUnit = "min.";
+            };
         });
     </script>
     <script>
@@ -142,7 +156,7 @@
                             type: 'column'
                         },
                         title: {
-                            text: 'Dystans w ' + year,
+                            text: typeOfResultText + ' w ' + year,
                         },
                         xAxis: {
                             categories: ['Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierepień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
@@ -150,7 +164,7 @@
                         yAxis: {
                             min: 0,
                             title: {
-                                text: 'Dystans w km.',
+                                text: typeOfResultText + ' w ' + typeOfResultUnit,
                             },
                             stackLabels: {
                                 enabled: true,
@@ -177,7 +191,7 @@
                         },
                         tooltip: {
                             headerFormat: '<b>{point.x}</b><br />',
-                            pointFormat: '{series.name}: {point.y} km.<br />Łącznie: {point.stackTotal} km.'
+                            pointFormat: '{series.name}: {point.y} ' + typeOfResultUnit + '<br />Łącznie: {point.stackTotal}' + typeOfResultUnit
                         },
                         plotOptions: {
                             column: {
@@ -188,7 +202,7 @@
                             }
                         },
                         series: [{
-                            name: 'Dystans',
+                            name: typeOfResultText,
                             data: data.workoutVolume,
                             color: '#DEBA6F',
                         }]
@@ -222,7 +236,7 @@
                             type: 'column'
                         },
                         title: {
-                            text: 'Dystans w ' + year + ' ' + monthNames[month - 1],
+                            text: typeOfResultText + ' w ' + year + ' ' + monthNames[month - 1],
                         },
                         xAxis: {
                             type: "datetime",
@@ -236,7 +250,7 @@
                         yAxis: {
                             min: 0,
                             title: {
-                                text: 'Dystans w km.'
+                                text: typeOfResultText + ' w ' + typeOfResultUnit,
                             },
                             stackLabels: {
                                 enabled: true,
@@ -263,7 +277,7 @@
                         },
                         tooltip: {
                             headerFormat: '<b>{point.x}</b><br />',
-                            pointFormat: '{series.name}: {point.y} km.<br />Łącznie: {point.stackTotal} km.'
+                            pointFormat: '{series.name}: {point.y} ' + typeOfResultUnit + '<br />Łącznie: {point.stackTotal}' + typeOfResultUnit
                         },
                         plotOptions: {
                             column: {
@@ -274,7 +288,7 @@
                             }
                         },
                         series: [{
-                            name: 'Dystans',
+                            name: typeOfResultText,
                             data: chartdata,
                             color: '#DEBA6F',
                         }]

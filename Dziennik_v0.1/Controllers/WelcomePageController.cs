@@ -30,7 +30,7 @@ namespace Dziennik_v0._1.Controllers
             var userId = User.Identity.GetUserId();
             var ViewModel = new WelcomePageViewModel();
 
-            var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).Where(c => c.Date.Month == CurrentMonth).ToList();
+            var WorkoutList = _unitOfWork.Workouts.GetAllWorkouts(userId).ToList();
             ViewModel.Workouts = WorkoutList.Where(c => c.Date.Month == CurrentMonth).ToList();
 
             foreach (var item in ViewModel.Workouts)

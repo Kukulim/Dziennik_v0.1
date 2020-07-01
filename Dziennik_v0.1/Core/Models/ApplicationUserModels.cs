@@ -13,13 +13,6 @@ namespace Dziennik_v0._1.Core.Models
     {
         public string Name { get; set; }
 
-        public ICollection<Workout> Workouts { get; set; }
-
-        public ApplicationUser()
-        {
-            Workouts = new Collection<Workout>();
-        }
-
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

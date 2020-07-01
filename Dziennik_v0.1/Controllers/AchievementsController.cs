@@ -1,4 +1,5 @@
 ﻿using Dziennik_v0._1.Core;
+using Dziennik_v0._1.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,8 @@ namespace Dziennik_v0._1.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            var viewModel = new Achievement { Id=1, Name="Pierwszy trenig cardio", AcquiredDate=new DateTime(2020,06,30), Acquired=true };
+            return View(viewModel);
         }
     }
 }

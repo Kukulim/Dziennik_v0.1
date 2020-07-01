@@ -224,6 +224,7 @@
     <Compile Include="Core\Dtos\CalendarTraningDto.cs" />
     <Compile Include="Core\Dtos\CardioDistanceDto.cs" />
     <Compile Include="Core\Dtos\WotkoutVolumeDto.cs" />
+    <Compile Include="Core\Models\AchievementModel.cs" />
     <Compile Include="Core\Models\CardioModel.cs" />
     <Compile Include="Core\Models\Enums\CardioType.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />
@@ -286,6 +287,10 @@
     <Compile Include="Migrations\202006111050312_AddDistanceToCardioDecimal.cs" />
     <Compile Include="Migrations\202006111050312_AddDistanceToCardioDecimal.Designer.cs">
       <DependentUpon>202006111050312_AddDistanceToCardioDecimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007011002009_achievementModel.cs" />
+    <Compile Include="Migrations\202007011002009_achievementModel.Designer.cs">
+      <DependentUpon>202007011002009_achievementModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
@@ -906,6 +911,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202006111050312_AddDistanceToCardioDecimal.resx">
       <DependentUpon>202006111050312_AddDistanceToCardioDecimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007011002009_achievementModel.resx">
+      <DependentUpon>202007011002009_achievementModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

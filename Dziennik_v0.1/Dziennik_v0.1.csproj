@@ -224,12 +224,14 @@
     <Compile Include="Core\Dtos\CalendarTraningDto.cs" />
     <Compile Include="Core\Dtos\CardioDistanceDto.cs" />
     <Compile Include="Core\Dtos\WotkoutVolumeDto.cs" />
+    <Compile Include="Core\Helpers\AchievementsHelper.cs" />
     <Compile Include="Core\Models\AchievementModel.cs" />
     <Compile Include="Core\Models\CardioModel.cs" />
     <Compile Include="Core\Models\Enums\CardioType.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />
     <Compile Include="Core\Models\TrainigBaseModel.cs" />
     <Compile Include="Core\Models\WorkoutModel.cs" />
+    <Compile Include="Core\Repositories\IAchievementsRepository.cs" />
     <Compile Include="Core\Repositories\ICardioRepository.cs" />
     <Compile Include="Core\Repositories\IExerciseRepository.cs" />
     <Compile Include="Core\Repositories\IWorkoutRepository.cs" />
@@ -298,6 +300,7 @@
     <Compile Include="Core\ViewModels\ManageViewModels.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
     <Compile Include="Presistence\IApplicationDbContext.cs" />
+    <Compile Include="Presistence\Repositories\AchievementsRepository.cs" />
     <Compile Include="Presistence\Repositories\CardioRepository.cs" />
     <Compile Include="Presistence\Repositories\ExerciseRepository.cs" />
     <Compile Include="Presistence\Repositories\WorkoutRepository.cs" />

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Dziennik_v0._1.Core.Helpers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -12,6 +13,8 @@ namespace Dziennik_v0._1.Core.Models
     public class ApplicationUser : IdentityUser
     {
         public string Name { get; set; }
+
+        public List<Achievement> Achievements { get; set; } = AchievementsHelper.CreateAchievements();
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

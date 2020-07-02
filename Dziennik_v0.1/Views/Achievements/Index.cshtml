@@ -1,8 +1,16 @@
-﻿@model Dziennik_v0._1.Core.Models.Achievement
+﻿@model List<Dziennik_v0._1.Core.Models.Achievement>
 @{
     ViewBag.Title = "Achievements";
 }
 
 <h2>Osiagniecia</h2>
 
-@Model.Name
+@foreach (var model in Model)
+{
+    <p>
+        @Html.DisplayFor(modelItem => model.Name)
+    </p>
+    <p>
+        @Html.DisplayFor(modelItem => model.Acquired)
+    </p>
+}

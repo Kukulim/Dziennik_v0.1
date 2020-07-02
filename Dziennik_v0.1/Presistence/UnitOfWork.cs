@@ -16,6 +16,7 @@ namespace Dziennik_v0._1.Presistence
             Workouts = new WorkoutRepository(context);
             Exercises = new ExerciseRepository(context);
             Cardios = new CardioRepository(context);
+            Achievements = new AchievementsRepository(context);
         }
 
         public IWorkoutRepository Workouts { get; private set; }
@@ -23,6 +24,8 @@ namespace Dziennik_v0._1.Presistence
         public IExerciseRepository Exercises { get; private set; }
 
         public ICardioRepository Cardios { get; private set; }
+
+        public IAchievementsRepository Achievements { get; private set; }
 
         public void Complete()
         {

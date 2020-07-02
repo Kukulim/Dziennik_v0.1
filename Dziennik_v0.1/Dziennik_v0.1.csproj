@@ -228,6 +228,7 @@
     <Compile Include="Core\Models\AchievementModel.cs" />
     <Compile Include="Core\Models\CardioModel.cs" />
     <Compile Include="Core\Models\Enums\CardioType.cs" />
+    <Compile Include="Core\Models\Enums\TraningType.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />
     <Compile Include="Core\Models\TrainigBaseModel.cs" />
     <Compile Include="Core\Models\WorkoutModel.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="Core\Repositories\ICardioRepository.cs" />
     <Compile Include="Core\Repositories\IExerciseRepository.cs" />
     <Compile Include="Core\Repositories\IWorkoutRepository.cs" />
+    <Compile Include="Core\ViewModels\AchievementsIndexViewModel.cs" />
     <Compile Include="Core\ViewModels\CardioCreateViewModel.cs" />
     <Compile Include="Core\ViewModels\StatisticsViewModels\CarioDistancePerMonthListViewModel.cs" />
     <Compile Include="Core\ViewModels\StatisticsViewModels\TraningsLengthListViewModel.cs" />
@@ -293,6 +295,10 @@
     <Compile Include="Migrations\202007011002009_achievementModel.cs" />
     <Compile Include="Migrations\202007011002009_achievementModel.Designer.cs">
       <DependentUpon>202007011002009_achievementModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007021628239_Acievements++.cs" />
+    <Compile Include="Migrations\202007021628239_Acievements++.Designer.cs">
+      <DependentUpon>202007021628239_Acievements++.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
@@ -917,6 +923,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007011002009_achievementModel.resx">
       <DependentUpon>202007011002009_achievementModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007021628239_Acievements++.resx">
+      <DependentUpon>202007021628239_Acievements++.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

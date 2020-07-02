@@ -1,4 +1,5 @@
 ﻿using Dziennik_v0._1.Core.Models;
+using Dziennik_v0._1.Core.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace Dziennik_v0._1.Core.Helpers
         {
             return new List<Achievement>
             {
-                new Achievement { Id=1, Name="Pierwszy trenig cardio", AcquiredDate=new DateTime(2000,01,01) }
+                new Achievement { Id=1, Name="Pierwszy trenig cardio", AcquiredDate=new DateTime(2000,01,01), TraningType=TraningType.Cardio, Value=5 }
             };
         }
     }

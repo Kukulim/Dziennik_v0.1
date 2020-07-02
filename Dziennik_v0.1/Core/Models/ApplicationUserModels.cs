@@ -14,6 +14,8 @@ namespace Dziennik_v0._1.Core.Models
     {
         public string Name { get; set; }
 
+        public int AchievementsPoints { get; set; }
+
         public List<Achievement> Achievements { get; set; } = AchievementsHelper.CreateAchievements();
 
 

@@ -1,11 +1,12 @@
-﻿@model List<Dziennik_v0._1.Core.Models.Achievement>
+﻿@model Dziennik_v0._1.Core.ViewModels.AchievementsIndexViewModel
 @{
     ViewBag.Title = "Achievements";
 }
 
 <h2>Osiagniecia</h2>
+<h3>Zdobyte punkty: @Model.AchievementsPoints</h3>
 
-@foreach (var model in Model)
+@foreach (var model in Model.Achievements)
 {
     <p>
         @Html.DisplayFor(modelItem => model.Name)

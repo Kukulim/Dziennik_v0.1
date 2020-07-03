@@ -23,7 +23,7 @@ namespace Dziennik_v0._1.Controllers
         {
             var userId = User.Identity.GetUserId();
             var user = _unitOfWork.Users.GetUser(userId);
-            var viewModel = new AchievementsIndexViewModel { Achievements = _unitOfWork.Achievements.GetAllAchievement(userId).ToList() };
+            var viewModel = new AchievementsIndexViewModel { Achievements = _unitOfWork.Achievements.GetAllAchievement(userId).OrderByDescending(a=>a.AcquiredDate).ToList() };
             viewModel.AchievementsPoints = user.AchievementsPoints;
             return View(viewModel);
         }

@@ -11,7 +11,12 @@ namespace Dziennik_v0._1.Core.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public bool Acquired { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime AcquiredDate { get; set; }
         public TraningType TraningType { get; set; }
         public int Value { get; set; }

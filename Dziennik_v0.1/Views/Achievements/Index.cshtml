@@ -3,15 +3,50 @@
     ViewBag.Title = "Achievements";
 }
 
-<h2>Osiagniecia</h2>
+<h2>Osiagniecia:</h2>
 <h3>Zdobyte punkty: @Model.AchievementsPoints</h3>
 
-@foreach (var model in Model.Achievements)
+@foreach (var item in Model.Achievements)
 {
-    <p>
-        @Html.DisplayFor(modelItem => model.Name)
-    </p>
-    <p>
-        @Html.DisplayFor(modelItem => model.Acquired)
-    </p>
+    <div class="card text-center achiementCard @((item.Acquired == true) ? "achievementAcquired" : "achievementNotAcquired")">
+
+        <div class="card-header achievCardHeader">
+            @Html.DisplayFor(modelItem => item.Name)
+        </div>
+        <div class="row card-body">
+
+            <div class="col-sm-2">
+                <img src="@item.ImageUrl" />
+            </div>
+
+            <div class="col-sm-8">
+                Wykonaj przynajmniej jeden trening cardio.
+            </div>
+
+            <div class="col-sm-2">
+                @if (item.TraningType == Dziennik_v0._1.Core.Models.Enums.TraningType.Cardio)
+                {
+                    <i class="fas fa-heartbeat"> </i>
+                }
+                else
+                {
+                    <i class="fas fa-dumbbell"></i>
+                }
+                <p class="achievValue">@Html.DisplayFor(modelItem => item.Value)</p>
+            </div>
+        </div>
+
+        @if (item.Acquired == true)
+        {
+            <div class="card-footer">
+                Zdobyto: @Html.DisplayFor(modelItem => item.AcquiredDate)
+            </div>
+        }
+        else
+        {
+            <div class="card-footer">
+                Niezdobyte osiągniecie.
+            </div>
+        }
+    </div>
 }

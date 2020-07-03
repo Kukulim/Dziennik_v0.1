@@ -224,7 +224,7 @@
     <Compile Include="Core\Dtos\CalendarTraningDto.cs" />
     <Compile Include="Core\Dtos\CardioDistanceDto.cs" />
     <Compile Include="Core\Dtos\WotkoutVolumeDto.cs" />
-    <Compile Include="Core\Helpers\AchievementsHelper.cs" />
+    <Compile Include="Core\Helpers\AchievementsCreator.cs" />
     <Compile Include="Core\Models\AchievementModel.cs" />
     <Compile Include="Core\Models\CardioModel.cs" />
     <Compile Include="Core\Models\Enums\CardioType.cs" />
@@ -301,6 +301,10 @@
     <Compile Include="Migrations\202007021628239_Acievements++.Designer.cs">
       <DependentUpon>202007021628239_Acievements++.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007031315090_AchievementsAddUrlAndDescription.cs" />
+    <Compile Include="Migrations\202007031315090_AchievementsAddUrlAndDescription.Designer.cs">
+      <DependentUpon>202007031315090_AchievementsAddUrlAndDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
@@ -327,6 +331,8 @@
     <Content Include="Content\bootstrap-united.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\man-runnew.png" />
+    <Content Include="Content\images\weightlifternew.jpg" />
     <Content Include="Scripts\highcharts\themes\avocado.js" />
     <Content Include="Scripts\highcharts\themes\avocado.src.js" />
     <Content Include="Scripts\highcharts\themes\dark-blue.js" />
@@ -928,6 +934,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007021628239_Acievements++.resx">
       <DependentUpon>202007021628239_Acievements++.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007031315090_AchievementsAddUrlAndDescription.resx">
+      <DependentUpon>202007031315090_AchievementsAddUrlAndDescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

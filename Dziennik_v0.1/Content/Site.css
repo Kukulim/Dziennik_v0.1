@@ -65,6 +65,56 @@ textarea {
   background-color: #3a3f46;
   border-radius: 5px; }
 
+.achievementNotAcquired {
+  background-color: gray !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #3a3f46; }
+  .achievementNotAcquired .card-body {
+    margin-top: 10px; }
+  .achievementNotAcquired .achievCardHeader {
+    background: linear-gradient(90deg, transparent 0%, #3a3f46 50%, transparent 100%); }
+  .achievementNotAcquired .fas {
+    color: #3a3f46;
+    font-size: 45px; }
+  .achievementNotAcquired .card-footer {
+    background: linear-gradient(90deg, transparent 30%, rgba(58, 63, 70, 0.8) 50%, transparent 70%); }
+  .achievementNotAcquired img {
+    border: 4px solid rgba(58, 63, 70, 0.8);
+    width: 90px;
+    height: 90px; }
+
+.achievementAcquired {
+  background-color: #DEBA6F !important;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: #F3B61F; }
+  .achievementAcquired .card-body {
+    margin-top: 10px; }
+  .achievementAcquired .achievCardHeader {
+    background: #deba6f;
+    background: linear-gradient(90deg, #deba6f 0%, #F3B61F 50%, #deba6f 100%); }
+  .achievementAcquired .fas {
+    color: #ffeb00;
+    font-size: 45px; }
+  .achievementAcquired .card-footer {
+    background: linear-gradient(90deg, transparent 30%, #F3B61F 50%, transparent 70%); }
+  .achievementAcquired img {
+    border: 4px solid #ffeb00;
+    width: 90px;
+    height: 90px; }
+
+.achievValue {
+  font-weight: 900; }
+
+.achiementCard {
+  color: black !important;
+  font-size: 20px; }
+
 /*BOOTSTRAP OVERLOADS*/
 .btn-warning {
   background-image: none !important;

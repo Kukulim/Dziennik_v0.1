@@ -9,6 +9,7 @@ namespace Dziennik_v0._1.Core
         IExerciseRepository Exercises { get; }
         ICardioRepository Cardios { get; }
         IAchievementsRepository Achievements { get; }
+        IApplicationUserRepository Users { get; }
         void Complete();
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,8 +22,9 @@ namespace Dziennik_v0._1.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
+            var user = _unitOfWork.Users.GetUser(userId);
             var viewModel = new AchievementsIndexViewModel { Achievements = _unitOfWork.Achievements.GetAllAchievement(userId).ToList() };
-            viewModel.AchievementsPoints = 0;
+            viewModel.AchievementsPoints = user.AchievementsPoints;
             return View(viewModel);
         }
     }

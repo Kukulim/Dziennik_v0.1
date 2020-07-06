@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Core.ViewModels;
+using Dziennik_v0._1.Core.Helpers;
 
 namespace Dziennik_v0._1.Controllers
 {
@@ -152,7 +153,7 @@ namespace Dziennik_v0._1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Achievements = AchievementsCreator.CreateAchievements() };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

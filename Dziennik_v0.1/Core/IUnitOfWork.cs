@@ -11,5 +11,7 @@ namespace Dziennik_v0._1.Core
         IAchievementsRepository Achievements { get; }
         IApplicationUserRepository Users { get; }
         void Complete();
+        void CardioAchievementsCheck(string userId);
+        void WorkoutAchievementsCheck(string userId);
     }
 }

@@ -16,7 +16,7 @@ namespace Dziennik_v0._1.Core.Models
 
         public int AchievementsPoints { get; set; }
 
-        public List<Achievement> Achievements { get; set; } = AchievementsCreator.CreateAchievements();
+        public List<Achievement> Achievements { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

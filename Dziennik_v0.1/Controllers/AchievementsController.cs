@@ -1,4 +1,5 @@
 ﻿using Dziennik_v0._1.Core;
+using Dziennik_v0._1.Core.Helpers;
 using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;

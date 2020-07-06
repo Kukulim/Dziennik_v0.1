@@ -224,6 +224,7 @@
     <Compile Include="Core\Dtos\CalendarTraningDto.cs" />
     <Compile Include="Core\Dtos\CardioDistanceDto.cs" />
     <Compile Include="Core\Dtos\WotkoutVolumeDto.cs" />
+    <Compile Include="Core\Helpers\AchievementsChecker.cs" />
     <Compile Include="Core\Helpers\AchievementsCreator.cs" />
     <Compile Include="Core\Models\AchievementModel.cs" />
     <Compile Include="Core\Models\CardioModel.cs" />

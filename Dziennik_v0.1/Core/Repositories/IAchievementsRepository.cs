@@ -9,5 +9,6 @@ namespace Dziennik_v0._1.Core.Repositories
     public interface IAchievementsRepository
     {
         IEnumerable<Achievement> GetAllAchievement(string id);
+        Achievement GetAchievement(string name);
     }
 }

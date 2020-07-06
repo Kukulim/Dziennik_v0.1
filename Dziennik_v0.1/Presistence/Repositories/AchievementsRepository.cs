@@ -16,6 +16,12 @@ namespace Dziennik_v0._1.Presistence.Repositories
         {
             _context = context;
         }
+
+        public Achievement GetAchievement(string name)
+        {
+            return _context.Achievements.Where(x => x.Name == name).FirstOrDefault();
+        }
+
         public IEnumerable<Achievement> GetAllAchievement(string id)
         {
             return _context.Achievements.Where(x => x.UserId == id).ToList();

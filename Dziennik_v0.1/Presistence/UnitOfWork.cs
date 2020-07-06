@@ -43,10 +43,14 @@ namespace Dziennik_v0._1.Presistence
                     Achievement.AcquiredDate = CardioList.FirstOrDefault(_ => true).Date;
                     user.AchievementsPoints += Achievement.Value;
             }
-            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przebiegnij 5 km.");
-            if (CardioList.FirstOrDefault(c => c.Distance >= 5) != null)
-            {
 
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przebiegnij 5 km.");
+            var test = CardioList.FirstOrDefault(c => c.Distance >= 5);
+            if (test!=null && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = CardioList.FirstOrDefault(c => c.Distance >= 5)?.Date ?? default;
+                user.AchievementsPoints += Achievement.Value;
             }
 
         }
@@ -54,17 +58,15 @@ namespace Dziennik_v0._1.Presistence
         public void WorkoutAchievementsCheck(string userId)
         {
             var user = Users.GetUser(userId);
-            var AchievementsList = Achievements.GetAllAchievement(userId).Where(a=> !a.Acquired);
+            var AchievementsList = Achievements.GetAllAchievement(userId);
             var WorkoutList = Workouts.GetAllWorkouts(userId);
-            if (WorkoutList.Count() > 0)
+
+            var Achievement = AchievementsList.First(a => a.Name == "Pierwszy trenig siłowy");
+            if (WorkoutList.Any() && !Achievement.Acquired)
             {
-                var buffor = AchievementsList.First(a => a.Name == "Pierwszy trenig siłowy");
-                if (!buffor.Acquired)
-                {
-                    buffor.Acquired = true;
-                    buffor.AcquiredDate = System.DateTime.Now;
-                    user.AchievementsPoints += buffor.Value;
-                }
+                    Achievement.Acquired = true;
+                    Achievement.AcquiredDate = WorkoutList.FirstOrDefault(_ => true).Date;
+                    user.AchievementsPoints += Achievement.Value;
             }
 
         }

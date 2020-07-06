@@ -80,6 +80,10 @@ namespace Dziennik_v0._1.Controllers
                 }
                 _unitOfWork.Workouts.AddWorkout(viewModel.Workout);
                 _unitOfWork.Complete();
+
+                _unitOfWork.WorkoutAchievementsCheck(viewModel.Workout.UserId);
+
+                _unitOfWork.Complete();
             }
             catch
             {
@@ -104,7 +108,6 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Complete();
 
             _unitOfWork.CardioAchievementsCheck(viewModel.Cardio.UserId);
-            //_unitOfWork.WorkoutAchievementsCheck(viewModel.Cardio.UserId);
 
             _unitOfWork.Complete();
 

@@ -34,13 +34,19 @@ namespace Dziennik_v0._1.Presistence
         {
             var user = Users.GetUser(userId);
             var AchievementsList = Achievements.GetAllAchievement(userId);
-            var Achievement = AchievementsList.FirstOrDefault(a=>a.Name == "Pierwszy trenig cardio");
             var CardioList = Cardios.GetAllCardios(userId);
-            if (CardioList.Any())
+
+            var Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Pierwszy trenig cardio");
+            if (CardioList.Any() && !Achievement.Acquired)
             {
                     Achievement.Acquired = true;
-                    Achievement.AcquiredDate = System.DateTime.Now;
+                    Achievement.AcquiredDate = CardioList.FirstOrDefault(_ => true).Date;
                     user.AchievementsPoints += Achievement.Value;
+            }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przebiegnij 5 km.");
+            if (CardioList.FirstOrDefault(c => c.Distance >= 5) != null)
+            {
+
             }
 
         }

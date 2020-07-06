@@ -101,6 +101,7 @@ namespace Dziennik_v0._1.Controllers
             viewModel.Cardio.UserId = User.Identity.GetUserId();
             viewModel.Cardio.Distance = Convert.ToDecimal(viewModel.DistanceString.Replace(".", ","));
             _unitOfWork.Cardios.AddCardio(viewModel.Cardio);
+            _unitOfWork.Complete();
 
             _unitOfWork.CardioAchievementsCheck(viewModel.Cardio.UserId);
             //_unitOfWork.WorkoutAchievementsCheck(viewModel.Cardio.UserId);

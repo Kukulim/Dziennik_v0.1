@@ -37,7 +37,6 @@ namespace Dziennik_v0._1.Core.Helpers
                     Description="Przebiegnij 5 km. w jednym treningu.",
                     ImageUrl = "./Content/images/man-runnew.png"
                 },
-                //----------------------------------------
                 new Achievement {
                     Name="Przebiegnij 10 km.",
                     AcquiredDate=new DateTime(2000,01,01),
@@ -93,6 +92,38 @@ namespace Dziennik_v0._1.Core.Helpers
                     Value=30,
                     Description="Wykonaj 100 treningów Cardio.",
                     ImageUrl = "./Content/images/man-runnew.png"
+                },
+               new Achievement {
+                    Name="Przejedz rowerem 10 km.",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=5,
+                    Description="Przejedz rowerem 10 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/bike.jpg"
+                },
+               new Achievement {
+                    Name="Przejedz rowerem 20 km.",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=10,
+                    Description="Przejedz rowerem 20 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/bike.jpg"
+                },
+                new Achievement {
+                    Name="Przejedz rowerem 50 km.",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=20,
+                    Description="Przejedz rowerem 50 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/bike.jpg"
+                },
+                new Achievement {
+                    Name="Przejedz rowerem 100 km.",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=30,
+                    Description="Przejedz rowerem 100 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/bike.jpg"
                 },
             };
         }

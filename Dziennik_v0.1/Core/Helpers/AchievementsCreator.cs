@@ -34,7 +34,64 @@ namespace Dziennik_v0._1.Core.Helpers
                     AcquiredDate=new DateTime(2000,01,01),
                     TraningType=TraningType.Cardio,
                     Value=10,
-                    Description="Przebiegnij 5 km. w jednym treningu",
+                    Description="Przebiegnij 5 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/man-runnew.png"
+                },
+                //----------------------------------------
+                new Achievement {
+                    Name="Przebiegnij 10 km.",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=10,
+                    Description="Przebiegnij 10 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/man-runnew.png"
+                },
+                new Achievement {
+                    Name="Przebiegnij Półmaraton",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=25,
+                    Description="Przebiegnij 21,0975 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/man-runnew.png"
+                },
+                new Achievement {
+                    Name="Przebiegnij Maraton",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=50,
+                    Description="Przebiegnij 42,195 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/man-runnew.png"
+                },
+                new Achievement {
+                    Name="10 trenigów cardio",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=10,
+                    Description="Wykonaj 10 treningów Cardio.",
+                    ImageUrl = "./Content/images/man-runnew.png"
+                },
+                new Achievement {
+                    Name="20 trenigów cardio",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=10,
+                    Description="Wykonaj 20 treningów Cardio.",
+                    ImageUrl = "./Content/images/man-runnew.png"
+                },
+                new Achievement {
+                    Name="50 trenigów cardio",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=20,
+                    Description="Wykonaj 50 treningów Cardio.",
+                    ImageUrl = "./Content/images/man-runnew.png"
+                },
+                new Achievement {
+                    Name="100 trenigów cardio",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=30,
+                    Description="Wykonaj 100 treningów Cardio.",
                     ImageUrl = "./Content/images/man-runnew.png"
                 },
             };

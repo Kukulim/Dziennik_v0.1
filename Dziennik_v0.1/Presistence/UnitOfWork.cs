@@ -1,8 +1,10 @@
 ﻿using Dziennik_v0._1.Core;
 using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Core.Repositories;
+using Dziennik_v0._1.Core.ViewModels;
 using Dziennik_v0._1.Persistence;
 using Dziennik_v0._1.Presistence.Repositories;
+using System;
 using System.Linq;
 
 namespace Dziennik_v0._1.Presistence
@@ -30,18 +32,18 @@ namespace Dziennik_v0._1.Presistence
         public IAchievementsRepository Achievements { get; private set; }
         public IApplicationUserRepository Users { get; private set; }
 
-        public void CardioAchievementsCheck(string userId)
+        public void CardioAchievementsCheck(CardioCreateViewModel cardioCreateViewModel)
         {
-            var user = Users.GetUser(userId);
-            var AchievementsList = Achievements.GetAllAchievement(userId);
-            var CardioList = Cardios.GetAllCardios(userId);
+            var user = Users.GetUser(cardioCreateViewModel.Cardio.UserId);
+            var AchievementsList = Achievements.GetAllAchievement(cardioCreateViewModel.Cardio.UserId);
+            var CardioList = Cardios.GetAllCardios(cardioCreateViewModel.Cardio.UserId);
 
             var Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Pierwszy trenig cardio");
             if (CardioList.Any() && !Achievement.Acquired)
             {
-                    Achievement.Acquired = true;
-                    Achievement.AcquiredDate = CardioList.FirstOrDefault(_ => true).Date;
-                    user.AchievementsPoints += Achievement.Value;
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
             }
 
             Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przebiegnij 5 km.");
@@ -49,23 +51,78 @@ namespace Dziennik_v0._1.Presistence
             if (test!=null && !Achievement.Acquired)
             {
                 Achievement.Acquired = true;
-                Achievement.AcquiredDate = CardioList.FirstOrDefault(c => c.Distance >= 5)?.Date ?? default;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
                 user.AchievementsPoints += Achievement.Value;
             }
 
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przebiegnij 10 km.");
+            test = CardioList.FirstOrDefault(c => c.Distance >= 10);
+            if (test != null && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przebiegnij Półmaraton");
+            test = CardioList.FirstOrDefault(c => Convert.ToInt32(c.Distance * 10000) >= Convert.ToInt32(21.0975 * 10000));
+            if (test != null && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przebiegnij Maraton");
+            test = CardioList.FirstOrDefault(c => Convert.ToInt32(c.Distance * 10000) >= Convert.ToInt32(42.195 * 10000));
+            if (test != null && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "10 trenigów cardio");
+            if (CardioList.Count() >= 10 && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "20 trenigów cardio");
+            if (CardioList.Count() >= 20 && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "50 trenigów cardio");
+            if (CardioList.Count() >= 50 && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "100 trenigów cardio");
+            if (CardioList.Count() >= 100 && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
         }
 
-        public void WorkoutAchievementsCheck(string userId)
+        public void WorkoutAchievementsCheck(Workout Workout)
         {
-            var user = Users.GetUser(userId);
-            var AchievementsList = Achievements.GetAllAchievement(userId);
-            var WorkoutList = Workouts.GetAllWorkouts(userId);
+            var user = Users.GetUser(Workout.UserId);
+            var AchievementsList = Achievements.GetAllAchievement(Workout.UserId);
+            var WorkoutList = Workouts.GetAllWorkouts(Workout.UserId);
 
             var Achievement = AchievementsList.First(a => a.Name == "Pierwszy trenig siłowy");
             if (WorkoutList.Any() && !Achievement.Acquired)
             {
                     Achievement.Acquired = true;
-                    Achievement.AcquiredDate = WorkoutList.FirstOrDefault(_ => true).Date;
+                    Achievement.AcquiredDate = Workout.Date;
                     user.AchievementsPoints += Achievement.Value;
             }
 
@@ -75,5 +132,6 @@ namespace Dziennik_v0._1.Presistence
         {
             _context.SaveChanges();
         }
+
     }
 }

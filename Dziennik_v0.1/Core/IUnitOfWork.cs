@@ -1,5 +1,8 @@
 ﻿
+using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Core.Repositories;
+using Dziennik_v0._1.Core.ViewModels;
+using System;
 
 namespace Dziennik_v0._1.Core
 {
@@ -11,7 +14,7 @@ namespace Dziennik_v0._1.Core
         IAchievementsRepository Achievements { get; }
         IApplicationUserRepository Users { get; }
         void Complete();
-        void CardioAchievementsCheck(string userId);
-        void WorkoutAchievementsCheck(string userId);
+        void CardioAchievementsCheck(CardioCreateViewModel cardioCreateViewModel);
+        void WorkoutAchievementsCheck(Workout Workout);
     }
 }

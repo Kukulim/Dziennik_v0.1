@@ -143,6 +143,41 @@ namespace Dziennik_v0._1.Presistence
                 Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
                 user.AchievementsPoints += Achievement.Value;
             }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przepłyń 1 km.");
+            test = CardioList.FirstOrDefault(c => c.Distance >= 1);
+            if (test != null && !Achievement.Acquired && cardioCreateViewModel.Cardio.CardioType == CardioType.Pływanie)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przepłyń 3 km.");
+            test = CardioList.FirstOrDefault(c => c.Distance >= 3);
+            if (test != null && !Achievement.Acquired && cardioCreateViewModel.Cardio.CardioType == CardioType.Pływanie)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przepłyń 5 km.");
+            test = CardioList.FirstOrDefault(c => c.Distance >= 5);
+            if (test != null && !Achievement.Acquired && cardioCreateViewModel.Cardio.CardioType == CardioType.Pływanie)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "Przepłyń 20 km.");
+            test = CardioList.FirstOrDefault(c => c.Distance >= 20);
+            if (test != null && !Achievement.Acquired && cardioCreateViewModel.Cardio.CardioType == CardioType.Pływanie)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = cardioCreateViewModel.Cardio.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+
+
+
 
         }
 

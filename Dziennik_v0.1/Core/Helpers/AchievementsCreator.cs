@@ -125,6 +125,38 @@ namespace Dziennik_v0._1.Core.Helpers
                     Description="Przejedz rowerem 100 km. w jednym treningu.",
                     ImageUrl = "./Content/images/bike.jpg"
                 },
+                new Achievement {
+                    Name="Przepłyń 1 km.",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=5,
+                    Description="Przepłyń 1 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/swimming.jpg"
+                },
+                new Achievement {
+                    Name="Przepłyń 3 km.",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=5,
+                    Description="Przepłyń 3 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/swimming.jpg"
+                },
+                new Achievement {
+                    Name="Przepłyń 5 km.",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=10,
+                    Description="Przepłyń 5 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/swimming.jpg"
+                },
+                new Achievement {
+                    Name="Przepłyń 20 km.",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Cardio,
+                    Value=20,
+                    Description="Przepłyń 20 km. w jednym treningu.",
+                    ImageUrl = "./Content/images/swimming.jpg"
+                },
             };
         }
     }

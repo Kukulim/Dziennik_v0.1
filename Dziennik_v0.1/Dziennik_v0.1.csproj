@@ -334,6 +334,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\bike.jpg" />
     <Content Include="Content\images\man-runnew.png" />
+    <Content Include="Content\images\swimming.jpg" />
     <Content Include="Content\images\weightlifternew.jpg" />
     <Content Include="Scripts\highcharts\themes\avocado.js" />
     <Content Include="Scripts\highcharts\themes\avocado.src.js" />

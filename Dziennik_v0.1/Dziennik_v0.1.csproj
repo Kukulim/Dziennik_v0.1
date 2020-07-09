@@ -216,6 +216,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AchievementsController.cs" />
     <Compile Include="Controllers\Api\StatisticsApiController.cs" />
+    <Compile Include="Controllers\DietController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
@@ -889,6 +890,7 @@
     <Content Include="Views\Statistics\WorkoutStatistics.cshtml" />
     <Content Include="Views\Statistics\CardioStatistics.cshtml" />
     <Content Include="Views\Achievements\Index.cshtml" />
+    <Content Include="Views\Diet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

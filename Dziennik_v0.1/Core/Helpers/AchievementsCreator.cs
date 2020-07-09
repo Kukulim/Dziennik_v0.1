@@ -157,6 +157,38 @@ namespace Dziennik_v0._1.Core.Helpers
                     Description="Przepłyń 20 km. w jednym treningu.",
                     ImageUrl = "./Content/images/swimming.jpg"
                 },
+                new Achievement {
+                    Name="10 trenigów siłowych",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Workout,
+                    Value=5,
+                    Description="Wykonaj 10 treningów Siłowych.",
+                    ImageUrl = "./Content/images/weightlifternew.jpg"
+                },
+                new Achievement {
+                    Name="20 trenigów siłowych",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Workout,
+                    Value=10,
+                    Description="Wykonaj 20 treningów Siłowych.",
+                    ImageUrl = "./Content/images/weightlifternew.jpg"
+                },
+                new Achievement {
+                    Name="50 trenigów siłowych",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Workout,
+                    Value=20,
+                    Description="Wykonaj 50 treningów Siłowych.",
+                    ImageUrl = "./Content/images/weightlifternew.jpg"
+                },
+                new Achievement {
+                    Name="100 trenigów siłowych",
+                    AcquiredDate=new DateTime(2000,01,01),
+                    TraningType=TraningType.Workout,
+                    Value=50,
+                    Description="Wykonaj 100 treningów Siłowych.",
+                    ImageUrl = "./Content/images/weightlifternew.jpg"
+                },
             };
         }
     }

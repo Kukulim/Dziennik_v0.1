@@ -176,25 +176,49 @@ namespace Dziennik_v0._1.Presistence
                 user.AchievementsPoints += Achievement.Value;
             }
 
-
-
-
         }
 
-        public void WorkoutAchievementsCheck(Workout Workout)
+        public void WorkoutAchievementsCheck(Workout WorkoutViewModel)
         {
-            var user = Users.GetUser(Workout.UserId);
-            var AchievementsList = Achievements.GetAllAchievement(Workout.UserId);
-            var WorkoutList = Workouts.GetAllWorkouts(Workout.UserId);
+            var user = Users.GetUser(WorkoutViewModel.UserId);
+            var AchievementsList = Achievements.GetAllAchievement(WorkoutViewModel.UserId);
+            var WorkoutList = Workouts.GetAllWorkouts(WorkoutViewModel.UserId);
 
             var Achievement = AchievementsList.First(a => a.Name == "Pierwszy trenig siłowy");
             if (WorkoutList.Any() && !Achievement.Acquired)
             {
                     Achievement.Acquired = true;
-                    Achievement.AcquiredDate = Workout.Date;
+                    Achievement.AcquiredDate = WorkoutViewModel.Date;
                     user.AchievementsPoints += Achievement.Value;
             }
-
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "10 trenigów siłowych");
+            if (WorkoutList.Count() >= 10 && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = WorkoutViewModel.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "20 trenigów siłowych");
+            if (WorkoutList.Count() >= 20 && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = WorkoutViewModel.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "50 trenigów siłowych");
+            if (WorkoutList.Count() >= 50 && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = WorkoutViewModel.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
+            Achievement = AchievementsList.FirstOrDefault(a => a.Name == "100 trenigów siłowych");
+            if (WorkoutList.Count() >= 100 && !Achievement.Acquired)
+            {
+                Achievement.Acquired = true;
+                Achievement.AcquiredDate = WorkoutViewModel.Date;
+                user.AchievementsPoints += Achievement.Value;
+            }
         }
 
         public void Complete()

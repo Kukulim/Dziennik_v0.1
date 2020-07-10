@@ -230,6 +230,7 @@
     <Compile Include="Core\Models\AchievementModel.cs" />
     <Compile Include="Core\Models\CardioModel.cs" />
     <Compile Include="Core\Models\Enums\CardioType.cs" />
+    <Compile Include="Core\Models\Enums\SexType.cs" />
     <Compile Include="Core\Models\Enums\TraningType.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />
     <Compile Include="Core\Models\TrainigBaseModel.cs" />
@@ -306,6 +307,10 @@
     <Compile Include="Migrations\202007031315090_AchievementsAddUrlAndDescription.cs" />
     <Compile Include="Migrations\202007031315090_AchievementsAddUrlAndDescription.Designer.cs">
       <DependentUpon>202007031315090_AchievementsAddUrlAndDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007101837531_expUser.cs" />
+    <Compile Include="Migrations\202007101837531_expUser.Designer.cs">
+      <DependentUpon>202007101837531_expUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
@@ -891,6 +896,7 @@
     <Content Include="Views\Statistics\CardioStatistics.cshtml" />
     <Content Include="Views\Achievements\Index.cshtml" />
     <Content Include="Views\Diet\Index.cshtml" />
+    <Content Include="Views\Diet\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -942,6 +948,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007031315090_AchievementsAddUrlAndDescription.resx">
       <DependentUpon>202007031315090_AchievementsAddUrlAndDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007101837531_expUser.resx">
+      <DependentUpon>202007101837531_expUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

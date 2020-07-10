@@ -8,10 +8,5 @@ namespace Dziennik_v0._1.Core.Helpers
 {
     public class AchievementsChecker
     {
-
-        public void CardioCheck( string userId )
-        {
-
-        }
     }
 }

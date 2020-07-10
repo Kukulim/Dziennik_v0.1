@@ -13,5 +13,9 @@ namespace Dziennik_v0._1.Controllers
         {
             return View();
         }
+        public ActionResult UserProfile()
+        {
+            return View();
+        }
     }
 }

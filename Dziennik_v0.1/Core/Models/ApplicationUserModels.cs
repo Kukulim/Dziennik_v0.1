@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Dziennik_v0._1.Core.Helpers;
+using Dziennik_v0._1.Core.Models.Enums;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -13,6 +14,11 @@ namespace Dziennik_v0._1.Core.Models
     public class ApplicationUser : IdentityUser
     {
         public string Name { get; set; }
+        public int Age { get; set; }
+        public float Weight { get; set; }
+        public int Height { get; set; }
+        public float BodyFat { get; set; }
+        public SexType Sex { get; set; }
 
         public int AchievementsPoints { get; set; }
 

@@ -153,7 +153,21 @@ textarea {
     color: black !important;
     font-size: 20px;
 }
+#targetInput {
+    background-color: #f0c5f7 !important;
+}
+#js-calculate {
+    border: 1px solid #f0c5f7;
+}
 /*BOOTSTRAP OVERLOADS*/
+.btn-info {
+    background-image: none !important;
+    background-color: mediumpurple !important;
+
+    &:hover {
+        background-color: #7219bb !important;
+    }
+}
 .btn-warning {
     background-image: none !important;
     background-color: $gold !important;

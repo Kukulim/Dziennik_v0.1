@@ -20,7 +20,7 @@ namespace Dziennik_v0._1.Core.Models
         public int Age { get; set; }
         [Display(Name = "Waga:")]
         public float Weight { get; set; }
-        [Display(Name = "Cel:")]
+        [Display(Name = "Waga docelowa:")]
         public float Target { get; set; }
         [Display(Name = "Wzrost:")]
         public int Height { get; set; }

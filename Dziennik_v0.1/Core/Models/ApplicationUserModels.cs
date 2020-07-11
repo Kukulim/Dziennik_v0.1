@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -13,11 +14,19 @@ namespace Dziennik_v0._1.Core.Models
     // Możesz dodać dane profilu dla użytkownika, dodając więcej właściwości do klasy ApplicationUser. Odwiedź stronę https://go.microsoft.com/fwlink/?LinkID=317594, aby dowiedzieć się więcej.
     public class ApplicationUser : IdentityUser
     {
+        [Display(Name = "Imię:")]
         public string Name { get; set; }
+        [Display(Name = "Wiek:")]
         public int Age { get; set; }
+        [Display(Name = "Waga:")]
         public float Weight { get; set; }
+        [Display(Name = "Cel:")]
+        public float Target { get; set; }
+        [Display(Name = "Wzrost:")]
         public int Height { get; set; }
+        [Display(Name = "Zawartość procentowa tłuszczu:")]
         public float BodyFat { get; set; }
+        [Display(Name = "Płeć:")]
         public SexType Sex { get; set; }
 
         public int AchievementsPoints { get; set; }

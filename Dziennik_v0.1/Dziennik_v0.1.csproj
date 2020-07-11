@@ -312,6 +312,10 @@
     <Compile Include="Migrations\202007101837531_expUser.Designer.cs">
       <DependentUpon>202007101837531_expUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007110945480_AchievUserNewProps.cs" />
+    <Compile Include="Migrations\202007110945480_AchievUserNewProps.Designer.cs">
+      <DependentUpon>202007110945480_AchievUserNewProps.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
@@ -951,6 +955,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007101837531_expUser.resx">
       <DependentUpon>202007101837531_expUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007110945480_AchievUserNewProps.resx">
+      <DependentUpon>202007110945480_AchievUserNewProps.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

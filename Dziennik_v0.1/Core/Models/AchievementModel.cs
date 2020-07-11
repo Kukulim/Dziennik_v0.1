@@ -13,7 +13,7 @@ namespace Dziennik_v0._1.Core.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Acquired { get; set; }
-
+        public bool IsNew { get; set; }
         public string ImageUrl { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]

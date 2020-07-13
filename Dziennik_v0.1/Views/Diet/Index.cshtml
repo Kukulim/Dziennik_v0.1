@@ -6,3 +6,24 @@
 <h2>Dieta:</h2>
 @Html.ActionLink("Profil", "UserProfile", "Diet", new { area = "" }, new { @class = "btn btn-info" })
 
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: 'https://trackapi.nutritionix.com/v2/search/instant?query=egg',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function () { alert('boo!'); },
+                beforeSend: setHeader
+            });
+        });
+
+        function setHeader(xhr) {
+            xhr.setRequestHeader('x-app-id', 'ed255be5');
+            xhr.setRequestHeader('x-app-key', 'e68e6d98d075c20deb380def4fd5f6f8');
+        }
+    </script>
+}

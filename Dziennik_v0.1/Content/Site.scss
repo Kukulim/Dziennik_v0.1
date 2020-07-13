@@ -153,6 +153,13 @@ textarea {
     color: black !important;
     font-size: 20px;
 }
+.isNew {
+    display: block;
+    color: #ffeb00;
+    background-color: #80004f;
+    transform: rotate(-23deg);
+    max-width: 130px;
+}
 #targetInput {
     background-color: #f0c5f7 !important;
 }

@@ -21,6 +21,12 @@
 
             <div class="col-sm-8">
                 @Html.DisplayFor(modelItem => item.Description)
+                @if (item.IsNew == true)
+                {
+                    <span class="isNew">
+                         Nowe !!! 
+                    </span>
+                }
             </div>
 
             <div class="col-sm-2">

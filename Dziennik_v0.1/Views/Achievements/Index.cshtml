@@ -24,7 +24,7 @@
                 @if (item.IsNew == true)
                 {
                     <span class="isNew">
-                         Nowe !!! 
+                        Nowe !!!
                     </span>
                 }
             </div>
@@ -56,3 +56,13 @@
         }
     </div>
 }
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "/Achievements/AchievementsUnSelect/",
+                method: "GET"
+            })
+        });
+    </script>
+    }

@@ -8,15 +8,15 @@
 <h2>Statystyki treningu siłowego:</h2>
 @Html.ActionLink("Podsumowanie roczne", "WorkoutStatistics", null, new { @class = "btn btn-success m-3" })
 
-    <h4>Wybierz rok:</h4>
-    <div>
-        @foreach (var item in Model.YearsWithTraning)
-        {
-            <a href="#" class="js-year btn btn-primary" data="@item.ToString()">
-                @item.ToString()
-            </a>
-        }
-    </div>
+<h4>Wybierz rok:</h4>
+<div>
+    @foreach (var item in Model.YearsWithTraning)
+    {
+        <a href="#" class="js-year btn btn-primary" data="@item.ToString()">
+            @item.ToString()
+        </a>
+    }
+</div>
 <h4>Wybierz miesiąc:</h4>
 <div>
     @for (int i = 1; i < 13; i++)
@@ -111,7 +111,7 @@
                 $(".js-year").removeClass('btn-success');
             $(".js-month").removeClass('btn-success');
             $(".js-month").removeClass('disabled');
-                $(e.target).addClass('btn-success');
+            $(e.target).addClass('btn-success');
             $.ajax({
                 url: "/Api/StatisticsApi/WorkoutVolumePerYearList/" + year,
                 method: "GET"
@@ -184,85 +184,85 @@
         $(".js-month").click(function (e) {
             month = $(e.target).attr("data"),
                 $(".js-month").removeClass('btn-success');
-                $(e.target).addClass('btn-success');
-                $.ajax({
-                    url: "/Api/StatisticsApi/WorkoutVolumePerMonthList/" + parseInt(year) + "/" + parseInt(month),
-                    method: "GET"
-                })
-                    .done(function (data) {
-                        var test;
-                        var chartdata = [];
-                        for (var i = 0; i < data.length; i++) {
-                            test = Date.UTC(data[i].year, data[i].month - 1, data[i].day);
-                            chartdata.push([test, data[i].workoutVolume]);
-                        }
+            $(e.target).addClass('btn-success');
+            $.ajax({
+                url: "/Api/StatisticsApi/WorkoutVolumePerMonthList/" + parseInt(year) + "/" + parseInt(month),
+                method: "GET"
+            })
+                .done(function (data) {
+                    var test;
+                    var chartdata = [];
+                    for (var i = 0; i < data.length; i++) {
+                        test = Date.UTC(data[i].year, data[i].month - 1, data[i].day);
+                        chartdata.push([test, data[i].workoutVolume]);
+                    }
 
-                        Highcharts.chart('container', {
-                            chart: {
-                                type: 'column'
+                    Highcharts.chart('container', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Objętość treningów ' + year + ' ' + monthNames[month - 1],
+                        },
+                        xAxis: {
+                            type: "datetime",
+                            min: Date.UTC(parseInt(year), parseInt(month) - 1, 1),
+                            max: Date.UTC(parseInt(year), parseInt(month), 0),
+                            labels: {
+                                format: '{value:%e.%b}',
+                                rotation: -45,
                             },
+                        },
+                        yAxis: {
+                            min: 0,
                             title: {
-                                text: 'Objętość treningów ' + year + ' ' + monthNames[month-1],
+                                text: 'Objętość w kg.'
                             },
-                            xAxis: {
-                                type: "datetime",
-                                min: Date.UTC(parseInt(year), parseInt(month) - 1, 1),
-                                max: Date.UTC(parseInt(year), parseInt(month), 0),
-                                labels: {
-                                    format: '{value:%e.%b}',
-                                    rotation: -45,
-                                },
-                            },
-                            yAxis: {
-                                min: 0,
-                                title: {
-                                    text: 'Objętość w kg.'
-                                },
-                                stackLabels: {
-                                    enabled: true,
-                                    style: {
-                                        fontWeight: 'bold',
-                                        color: (
-                                            Highcharts.defaultOptions.title.style &&
-                                            Highcharts.defaultOptions.title.style.color
-                                        ) || 'gray'
-                                    }
+                            stackLabels: {
+                                enabled: true,
+                                style: {
+                                    fontWeight: 'bold',
+                                    color: (
+                                        Highcharts.defaultOptions.title.style &&
+                                        Highcharts.defaultOptions.title.style.color
+                                    ) || 'gray'
                                 }
-                            },
-                            legend: {
-                                align: 'right',
-                                x: -30,
-                                verticalAlign: 'top',
-                                y: 25,
-                                floating: true,
-                                backgroundColor:
-                                    Highcharts.defaultOptions.legend.backgroundColor || 'white',
-                                borderColor: '#CCC',
-                                borderWidth: 1,
-                                shadow: false
-                            },
-                            tooltip: {
-                                headerFormat: '<b>{point.x}</b><br />',
-                                pointFormat: '{series.name}: {point.y} kg.<br />Łącznie: {point.stackTotal} kg.'
-                            },
-                            plotOptions: {
-                                column: {
-                                    stacking: 'normal',
-                                    dataLabels: {
-                                        enabled: true
-                                    }
+                            }
+                        },
+                        legend: {
+                            align: 'right',
+                            x: -30,
+                            verticalAlign: 'top',
+                            y: 25,
+                            floating: true,
+                            backgroundColor:
+                                Highcharts.defaultOptions.legend.backgroundColor || 'white',
+                            borderColor: '#CCC',
+                            borderWidth: 1,
+                            shadow: false
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{point.x}</b><br />',
+                            pointFormat: '{series.name}: {point.y} kg.<br />Łącznie: {point.stackTotal} kg.'
+                        },
+                        plotOptions: {
+                            column: {
+                                stacking: 'normal',
+                                dataLabels: {
+                                    enabled: true
                                 }
-                            },
-                            series: [{
-                                name: 'Objetość',
-                                data: chartdata,
-                                color: '#62c462',
-                            }]
-                        });
-                    })
-                    .fail(function () {
-                        alert("Something failed!");
+                            }
+                        },
+                        series: [{
+                            name: 'Objetość',
+                            data: chartdata,
+                            color: '#62c462',
+                        }]
                     });
+                })
+                .fail(function () {
+                    alert("Something failed!");
+                });
 
         })
     </script>

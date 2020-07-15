@@ -49,6 +49,7 @@
                         </li>
                         <li>
                             @Html.ActionLink("Osiągniecia", "Index", "Achievements")
+                            <span id="test"></span>
                         </li>
                     }
                 </ul>
@@ -70,15 +71,12 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
-        $(document).ready(function (data) {
-            $.ajax({
-                url: "api/AchievementsApi/AchievementsIsNewCount",
-                method: "GET"
-            })
-            console.log(data);
-            if (data.length == 0)
+        $(document).ready($.getJSON("api/AchievementsApi/AchievementsIsNewCount", function (data) {
+            if (data==0) {
                 return;
-        });
+            }
+            $("#test").text(data);
+        }));
     </script>
 </body>
 </html>

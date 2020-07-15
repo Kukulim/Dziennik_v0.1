@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Helpers;
 using System.Web.Http;
 
 namespace Dziennik_v0._1.Controllers.Api
@@ -18,7 +19,7 @@ namespace Dziennik_v0._1.Controllers.Api
             _unitOfWork = unitOfWork;
         }
         [HttpGet]
-        public IHttpActionResult AchievementsIsNewCount()
+        public int AchievementsIsNewCount()
         {
             var userId = User.Identity.GetUserId();
             var Achievements = _unitOfWork.Achievements.GetAllAchievement(userId);
@@ -30,7 +31,7 @@ namespace Dziennik_v0._1.Controllers.Api
                     IsNewCount++;
                 }
             }
-            return Ok(IsNewCount);
+            return IsNewCount;
         }
     }
 }

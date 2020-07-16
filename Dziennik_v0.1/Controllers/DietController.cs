@@ -30,7 +30,9 @@ namespace Dziennik_v0._1.Controllers
         [HttpPost]
         public ActionResult UserProfile(ApplicationUser viewModel)
         {
-            return View();
+            _unitOfWork.Users.EditUser(viewModel);
+            _unitOfWork.Complete();
+            return RedirectToAction("Index");
         }
     }
 }

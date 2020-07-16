@@ -5,18 +5,31 @@
 
     <h2>Odżywianie:</h2>
 @Html.ActionLink("Profil", "UserProfile", "Diet", new { area = "" }, new { @class = "btn btn-info" })
+<h2>Twoje posiłki:</h2>
+<div class="d-flex justify-content-center h-100">
+    <div class="searchbar">
+        <input class="search_input" type="text" name="" placeholder="szukaj...">
+        <a href="#" class="search_icon" id="js-search"><i class="fas fa-search"></i></a>
+    </div>
+</div>
+<div id="wynik">
+
+</div>
 
 @section Scripts {
     <script type="text/javascript">
-        $(document).ready(function () {
+        $("#js-search").click(function () {
+            result = $(".search_input").val(),
             $.ajax({
-                url: 'https://trackapi.nutritionix.com/v2/search/instant?query=egg',
+                url: 'https://trackapi.nutritionix.com/v2/search/instant?query='+result,
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
                     console.log(data);
+                    $("#wynik").append("Nazwa: " + data.branded[0].food_name + " , ilosc kalorii: " + data.branded[0].nf_calories);
+                    
                 },
-                error: function () { alert('boo!'); },
+                error: function () { alert('coś poszło nie tak, przepraszamy'); },
                 beforeSend: setHeader
             });
         });

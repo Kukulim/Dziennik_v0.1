@@ -216,6 +216,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AchievementsController.cs" />
     <Compile Include="Controllers\Api\AchievementsApiController.cs" />
+    <Compile Include="Controllers\Api\DietApiController.cs" />
     <Compile Include="Controllers\Api\StatisticsApiController.cs" />
     <Compile Include="Controllers\DietController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -35,33 +35,15 @@
             $("#js-search").click(function () {
                 result = $(".search_input").val(),
                     $.ajax({
-                        url: 'https://trackapi.nutritionix.com/v2/search/instant?query=' + result,
+                        url: '../Api/DietApi/GetFoodData',
                         type: 'GET',
-                        dataType: 'json',
+                        dataType: 'text',
                         success: function (data) {
-
-                            var tr;
                             console.log(data);
-                            for (var i = 0; i < 10; i++) {
-                                tr = tr + "<tr>";
-                                tr = tr + "<td>" + data.branded[i].food_name + "</td>";
-                                tr = tr + "<td>" + data.branded[i].nf_calories + "</td>";
-                                tr = tr + "<td>" + data.branded[i].serving_qty + "</td>";
-                                tr = tr + "<td><img src=" + data.branded[i].photo.thumb + " width='70' height='70'></td>";
-                                tr = tr + "<td><a href='#' class='btn btn-primary'> dodaj </a></td>"
-                                tr = tr + "</tr>";
-                            }
-                            $('#tblPopulation').append(tr);
-
                         },
                         error: function () { alert('coś poszło nie tak, przepraszamy'); },
-                        beforeSend: setHeader
                     });
             });
 
-            function setHeader(xhr) {
-                xhr.setRequestHeader('x-app-id', 'ed255be5');
-                xhr.setRequestHeader('x-app-key', 'e68e6d98d075c20deb380def4fd5f6f8');
-            }
         </script>
     }

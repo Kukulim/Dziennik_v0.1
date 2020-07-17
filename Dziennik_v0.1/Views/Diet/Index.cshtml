@@ -3,7 +3,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Odżywianie: (wersja beta język angielski posiłków)</h2>
+<h2>Odżywianie:</h2>
 @Html.ActionLink("Profil", "UserProfile", "Diet", new { area = "" }, new { @class = "btn btn-info btn-lg" })
 <h2>Twoje posiłki:</h2>
 <h4>@DateTime.Now</h4>
@@ -37,7 +37,7 @@
                     $.ajax({
                         url: '../Api/DietApi/GetFoodData',
                         type: 'GET',
-                        dataType: 'text',
+                        dataType: 'json',
                         success: function (data) {
                             console.log(data);
                         },

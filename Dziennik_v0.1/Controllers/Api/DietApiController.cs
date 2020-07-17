@@ -12,7 +12,7 @@ namespace Dziennik_v0._1.Controllers.Api
     public class DietApiController : ApiController
     {
         [HttpGet]
-        public IHttpActionResult GetFoodData()
+        public IHttpActionResult GetFoodData(string search=null)
         {
             List<FoodModel> foods = new List<FoodModel>();
             string csvData = System.IO.File.ReadAllText("D:/Dziennik_v0.1/Dziennik_v0.1/App_Data/TabeleKaloryczne.csv");
@@ -31,8 +31,14 @@ namespace Dziennik_v0._1.Controllers.Api
                     });
                 }
             }
-                var jsonResault = JsonConvert.SerializeObject(foods);
-            return Json(jsonResault);
+            if (search!=null)
+            {
+                var upperCaseSearch = char.ToUpper(search[0]) + search.Substring(1);
+                var result = foods.Where(f => f.Name.Contains(search) || f.Name.Contains(upperCaseSearch)).ToList();
+                return Json(result);
+            }
+
+            return Json(foods);
         }
     }
 }

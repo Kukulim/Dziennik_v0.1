@@ -23,8 +23,9 @@
         <tr>
             <td>Nazwa</td>
             <td>Kalorie</td>
-            <td>Ilosc</td>
-            <td>Zdjęcie</td>
+            <td>Białko</td>
+            <td>Tłuszcze</td>
+            <td>Weglowodany</td>
         </tr>
 
     </thead>
@@ -35,11 +36,22 @@
             $("#js-search").click(function () {
                 result = $(".search_input").val(),
                     $.ajax({
-                        url: '../Api/DietApi/GetFoodData',
+                        url: '../Api/DietApi/GetFoodData/?=' + result,
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
-                            console.log(data);
+                            var tr;
+                            for (var i = 0; i < data.length; i++) {
+                                tr = tr + "<tr>";
+                                tr = tr + "<td>" + data[i].Name + "</td>";
+                                tr = tr + "<td>" + data[i].Calories + "</td>";
+                                tr = tr + "<td>" + data[i].Protein + "</td>";
+                                tr = tr + "<td>" + data[i].Fat + "</td>";
+                                tr = tr + "<td>" + data[i].Carbohydrates + "</td>";
+                                tr = tr + "<td><a href='#' class='btn btn-primary'> dodaj </a></td>"
+                                tr = tr + "</tr>";
+                            }
+                            $('#tblPopulation').append(tr);
                         },
                         error: function () { alert('coś poszło nie tak, przepraszamy'); },
                     });

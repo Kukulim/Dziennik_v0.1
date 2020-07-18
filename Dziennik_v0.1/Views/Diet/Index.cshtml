@@ -18,23 +18,29 @@
     </div>
 </div>
 
-<table id="tblPopulation">
+<table class="table hidden">
     <thead>
-        <tr>
+        <tr scope="col">
             <td>Nazwa</td>
             <td>Kalorie</td>
             <td>Białko</td>
             <td>Tłuszcze</td>
             <td>Weglowodany</td>
+            <td>Waga (g.) :</td>
+            <td></td>
         </tr>
-
     </thead>
+
+    <tbody id="tblFood">
+
+    </tbody>
 </table>
 
     @section Scripts {
         <script type="text/javascript">
             $("#js-search").click(function () {
                 result = $(".search_input").val(),
+                    $(".table").removeClass("hidden");
                     $.ajax({
                         url: '../Api/DietApi/GetFoodData/?=' + result,
                         type: 'GET',
@@ -42,16 +48,17 @@
                         success: function (data) {
                             var tr;
                             for (var i = 0; i < data.length; i++) {
-                                tr = tr + "<tr>";
+                                tr = tr + "<tr scope='col'>";
                                 tr = tr + "<td>" + data[i].Name + "</td>";
                                 tr = tr + "<td>" + data[i].Calories + "</td>";
                                 tr = tr + "<td>" + data[i].Protein + "</td>";
                                 tr = tr + "<td>" + data[i].Fat + "</td>";
                                 tr = tr + "<td>" + data[i].Carbohydrates + "</td>";
+                                tr = tr + "<td><input class='' type = 'number' name = '' value='100'></td>";
                                 tr = tr + "<td><a href='#' class='btn btn-primary'> dodaj </a></td>"
                                 tr = tr + "</tr>";
                             }
-                            $('#tblPopulation').append(tr);
+                            $('#tblFood').html(tr);
                         },
                         error: function () { alert('coś poszło nie tak, przepraszamy'); },
                     });

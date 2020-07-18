@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace Dziennik_v0._1.Controllers.Api
@@ -15,7 +16,7 @@ namespace Dziennik_v0._1.Controllers.Api
         public IHttpActionResult GetFoodData(string search=null)
         {
             List<FoodModel> foods = new List<FoodModel>();
-            string csvData = System.IO.File.ReadAllText("D:/Dziennik_v0.1/Dziennik_v0.1/App_Data/TabeleKaloryczne.csv");
+            string csvData = System.IO.File.ReadAllText("D:/Dziennik_v0.1/Dziennik_v0.1/App_Data/TabeleKaloryczne.csv", Encoding.GetEncoding("Windows-1250"));
 
             foreach (string row in csvData.Split('\n'))
             {

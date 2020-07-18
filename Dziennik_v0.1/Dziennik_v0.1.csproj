@@ -231,7 +231,9 @@
     <Compile Include="Core\Helpers\AchievementsCreator.cs" />
     <Compile Include="Core\Models\AchievementModel.cs" />
     <Compile Include="Core\Models\CardioModel.cs" />
+    <Compile Include="Core\Models\DailyMenu.cs" />
     <Compile Include="Core\Models\Enums\CardioType.cs" />
+    <Compile Include="Core\Models\Enums\MealType.cs" />
     <Compile Include="Core\Models\Enums\SexType.cs" />
     <Compile Include="Core\Models\Enums\TraningType.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />
@@ -241,6 +243,7 @@
     <Compile Include="Core\Repositories\IAchievementsRepository.cs" />
     <Compile Include="Core\Repositories\IApplicationUserRepository.cs" />
     <Compile Include="Core\Repositories\ICardioRepository.cs" />
+    <Compile Include="Core\Repositories\IDailyMenuRepository.cs" />
     <Compile Include="Core\Repositories\IExerciseRepository.cs" />
     <Compile Include="Core\Repositories\IWorkoutRepository.cs" />
     <Compile Include="Core\ViewModels\AchievementsIndexViewModel.cs" />
@@ -328,6 +331,7 @@
     <Compile Include="Presistence\Repositories\AchievementsRepository.cs" />
     <Compile Include="Presistence\Repositories\ApplicationUserRepository.cs" />
     <Compile Include="Presistence\Repositories\CardioRepository.cs" />
+    <Compile Include="Presistence\Repositories\DailyMenuRepository.cs" />
     <Compile Include="Presistence\Repositories\ExerciseRepository.cs" />
     <Compile Include="Presistence\Repositories\WorkoutRepository.cs" />
     <Compile Include="Presistence\UnitOfWork.cs" />

@@ -8,9 +8,13 @@
 <h2>Twoje posiłki:</h2>
 <h4>@DateTime.Now</h4>
 <h3>Sniadanie:</h3>
+@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary" })
 <h3>Odiad:</h3>
+@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary" })
 <h3>Kolacja:</h3>
+@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary" })
 <h3>Przekąski:</h3>
+@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary" })
 <div class="d-flex justify-content-center h-100">
     <div class="searchbar">
         <input class="search_input" type="text" name="" placeholder="szukaj...">
@@ -32,37 +36,36 @@
     </thead>
 
     <tbody id="tblFood">
-
     </tbody>
 </table>
 
-    @section Scripts {
-        <script type="text/javascript">
-            $("#js-search").click(function () {
-                result = $(".search_input").val(),
-                    $(".table").removeClass("hidden");
-                    $.ajax({
-                        url: '../Api/DietApi/GetFoodData/?=' + result,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function (data) {
-                            var tr;
-                            for (var i = 0; i < data.length; i++) {
-                                tr = tr + "<tr scope='col'>";
-                                tr = tr + "<td>" + data[i].Name + "</td>";
-                                tr = tr + "<td>" + data[i].Calories + "</td>";
-                                tr = tr + "<td>" + data[i].Protein + "</td>";
-                                tr = tr + "<td>" + data[i].Fat + "</td>";
-                                tr = tr + "<td>" + data[i].Carbohydrates + "</td>";
-                                tr = tr + "<td><input class='' type = 'number' name = '' value='100'></td>";
-                                tr = tr + "<td><a href='#' class='btn btn-primary'> dodaj </a></td>"
-                                tr = tr + "</tr>";
-                            }
-                            $('#tblFood').html(tr);
-                        },
-                        error: function () { alert('coś poszło nie tak, przepraszamy'); },
-                    });
+@section Scripts {
+    <script type="text/javascript">
+        $("#js-search").click(function () {
+            result = $(".search_input").val(),
+                $(".table").removeClass("hidden");
+            $.ajax({
+                url: '../Api/DietApi/GetFoodData/?=' + result,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var tr;
+                    for (var i = 0; i < data.length; i++) {
+                        tr = tr + "<tr scope='col'>";
+                        tr = tr + "<td>" + data[i].Name + "</td>";
+                        tr = tr + "<td>" + data[i].Calories + "</td>";
+                        tr = tr + "<td>" + data[i].Protein + "</td>";
+                        tr = tr + "<td>" + data[i].Fat + "</td>";
+                        tr = tr + "<td>" + data[i].Carbohydrates + "</td>";
+                        tr = tr + "<td><input class='' type = 'number' name = '' value='100'></td>";
+                        tr = tr + "<td><a href='#' class='btn btn-primary'> dodaj </a></td>"
+                        tr = tr + "</tr>";
+                    }
+                    $('#tblFood').html(tr);
+                },
+                error: function () { alert('coś poszło nie tak, przepraszamy'); },
             });
+        });
 
-        </script>
-    }
+    </script>
+}

@@ -322,6 +322,10 @@
     <Compile Include="Migrations\202007110945480_AchievUserNewProps.Designer.cs">
       <DependentUpon>202007110945480_AchievUserNewProps.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007181218530_DailyMealModel.cs" />
+    <Compile Include="Migrations\202007181218530_DailyMealModel.Designer.cs">
+      <DependentUpon>202007181218530_DailyMealModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
@@ -964,6 +968,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007110945480_AchievUserNewProps.resx">
       <DependentUpon>202007110945480_AchievUserNewProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007181218530_DailyMealModel.resx">
+      <DependentUpon>202007181218530_DailyMealModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

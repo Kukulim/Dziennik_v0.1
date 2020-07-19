@@ -10,7 +10,7 @@ namespace Dziennik_v0._1.Core.Models
     {
         public int Id { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DailyMenuDate { get; set; }
 
         public virtual List<FoodModel> FoodModels { get; set; }

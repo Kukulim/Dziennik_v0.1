@@ -11,7 +11,7 @@
 <h2>Odżywianie:</h2>
 @Html.ActionLink("Profil", "UserProfile", "Diet", new { area = "" }, new { @class = "btn btn-info btn-lg" })
 <h2>Twoje posiłki:</h2>
-<h4>@Model.DailyMenuDate</h4>
+<h4>@Html.DisplayFor(model => model.DailyMenuDate)</h4>
 
 <table class="table">
     <tr>
@@ -87,7 +87,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>@Html.ActionLink("+", "Index", "AddFoodToMeal", null, new { @class = "btn btn-primary btn-sm" })</td>
+            <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", null,new { @class = "btn btn-primary btn-sm" })</td>
         </tr>
     }
     @if (LunchCount == 0)

@@ -40,19 +40,20 @@
         </th>
     </tr>
 
+    @if (BreakfestCount == 0)
+    {
+        <tr class="MealTableRow">
+            <td>Sniadanie:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    }
     @foreach (var item in Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.breakfast))
     {
-        if (BreakfestCount == 0)
-        {
-            <tr class="MealTableRow">
-                <td>Sniadanie:</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        }
+
         BreakfestCount++;
         <tr>
             <td>
@@ -77,32 +78,32 @@
                 @Html.DisplayFor(modelItem => item.Weight)
             </td>
         </tr>
-        if (BreakfestCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.breakfast).Count())
-        {
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary btn-sm" })</td>
-            </tr>
-        }
+    }
+    @if (BreakfestCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.breakfast).Count())
+    {
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Html.ActionLink("+", "Index", "AddFoodToMeal", null, new { @class = "btn btn-primary btn-sm" })</td>
+        </tr>
+    }
+    @if (LunchCount == 0)
+    {
+        <tr class="MealTableRow">
+            <td>Obiad:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
     }
 
     @foreach (var itemlunch in Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.lunch))
     {
-        if (LunchCount == 0)
-        {
-            <tr class="MealTableRow">
-                <td>Obiad:</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        }
         LunchCount++;
         <tr>
             <td>
@@ -127,32 +128,33 @@
                 @Html.DisplayFor(modelItem => itemlunch.Weight)
             </td>
         </tr>
-        if (LunchCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.lunch).Count())
-        {
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary btn-sm" })</td>
-            </tr>
-        }
+    }
+    @if (LunchCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.lunch).Count())
+    {
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary btn-sm" })</td>
+        </tr>
+    }
+
+    @if (DinnerCount == 0)
+    {
+        <tr class="MealTableRow">
+            <td>Kolacja:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
     }
 
     @foreach (var itemlunch in Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.dinner))
     {
-        if (DinnerCount == 0)
-        {
-            <tr class="MealTableRow">
-                <td>Kolacja:</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        }
         DinnerCount++;
         <tr>
             <td>
@@ -177,32 +179,33 @@
                 @Html.DisplayFor(modelItem => itemlunch.Weight)
             </td>
         </tr>
-        if (DinnerCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.dinner).Count())
-        {
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary btn-sm" })</td>
-            </tr>
-        }
+    }
+    @if (DinnerCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.dinner).Count())
+    {
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary btn-sm" })</td>
+        </tr>
+    }
+
+    @if (SnacksCount == 0)
+    {
+        <tr class="MealTableRow">
+            <td>Przekąski:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
     }
 
     @foreach (var itemlunch in Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.snacks))
     {
-        if (SnacksCount == 0)
-        {
-            <tr class="MealTableRow">
-                <td>Przekąski:</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        }
         SnacksCount++;
         <tr>
             <td>
@@ -227,16 +230,16 @@
                 @Html.DisplayFor(modelItem => itemlunch.Weight)
             </td>
         </tr>
-        if (SnacksCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.snacks).Count())
-        {
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary btn-sm" })</td>
-            </tr>
-        }
     }
-    </table>
+    @if (SnacksCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.snacks).Count())
+    {
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary btn-sm" })</td>
+    </tr>
+    }
+</table>

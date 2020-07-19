@@ -1,5 +1,6 @@
 ﻿using Dziennik_v0._1.Core;
 using Dziennik_v0._1.Core.Models;
+using Dziennik_v0._1.Core.Models.Enums;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,16 @@ namespace Dziennik_v0._1.Controllers
         }
         public ActionResult Index()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var ToDayDate = DateTime.Now.Date;
+            var viewModel = _unitOfWork.DailyMenus.GetDailyMenu(userId, ToDayDate);
+            if (viewModel == null)
+            {
+                viewModel = new DailyMenu { DailyMenuDate = ToDayDate, FoodModels = new List<FoodModel>(), UserId = userId };               
+                _unitOfWork.DailyMenus.AddDailyMenu(viewModel);
+                _unitOfWork.Complete();
+            }
+            return View(viewModel);
         }
         public ActionResult UserProfile()
         {

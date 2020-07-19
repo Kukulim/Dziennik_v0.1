@@ -8,7 +8,7 @@ namespace Dziennik_v0._1.Core.Repositories
 {
     public interface IDailyMenuRepository
     {
-        DailyMenu GetDailyMenu(int Id);
+        DailyMenu GetDailyMenu(string Id, DateTime date);
         IEnumerable<DailyMenu> GetAllDailyMenu(string Id);
 
         void AddDailyMenu(DailyMenu DailyMenu);

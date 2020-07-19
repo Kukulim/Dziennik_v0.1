@@ -1,4 +1,5 @@
-﻿
+﻿@model Dziennik_v0._1.Core.Models.DailyMenu
+
 @{
     ViewBag.Title = "Index";
 }
@@ -6,8 +7,66 @@
 <h2>Odżywianie:</h2>
 @Html.ActionLink("Profil", "UserProfile", "Diet", new { area = "" }, new { @class = "btn btn-info btn-lg" })
 <h2>Twoje posiłki:</h2>
-<h4>@DateTime.Now</h4>
+<h4>@Model.DailyMenuDate</h4>
 <h3>Sniadanie:</h3>
+
+<table class="table text-center">
+    <tr>
+        <th class="text-center">
+            Edycja:
+        </th>
+
+        <th class="text-center">
+            Data:
+        </th>
+
+        <th class="text-center">
+            Czas treningu:
+        </th>
+
+        <th class="text-center">
+            Rodzaj treningu:
+        </th>
+
+        <th class="text-center">
+            Szczegóły:
+        </th>
+
+        <th class="text-center">
+            Usuń:
+        </th>
+    </tr>
+
+    @foreach (var item in Model.FoodModels)
+    {
+        {
+            if (item.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.breakfast)
+            {
+                <tr class="cardioRow">
+                    <td>
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Calories)
+                    </td>
+
+                    <td>
+                        <i class="fas fa-heartbeat"></i>
+                    </td>
+                    <td>
+                    </td>
+
+                    <td>
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>
 @Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary" })
 <h3>Odiad:</h3>
 @Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary" })
@@ -66,6 +125,5 @@
                 error: function () { alert('coś poszło nie tak, przepraszamy'); },
             });
         });
-
     </script>
 }

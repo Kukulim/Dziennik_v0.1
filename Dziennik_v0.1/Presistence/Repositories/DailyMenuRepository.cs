@@ -18,7 +18,7 @@ namespace Dziennik_v0._1.Presistence.Repositories
         }
         public void AddDailyMenu(DailyMenu DailyMenu)
         {
-            throw new NotImplementedException();
+            _context.DailyMenus.Add(DailyMenu);
         }
 
         public void DeleteDailyMenu(int Id)
@@ -33,12 +33,12 @@ namespace Dziennik_v0._1.Presistence.Repositories
 
         public IEnumerable<DailyMenu> GetAllDailyMenu(string Id)
         {
-            throw new NotImplementedException();
+            return _context.DailyMenus.Where(d => d.UserId == Id).ToList();
         }
 
-        public DailyMenu GetDailyMenu(int Id)
+        public DailyMenu GetDailyMenu(string Id, DateTime date)
         {
-            throw new NotImplementedException();
+            return _context.DailyMenus.Where(d => d.UserId == Id && d.DailyMenuDate == date).FirstOrDefault();
         }
     }
 }

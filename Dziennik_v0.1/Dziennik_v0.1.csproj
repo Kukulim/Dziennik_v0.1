@@ -913,6 +913,7 @@
     <Content Include="Views\Achievements\Index.cshtml" />
     <Content Include="Views\Diet\Index.cshtml" />
     <Content Include="Views\Diet\UserProfile.cshtml" />
+    <Content Include="Views\Diet\AddFoodToMeal.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

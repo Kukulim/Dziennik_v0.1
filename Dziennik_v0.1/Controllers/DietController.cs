@@ -25,7 +25,7 @@ namespace Dziennik_v0._1.Controllers
             var viewModel = _unitOfWork.DailyMenus.GetDailyMenu(userId, ToDayDate);
             if (viewModel == null)
             {
-                viewModel = new DailyMenu { DailyMenuDate = ToDayDate, FoodModels = new List<FoodModel>(), UserId = userId };               
+                viewModel = new DailyMenu { DailyMenuDate = ToDayDate, FoodModels = new List<FoodModel>(), UserId = userId };
                 _unitOfWork.DailyMenus.AddDailyMenu(viewModel);
                 _unitOfWork.Complete();
             }
@@ -43,6 +43,10 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Users.EditUser(viewModel);
             _unitOfWork.Complete();
             return RedirectToAction("Index");
+        }
+        public ActionResult AddFoodToMeal()
+        {
+            return View();
         }
     }
 }

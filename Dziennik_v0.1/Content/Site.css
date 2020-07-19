@@ -136,6 +136,11 @@ textarea {
   top: 2px;
   right: -4px; }
 
+.MealTableRow {
+  background: #b4aaca !important;
+  color: #272b30;
+  font-size: 18px; }
+
 /*BOOTSTRAP OVERLOADS*/
 .btn-info {
   background-image: none !important;

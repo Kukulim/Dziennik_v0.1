@@ -1,6 +1,7 @@
 ﻿using Dziennik_v0._1.Core;
 using Dziennik_v0._1.Core.Models;
 using Dziennik_v0._1.Core.Models.Enums;
+using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -44,9 +45,16 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Complete();
             return RedirectToAction("Index");
         }
-        public ActionResult AddFoodToMeal()
+        public ActionResult AddFoodToMeal(MealType mealType, DateTime dateTime)
         {
-            return View();
+            var result = new AddFoodToMealViewModel();
+            var userId = User.Identity.GetUserId();
+            var viewModel = _unitOfWork.DailyMenus.GetDailyMenu(userId, dateTime);
+            result.FoodModels = viewModel.FoodModels.Where(f => f.MealType == mealType).ToList();
+            result.Date = viewModel.DailyMenuDate;
+            result.Id = viewModel.Id;
+            result.MealType = mealType;
+            return View(result);
         }
     }
 }

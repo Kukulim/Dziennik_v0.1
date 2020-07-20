@@ -1,9 +1,71 @@
-﻿
+﻿@model Dziennik_v0._1.Core.ViewModels.AddFoodToMealViewModel
 @{
     ViewBag.Title = "AddFoodToMeal";
 }
+    <h2>Dodaj nowe pozycje do menu:</h2>
 
-<h2>AddFoodToMeal</h2>
+@if (Model.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.breakfast)
+{
+    <h3>Sniadanie:</h3>
+
+}
+<h4>@Model.Date.ToString("dd/MM/yyyy")</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            Nazwa:
+        </th>
+
+        <th>
+            Kalorie:
+        </th>
+
+        <th>
+            Białko:
+        </th>
+
+        <th>
+            Tłuszcz:
+        </th>
+
+        <th>
+            Węglowodany:
+        </th>
+
+        <th>
+            Waga:
+        </th>
+    </tr>
+
+    @foreach (var item in Model.FoodModels)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Calories)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Protein)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fat)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Carbohydrates)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+        </tr>
+    }
+</table>
 
 <div class="d-flex justify-content-center h-100">
     <div class="searchbar">
@@ -29,32 +91,36 @@
     </tbody>
 </table>
 
+<div class="text-center">
+    @Html.ActionLink("Powrót do dieta", "Index", null, null, new { @class = "btn btn-primary" })
+</div>
+
 @section Scripts {
     <script type="text/javascript">
-            $("#js-search").click(function () {
-                result = $(".search_input").val(),
-                    $(".table").removeClass("hidden");
-                $.ajax({
-                    url: '../Api/DietApi/GetFoodData/?=' + result,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        var tr;
-                        for (var i = 0; i < data.length; i++) {
-                            tr = tr + "<tr scope='col'>";
-                            tr = tr + "<td>" + data[i].Name + "</td>";
-                            tr = tr + "<td>" + data[i].Calories + "</td>";
-                            tr = tr + "<td>" + data[i].Protein + "</td>";
-                            tr = tr + "<td>" + data[i].Fat + "</td>";
-                            tr = tr + "<td>" + data[i].Carbohydrates + "</td>";
-                            tr = tr + "<td><input class='' type = 'number' name = '' value='100'></td>";
-                            tr = tr + "<td><a href='#' class='btn btn-primary'> dodaj </a></td>"
-                            tr = tr + "</tr>";
-                        }
-                        $('#tblFood').html(tr);
-                    },
-                    error: function () { alert('coś poszło nie tak, przepraszamy'); },
-                });
+        $("#js-search").click(function () {
+            result = $(".search_input").val(),
+                $(".table").removeClass("hidden");
+            $.ajax({
+                url: '../Api/DietApi/GetFoodData/?=' + result,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var tr;
+                    for (var i = 0; i < data.length; i++) {
+                        tr = tr + "<tr scope='col'>";
+                        tr = tr + "<td>" + data[i].Name + "</td>";
+                        tr = tr + "<td>" + data[i].Calories + "</td>";
+                        tr = tr + "<td>" + data[i].Protein + "</td>";
+                        tr = tr + "<td>" + data[i].Fat + "</td>";
+                        tr = tr + "<td>" + data[i].Carbohydrates + "</td>";
+                        tr = tr + "<td><input class='' type = 'number' name = '' value='100'></td>";
+                        tr = tr + "<td><a href='#' class='btn btn-primary'> dodaj </a></td>"
+                        tr = tr + "</tr>";
+                    }
+                    $('#tblFood').html(tr);
+                },
+                error: function () { alert('coś poszło nie tak, przepraszamy'); },
             });
+        });
     </script>
 }

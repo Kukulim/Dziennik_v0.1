@@ -87,7 +87,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", null,new { @class = "btn btn-primary btn-sm" })</td>
+            <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.breakfast, dateTime = @Model.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
         </tr>
     }
     @if (LunchCount == 0)

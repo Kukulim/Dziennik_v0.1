@@ -23,6 +23,7 @@ namespace Dziennik_v0._1.Persistence
         public DbSet<Cardio> Cardios { get; set; }
         public DbSet<Achievement> Achievements { get; set; }
         public DbSet<DailyMenu> DailyMenus { get; set; }
+        public DbSet<FoodModel> Foods { get; set; }
 
         public static ApplicationDbContext Create()
         {

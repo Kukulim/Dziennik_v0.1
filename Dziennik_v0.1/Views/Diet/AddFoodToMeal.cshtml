@@ -1,13 +1,14 @@
 ﻿@model Dziennik_v0._1.Core.ViewModels.AddFoodToMealViewModel
 @{
     ViewBag.Title = "AddFoodToMeal";
+    int globalType = (int)Model.MealType;
+    int mealId = Model.Id;
 }
-    <h2>Dodaj nowe pozycje do menu:</h2>
+<h2>Dodaj nowe pozycje do menu:</h2>
 
 @if (Model.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.breakfast)
 {
     <h3>Sniadanie:</h3>
-
 }
 <h4>@Model.Date.ToString("dd/MM/yyyy")</h4>
 
@@ -67,6 +68,8 @@
     }
 </table>
 
+<h5>Wyszukaj potrawy:</h5>
+
 <div class="d-flex justify-content-center h-100">
     <div class="searchbar">
         <input class="search_input" type="text" name="" placeholder="szukaj...">
@@ -82,7 +85,7 @@
             <td>Białko</td>
             <td>Tłuszcze</td>
             <td>Weglowodany</td>
-            <td>Waga (g.) :</td>
+            <td>Waga zjedzonego posiłku (g.) :</td>
             <td></td>
         </tr>
     </thead>
@@ -96,6 +99,9 @@
 </div>
 
 @section Scripts {
+    <script>
+        var globalData;
+    </script>
     <script type="text/javascript">
         $("#js-search").click(function () {
             result = $(".search_input").val(),
@@ -105,6 +111,7 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {
+                    globalData = data;
                     var tr;
                     for (var i = 0; i < data.length; i++) {
                         tr = tr + "<tr scope='col'>";
@@ -113,13 +120,30 @@
                         tr = tr + "<td>" + data[i].Protein + "</td>";
                         tr = tr + "<td>" + data[i].Fat + "</td>";
                         tr = tr + "<td>" + data[i].Carbohydrates + "</td>";
-                        tr = tr + "<td><input class='' type = 'number' name = '' value='100'></td>";
-                        tr = tr + "<td><a href='#' class='btn btn-primary'> dodaj </a></td>"
+                        tr = tr + "<td><input class='' id=" + i + " type = 'number' name = '' value='100'></td>";
+                        tr = tr + "<td><a href='#' class='btn btn-primary js-addFood' value=" + i + "> dodaj </a></td>"
                         tr = tr + "</tr>";
                     }
                     $('#tblFood').html(tr);
                 },
                 error: function () { alert('coś poszło nie tak, przepraszamy'); },
+            });
+            $("body").delegate(".js-addFood", "click", function (e) {
+                var iterator = $(e.target).attr("value");
+                var foodWeight = $("#" + iterator).val();
+                globalData[iterator].Weight = foodWeight;
+                globalData[iterator].MealType = @globalType;
+                globalData[iterator].DailyMenuId = @mealId;
+                console.log(globalData[iterator]);
+                $.ajax({
+                    type: "POST",
+                    url: "../Api/DietApi/AddFood",
+                    data: JSON.stringify(globalData[iterator]),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) { console.log(data) },
+                    error: function () { alert('coś poszło nie tak, przepraszamy'); },
+                });
             });
         });
     </script>

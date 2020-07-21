@@ -14,8 +14,8 @@ namespace Dziennik_v0._1.Presistence
         DbSet<Exercise> Exercises { get; set; }
         DbSet<Cardio> Cardios { get; set; }
         DbSet<Achievement> Achievements { get; set; }
-
         DbSet<DailyMenu> DailyMenus { get; set; }
+        DbSet<FoodModel> Foods { get; set; }
 
         IDbSet<ApplicationUser> Users { get; set; }
     }

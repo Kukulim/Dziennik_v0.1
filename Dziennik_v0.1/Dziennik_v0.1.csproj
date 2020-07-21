@@ -245,6 +245,7 @@
     <Compile Include="Core\Repositories\ICardioRepository.cs" />
     <Compile Include="Core\Repositories\IDailyMenuRepository.cs" />
     <Compile Include="Core\Repositories\IExerciseRepository.cs" />
+    <Compile Include="Core\Repositories\IFoodsRepository.cs" />
     <Compile Include="Core\Repositories\IWorkoutRepository.cs" />
     <Compile Include="Core\ViewModels\AchievementsIndexViewModel.cs" />
     <Compile Include="Core\ViewModels\AddFoodToMealViewModel.cs" />
@@ -338,6 +339,7 @@
     <Compile Include="Presistence\Repositories\CardioRepository.cs" />
     <Compile Include="Presistence\Repositories\DailyMenuRepository.cs" />
     <Compile Include="Presistence\Repositories\ExerciseRepository.cs" />
+    <Compile Include="Presistence\Repositories\FoodsRepository.cs" />
     <Compile Include="Presistence\Repositories\WorkoutRepository.cs" />
     <Compile Include="Presistence\UnitOfWork.cs" />
     <Compile Include="Presistence\UserDbInitializer\UserDbInitializer.cs" />

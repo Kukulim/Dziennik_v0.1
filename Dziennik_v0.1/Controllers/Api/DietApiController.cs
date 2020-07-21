@@ -1,4 +1,5 @@
-﻿using Dziennik_v0._1.Core.Models;
+﻿using Dziennik_v0._1.Core;
+using Dziennik_v0._1.Core.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,12 @@ namespace Dziennik_v0._1.Controllers.Api
 {
     public class DietApiController : ApiController
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public DietApiController(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
         [HttpGet]
         public IHttpActionResult GetFoodData(string search=null)
         {
@@ -40,6 +47,29 @@ namespace Dziennik_v0._1.Controllers.Api
             }
 
             return Json(foods);
+        }
+        [HttpPost]
+        public IHttpActionResult AddFood(FoodModel foodData)
+        {
+            decimal calculateWeight(decimal FoodComponent)
+            {
+                return (FoodComponent * foodData.Weight) / 100;
+            }
+            FoodModel food = new FoodModel
+            {
+                Name = foodData.Name,
+                Calories = (int)calculateWeight(foodData.Calories),
+                Protein = calculateWeight(foodData.Protein),
+                Fat = calculateWeight(foodData.Fat),
+                Carbohydrates = calculateWeight(foodData.Carbohydrates),
+                MealType = foodData.MealType,
+                Weight = foodData.Weight,
+                DailyMenuId = foodData.DailyMenuId
+            };
+
+            _unitOfWork.Foods.AddFoodModel(food);
+            _unitOfWork.Complete();
+            return Ok();
         }
     }
 }

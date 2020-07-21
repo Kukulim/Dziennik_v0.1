@@ -23,6 +23,7 @@ namespace Dziennik_v0._1.Presistence
             Achievements = new AchievementsRepository(context);
             Users = new ApplicationUserRepository(context);
             DailyMenus = new DailyMenuRepository(context);
+            Foods = new FoodsRepository(context);
         }
 
         public IWorkoutRepository Workouts { get; private set; }
@@ -34,6 +35,8 @@ namespace Dziennik_v0._1.Presistence
         public IAchievementsRepository Achievements { get; private set; }
         public IApplicationUserRepository Users { get; private set; }
         public IDailyMenuRepository DailyMenus { get; private set; }
+
+        public IFoodsRepository Foods { get; private set; }
 
         public void AcceptAchievement(Achievement achievement, DateTime date, ApplicationUser user)
         {

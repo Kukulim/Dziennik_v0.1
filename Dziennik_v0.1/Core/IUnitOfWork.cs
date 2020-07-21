@@ -14,6 +14,7 @@ namespace Dziennik_v0._1.Core
         IAchievementsRepository Achievements { get; }
         IApplicationUserRepository Users { get; }
         IDailyMenuRepository DailyMenus { get; }
+        IFoodsRepository Foods { get; }
         void Complete();
         void CardioAchievementsCheck(CardioCreateViewModel cardioCreateViewModel);
         void WorkoutAchievementsCheck(Workout Workout);

@@ -30,7 +30,40 @@ namespace Dziennik_v0._1.Controllers
                 _unitOfWork.DailyMenus.AddDailyMenu(viewModel);
                 _unitOfWork.Complete();
             }
-            return View(viewModel);
+            var viewModelToReturn = new DietIndexViewModel();
+            viewModelToReturn.DailyMenu = viewModel;
+            foreach (var item in viewModelToReturn.DailyMenu.FoodModels)
+            {
+                if (item.MealType==MealType.breakfast)
+                {
+                    viewModelToReturn.Breakfast.Calories += item.Calories;
+                    viewModelToReturn.Breakfast.Fat += item.Fat;
+                    viewModelToReturn.Breakfast.Carbohydrates += item.Carbohydrates;
+                    viewModelToReturn.Breakfast.Protein += item.Protein;
+                }
+                if (item.MealType == MealType.dinner)
+                {
+                    viewModelToReturn.Dinner.Calories += item.Calories;
+                    viewModelToReturn.Dinner.Fat += item.Fat;
+                    viewModelToReturn.Dinner.Carbohydrates += item.Carbohydrates;
+                    viewModelToReturn.Dinner.Protein += item.Protein;
+                }
+                if (item.MealType == MealType.lunch)
+                {
+                    viewModelToReturn.Lunch.Calories += item.Calories;
+                    viewModelToReturn.Lunch.Fat += item.Fat;
+                    viewModelToReturn.Lunch.Carbohydrates += item.Carbohydrates;
+                    viewModelToReturn.Lunch.Protein += item.Protein;
+                }
+                if (item.MealType == MealType.snacks)
+                {
+                    viewModelToReturn.Snack.Calories += item.Calories;
+                    viewModelToReturn.Snack.Fat += item.Fat;
+                    viewModelToReturn.Snack.Carbohydrates += item.Carbohydrates;
+                    viewModelToReturn.Snack.Protein += item.Protein;
+                }
+            }
+            return View(viewModelToReturn);
         }
         public ActionResult UserProfile()
         {

@@ -1,4 +1,4 @@
-﻿@model Dziennik_v0._1.Core.Models.DailyMenu
+﻿@model Dziennik_v0._1.Core.ViewModels.DietIndexViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -10,250 +10,249 @@
 
 <h2>Odżywianie:</h2>
 
+@Html.ActionLink("Profil", "UserProfile", "Diet", new { area = "" }, new { @class = "btn btn-info btn-lg" })
 
-    @Html.ActionLink("Profil", "UserProfile", "Diet", new { area = "" }, new { @class = "btn btn-info btn-lg" })
+<h2 class="text-center">Twoje posiłki:</h2>
 
-    <h2 class="text-center">Twoje posiłki:</h2>
-
-    <div class="row">
-        <div class="col-sm-2">
-            @Html.ActionLink("<", "Index", "Diet", new { dateTime = @Model.DailyMenuDate.AddDays(-1) }, new { @class = "btn btn-info" })
-        </div>
-        <div class="col-sm-8 text-center">
-        <h3>@Html.DisplayFor(model => model.DailyMenuDate)</h3>
+<div class="row">
+    <div class="col-sm-2">
+        @Html.ActionLink("<", "Index", "Diet", new { dateTime = @Model.DailyMenu.DailyMenuDate.AddDays(-1) }, new { @class = "btn btn-info" })
     </div>
-        <div class="col-sm-2 text-right">
-                @Html.ActionLink(">", "Index", "Diet", new { dateTime = @Model.DailyMenuDate.AddDays(1) }, new { @class = "btn btn-info" })
-            </div>
-        </div>
+    <div class="col-sm-8 text-center">
+        <h3>@Html.DisplayFor(model => model.DailyMenu.DailyMenuDate)</h3>
+    </div>
+    <div class="col-sm-2 text-right">
+        @Html.ActionLink(">", "Index", "Diet", new { dateTime = @Model.DailyMenu.DailyMenuDate.AddDays(1) }, new { @class = "btn btn-info" })
+    </div>
+</div>
 
-        <table class="table">
-            <tr>
-                <th>
-                    Nazwa:
-                </th>
+<table class="table">
+    <tr>
+        <th>
+            Nazwa:
+        </th>
 
-                <th>
-                    Kalorie:
-                </th>
+        <th>
+            Kalorie:
+        </th>
 
-                <th>
-                    Białko:
-                </th>
+        <th>
+            Białko:
+        </th>
 
-                <th>
-                    Tłuszcz:
-                </th>
+        <th>
+            Tłuszcz:
+        </th>
 
-                <th>
-                    Węglowodany:
-                </th>
+        <th>
+            Węglowodany:
+        </th>
 
-                <th>
-                    Waga:
-                </th>
-            </tr>
+        <th>
+            Waga:
+        </th>
+    </tr>
 
-            @if (BreakfestCount == 0)
-            {
-                <tr class="MealTableRow">
-                    <td>Sniadanie:</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            }
-            @foreach (var item in Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.breakfast))
-            {
+    @if (BreakfestCount == 0)
+    {
+        <tr class="MealTableRow">
+            <td>Sniadanie:</td>
+            <td>@Model.Breakfast.Calories</td>
+            <td>@Model.Breakfast.Protein</td>
+            <td>@Model.Breakfast.Fat</td>
+            <td>@Model.Breakfast.Carbohydrates</td>
+            <td></td>
+        </tr>
+    }
+    @foreach (var item in Model.DailyMenu.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.breakfast))
+    {
 
-                BreakfestCount++;
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
+        BreakfestCount++;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Calories)
-                    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calories)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Protein)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Fat)
-                    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Protein)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fat)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Carbohydrates)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Weight)
-                    </td>
-                </tr>
-            }
-            @if (BreakfestCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.breakfast).Count())
-            {
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.breakfast, dateTime = @Model.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
-                </tr>
-            }
-            @if (LunchCount == 0)
-            {
-                <tr class="MealTableRow">
-                    <td>Obiad:</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Carbohydrates)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+        </tr>
+    }
+    @if (BreakfestCount == Model.DailyMenu.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.breakfast).Count())
+    {
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.breakfast, dateTime = @Model.DailyMenu.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
+        </tr>
+    }
+    @if (LunchCount == 0)
+    {
+        <tr class="MealTableRow">
+            <td>Obiad:</td>
+            <td>@Model.Lunch.Calories</td>
+            <td>@Model.Lunch.Protein</td>
+            <td>@Model.Lunch.Fat</td>
+            <td>@Model.Lunch.Carbohydrates</td>
+            <td></td>
+        </tr>
+    }
 
-            @foreach (var itemlunch in Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.lunch))
-            {
-                LunchCount++;
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Name)
-                    </td>
+    @foreach (var itemlunch in Model.DailyMenu.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.lunch))
+    {
+        LunchCount++;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Name)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Calories)
-                    </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Calories)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Protein)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Fat)
-                    </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Protein)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Fat)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Carbohydrates)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Weight)
-                    </td>
-                </tr>
-            }
-            @if (LunchCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.lunch).Count())
-            {
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.lunch, dateTime = @Model.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
-                </tr>
-            }
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Carbohydrates)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Weight)
+            </td>
+        </tr>
+    }
+    @if (LunchCount == Model.DailyMenu.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.lunch).Count())
+    {
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.lunch, dateTime = @Model.DailyMenu.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
+        </tr>
+    }
 
-            @if (DinnerCount == 0)
-            {
-                <tr class="MealTableRow">
-                    <td>Kolacja:</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            }
+    @if (DinnerCount == 0)
+    {
+        <tr class="MealTableRow">
+            <td>Kolacja:</td>
+            <td>@Model.Dinner.Calories</td>
+            <td>@Model.Dinner.Protein</td>
+            <td>@Model.Dinner.Fat</td>
+            <td>@Model.Dinner.Carbohydrates</td>
+            <td></td>
+        </tr>
+    }
 
-            @foreach (var itemlunch in Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.dinner))
-            {
-                DinnerCount++;
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Name)
-                    </td>
+    @foreach (var itemlunch in Model.DailyMenu.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.dinner))
+    {
+        DinnerCount++;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Name)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Calories)
-                    </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Calories)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Protein)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Fat)
-                    </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Protein)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Fat)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Carbohydrates)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Weight)
-                    </td>
-                </tr>
-            }
-            @if (DinnerCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.dinner).Count())
-            {
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.dinner, dateTime = @Model.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
-                </tr>
-            }
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Carbohydrates)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Weight)
+            </td>
+        </tr>
+    }
+    @if (DinnerCount == Model.DailyMenu.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.dinner).Count())
+    {
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.dinner, dateTime = @Model.DailyMenu.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
+        </tr>
+    }
 
-            @if (SnacksCount == 0)
-            {
-                <tr class="MealTableRow">
-                    <td>Przekąski:</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            }
+    @if (SnacksCount == 0)
+    {
+        <tr class="MealTableRow">
+            <td>Przekąski:</td>
+            <td>@Model.Snack.Calories</td>
+            <td>@Model.Snack.Protein</td>
+            <td>@Model.Snack.Fat</td>
+            <td>@Model.Snack.Carbohydrates</td>
+            <td></td>
+        </tr>
+    }
 
-            @foreach (var itemlunch in Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.snacks))
-            {
-                SnacksCount++;
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Name)
-                    </td>
+    @foreach (var itemlunch in Model.DailyMenu.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.snacks))
+    {
+        SnacksCount++;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Name)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Calories)
-                    </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Calories)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Protein)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Fat)
-                    </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Protein)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Fat)
+            </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Carbohydrates)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => itemlunch.Weight)
-                    </td>
-                </tr>
-            }
-            @if (SnacksCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.snacks).Count())
-            {
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.snacks, dateTime = @Model.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
-                </tr>
-            }
-        </table>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Carbohydrates)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => itemlunch.Weight)
+            </td>
+        </tr>
+    }
+    @if (SnacksCount == Model.DailyMenu.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.snacks).Count())
+    {
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.snacks, dateTime = @Model.DailyMenu.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
+        </tr>
+    }
+</table>

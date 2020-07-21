@@ -226,6 +226,7 @@
     <Compile Include="Controllers\WelcomePageController.cs" />
     <Compile Include="Core\Dtos\CalendarTraningDto.cs" />
     <Compile Include="Core\Dtos\CardioDistanceDto.cs" />
+    <Compile Include="Core\Dtos\MealSumaryDto.cs" />
     <Compile Include="Core\Dtos\WotkoutVolumeDto.cs" />
     <Compile Include="Core\Helpers\AchievementsChecker.cs" />
     <Compile Include="Core\Helpers\AchievementsCreator.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Core\ViewModels\AchievementsIndexViewModel.cs" />
     <Compile Include="Core\ViewModels\AddFoodToMealViewModel.cs" />
     <Compile Include="Core\ViewModels\CardioCreateViewModel.cs" />
+    <Compile Include="Core\ViewModels\DietIndexViewModel.cs" />
     <Compile Include="Core\ViewModels\StatisticsViewModels\CarioDistancePerMonthListViewModel.cs" />
     <Compile Include="Core\ViewModels\StatisticsViewModels\TraningsLengthListViewModel.cs" />
     <Compile Include="Core\ViewModels\StatisticsViewModels\WorkoutStatisticsViewModel.cs" />

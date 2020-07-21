@@ -24,7 +24,8 @@ namespace Dziennik_v0._1.Presistence.Repositories
 
         public void DeleteFoodModel(int id)
         {
-            throw new NotImplementedException();
+            var FoodModel = context.Foods.Find(id);
+            context.Foods.Remove(FoodModel);
         }
 
         public void EditCardio(FoodModel FoodModel)

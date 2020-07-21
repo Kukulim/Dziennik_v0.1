@@ -49,6 +49,10 @@
         <th>
             Waga:
         </th>
+
+        <th>
+            Usuń:
+        </th>
     </tr>
 
     @foreach (var item in Model.FoodModels)
@@ -75,6 +79,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                <a href="#" id="@item.Id" class="btn btn-danger btn-sm js-delete">
+                    <i class="fas fa-trash"></i>
+                </a>
+
             </td>
         </tr>
     }
@@ -156,6 +166,20 @@
                         location.reload(true)
                     }
                 });
+            });
+        });
+    </script>
+    <script>
+        $("body").delegate(".js-delete", "click", function (e) {
+            e.preventDefault();
+            var id = $(this).attr("id");
+                $.ajax({
+                    type: "DELETE",
+                    url: '../Diet/DeleteFood/',//url: '../Api/DietApi/DeleteFood/', nie dziala w api 
+                    data: { id: id },
+                    complete: function () {
+                        location.reload(true)
+                    }
             });
         });
     </script>

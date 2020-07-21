@@ -56,5 +56,10 @@ namespace Dziennik_v0._1.Controllers
             result.MealType = mealType;
             return View(result);
         }
+        public void DeleteFood(int id)
+        {
+            _unitOfWork.Foods.DeleteFoodModel(id);
+            _unitOfWork.Complete();
+        }
     }
 }

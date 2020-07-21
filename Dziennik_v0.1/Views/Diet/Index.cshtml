@@ -137,7 +137,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary btn-sm" })</td>
+            <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.lunch, dateTime = @Model.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
         </tr>
     }
 
@@ -188,7 +188,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary btn-sm" })</td>
+            <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.dinner, dateTime = @Model.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
         </tr>
     }
 
@@ -239,7 +239,7 @@
         <td></td>
         <td></td>
         <td></td>
-        <td>@Html.ActionLink("+", "Index", null, null, new { @class = "btn btn-primary btn-sm" })</td>
+        <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.snacks, dateTime = @Model.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
     </tr>
     }
 </table>

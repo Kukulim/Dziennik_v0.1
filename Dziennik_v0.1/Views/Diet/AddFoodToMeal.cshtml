@@ -10,6 +10,18 @@
 {
     <h3>Sniadanie:</h3>
 }
+@if (Model.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.dinner)
+{
+    <h3>Kolacja:</h3>
+}
+@if (Model.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.lunch)
+{
+    <h3>Obiad:</h3>
+}
+@if (Model.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.snacks)
+{
+    <h3>Przekąski:</h3>
+}
 <h4>@Model.Date.ToString("dd/MM/yyyy")</h4>
 
 <table class="table">
@@ -126,7 +138,6 @@
                     }
                     $('#tblFood').html(tr);
                 },
-                //error: function () { alert('coś poszło nie tak, przepraszamy'); },
             });
             $("body").delegate(".js-addFood", "click", function (e) {
                 var iterator = $(e.target).attr("value");

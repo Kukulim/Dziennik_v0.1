@@ -97,7 +97,7 @@
 <div class="text-center">
     @Html.ActionLink("Powrót do dieta", "Index", null, null, new { @class = "btn btn-primary" })
 </div>
-
+<button id="reload">reload</button>
 @section Scripts {
     <script>
         var globalData;
@@ -126,7 +126,7 @@
                     }
                     $('#tblFood').html(tr);
                 },
-                error: function () { alert('coś poszło nie tak, przepraszamy'); },
+                //error: function () { alert('coś poszło nie tak, przepraszamy'); },
             });
             $("body").delegate(".js-addFood", "click", function (e) {
                 var iterator = $(e.target).attr("value");
@@ -141,8 +141,9 @@
                     data: JSON.stringify(globalData[iterator]),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: function (data) { console.log(data) },
-                    error: function () { alert('coś poszło nie tak, przepraszamy'); },
+                    complete: function () {
+                        location.reload(true)
+                    }
                 });
             });
         });

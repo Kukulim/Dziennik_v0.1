@@ -19,10 +19,10 @@ namespace Dziennik_v0._1.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-        public ActionResult Index()
+        public ActionResult Index(DateTime? dateTime=null)
         {
             var userId = User.Identity.GetUserId();
-            var ToDayDate = DateTime.Now.Date;
+            var ToDayDate = dateTime ?? DateTime.Now.Date;
             var viewModel = _unitOfWork.DailyMenus.GetDailyMenu(userId, ToDayDate);
             if (viewModel == null)
             {

@@ -11,7 +11,9 @@
 <h2>Odżywianie:</h2>
 @Html.ActionLink("Profil", "UserProfile", "Diet", new { area = "" }, new { @class = "btn btn-info btn-lg" })
 <h2>Twoje posiłki:</h2>
+@Html.ActionLink("<", "Index", "Diet", new { dateTime = @Model.DailyMenuDate.AddDays(-1) }, new { @class = "btn btn-primary" })
 <h4>@Html.DisplayFor(model => model.DailyMenuDate)</h4>
+@Html.ActionLink(">", "Index", "Diet", new { dateTime = @Model.DailyMenuDate.AddDays(1) }, new { @class = "btn btn-primary" })
 
 <table class="table">
     <tr>
@@ -233,13 +235,13 @@
     }
     @if (SnacksCount == Model.FoodModels.Where(f => f.MealType == Dziennik_v0._1.Core.Models.Enums.MealType.snacks).Count())
     {
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.snacks, dateTime = @Model.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
-    </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Html.ActionLink("+", "AddFoodToMeal", "Diet", new { mealType = Dziennik_v0._1.Core.Models.Enums.MealType.snacks, dateTime = @Model.DailyMenuDate }, new { @class = "btn btn-primary btn-sm" })</td>
+        </tr>
     }
 </table>

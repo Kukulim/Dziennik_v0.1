@@ -107,7 +107,7 @@
 </table>
 
 <div class="text-center">
-    @Html.ActionLink("Powrót do dieta", "Index", null, null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Powrót do dieta", "Index", new { dateTime = @Model.Date }, new { @class = "btn btn-primary" })
 </div>
 <button id="reload">reload</button>
 @section Scripts {

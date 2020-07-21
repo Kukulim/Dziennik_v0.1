@@ -99,7 +99,7 @@
     </div>
 </div>
 
-<table class="table hidden">
+<table class="table hidden" style="margin-top:15px;">
     <thead>
         <tr scope="col">
             <td>Nazwa</td>
@@ -116,10 +116,12 @@
     </tbody>
 </table>
 
+    @Html.ActionLink("Dodaj nową potrawę", "AddFoodToCSV", new { dateTime = @Model.Date }, new { @class = "btn btn-primary hidden js-addlink" })
+
 <div class="text-center">
     @Html.ActionLink("Powrót do dieta", "Index", new { dateTime = @Model.Date }, new { @class = "btn btn-primary" })
 </div>
-<button id="reload">reload</button>
+
 @section Scripts {
     <script>
         var globalData;
@@ -128,6 +130,7 @@
         $("#js-search").click(function () {
             result = $(".search_input").val(),
                 $(".table").removeClass("hidden");
+            $(".js-addlink").removeClass("hidden");
             $.ajax({
                 url: '../Api/DietApi/GetFoodData/?=' + result,
                 type: 'GET',

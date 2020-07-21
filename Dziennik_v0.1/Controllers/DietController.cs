@@ -94,5 +94,21 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Foods.DeleteFoodModel(id);
             _unitOfWork.Complete();
         }
+        [HttpGet]
+        public ActionResult AddFoodToCSV()
+        {
+            var viewModel = new AddFoodToCSVViewModel();
+            viewModel.FoodModel = new FoodModel();
+            viewModel.Url = Request.UrlReferrer.ToString();
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult AddFoodToCSV(AddFoodToCSVViewModel viewModel)
+        {
+            string newFileName = "D:/Dziennik_v0.1/Dziennik_v0.1/App_Data/TabeleKaloryczne.csv";
+            string FoodToInsert = Environment.NewLine + viewModel.FoodModel.Name + "." + viewModel.FoodModel.Calories + "." + viewModel.FoodModel.Protein + "." + viewModel.FoodModel.Fat + "." + viewModel.FoodModel.Carbohydrates;
+            System.IO.File.AppendAllText(newFileName, FoodToInsert);
+            return Redirect(viewModel.Url);
+        }
     }
 }

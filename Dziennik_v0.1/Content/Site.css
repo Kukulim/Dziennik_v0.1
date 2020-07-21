@@ -141,6 +141,40 @@ textarea {
   color: #272b30;
   font-size: 18px; }
 
+.searchbar {
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 60px;
+  width: 300px;
+  background-color: #210126;
+  border-radius: 30px;
+  padding: 10px; }
+
+.search_input {
+  color: white;
+  border: 0;
+  outline: 0;
+  max-width: 500px;
+  width: 200px !important;
+  background: none;
+  line-height: 40px;
+  transition: width 0.4s linear; }
+
+.searchbar:hover > .search_icon {
+  background: white;
+  color: #7219bb; }
+
+.search_icon {
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none; }
+
 /*BOOTSTRAP OVERLOADS*/
 .btn-info {
   background-image: none !important;

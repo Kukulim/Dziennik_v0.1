@@ -16,6 +16,7 @@ namespace Dziennik_v0._1.Presistence
         DbSet<Achievement> Achievements { get; set; }
         DbSet<DailyMenu> DailyMenus { get; set; }
         DbSet<FoodModel> Foods { get; set; }
+        DbSet<Measurement> Measurements { get; set; }
 
         IDbSet<ApplicationUser> Users { get; set; }
     }

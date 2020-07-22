@@ -239,6 +239,7 @@
     <Compile Include="Core\Models\Enums\TraningType.cs" />
     <Compile Include="Core\Models\ExerciseModel.cs" />
     <Compile Include="Core\Models\FoodModel.cs" />
+    <Compile Include="Core\Models\Measurement.cs" />
     <Compile Include="Core\Models\TrainigBaseModel.cs" />
     <Compile Include="Core\Models\WorkoutModel.cs" />
     <Compile Include="Core\Repositories\IAchievementsRepository.cs" />
@@ -247,6 +248,7 @@
     <Compile Include="Core\Repositories\IDailyMenuRepository.cs" />
     <Compile Include="Core\Repositories\IExerciseRepository.cs" />
     <Compile Include="Core\Repositories\IFoodsRepository.cs" />
+    <Compile Include="Core\Repositories\IMeasurementsRepository.cs" />
     <Compile Include="Core\Repositories\IWorkoutRepository.cs" />
     <Compile Include="Core\ViewModels\AchievementsIndexViewModel.cs" />
     <Compile Include="Core\ViewModels\AddFoodToCSVViewModel.cs" />
@@ -331,6 +333,10 @@
     <Compile Include="Migrations\202007181218530_DailyMealModel.Designer.cs">
       <DependentUpon>202007181218530_DailyMealModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007221504382_userModelAddMeasurement.cs" />
+    <Compile Include="Migrations\202007221504382_userModelAddMeasurement.Designer.cs">
+      <DependentUpon>202007221504382_userModelAddMeasurement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
     <Compile Include="Core\Models\ApplicationUserModels.cs" />
@@ -343,6 +349,7 @@
     <Compile Include="Presistence\Repositories\DailyMenuRepository.cs" />
     <Compile Include="Presistence\Repositories\ExerciseRepository.cs" />
     <Compile Include="Presistence\Repositories\FoodsRepository.cs" />
+    <Compile Include="Presistence\Repositories\MeasurementsRepository.cs" />
     <Compile Include="Presistence\Repositories\WorkoutRepository.cs" />
     <Compile Include="Presistence\UnitOfWork.cs" />
     <Compile Include="Presistence\UserDbInitializer\UserDbInitializer.cs" />
@@ -979,6 +986,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007181218530_DailyMealModel.resx">
       <DependentUpon>202007181218530_DailyMealModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007221504382_userModelAddMeasurement.resx">
+      <DependentUpon>202007221504382_userModelAddMeasurement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

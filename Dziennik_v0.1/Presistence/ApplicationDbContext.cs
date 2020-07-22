@@ -24,6 +24,7 @@ namespace Dziennik_v0._1.Persistence
         public DbSet<Achievement> Achievements { get; set; }
         public DbSet<DailyMenu> DailyMenus { get; set; }
         public DbSet<FoodModel> Foods { get; set; }
+        public DbSet<Measurement> Measurements { get; set; }
 
         public static ApplicationDbContext Create()
         {

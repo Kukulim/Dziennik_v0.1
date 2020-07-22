@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Dziennik_v0._1.Core.Helpers;
-using Dziennik_v0._1.Core.Models.Enums;
+﻿using Dziennik_v0._1.Core.Models.Enums;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Dziennik_v0._1.Core.Models
 {
@@ -16,16 +13,21 @@ namespace Dziennik_v0._1.Core.Models
     {
         [Display(Name = "Imię:")]
         public string Name { get; set; }
+
         [Display(Name = "Wiek:")]
         public int Age { get; set; }
-        [Display(Name = "Waga:")]
-        public float Weight { get; set; }
+
+        public virtual List<Measurement> Measurements { get; set; } = new List<Measurement>();
+
         [Display(Name = "Waga docelowa:")]
         public float Target { get; set; }
+
         [Display(Name = "Wzrost:")]
         public int Height { get; set; }
+
         [Display(Name = "Zawartość procentowa tłuszczu:")]
         public float BodyFat { get; set; }
+
         [Display(Name = "Płeć:")]
         public SexType Sex { get; set; }
 

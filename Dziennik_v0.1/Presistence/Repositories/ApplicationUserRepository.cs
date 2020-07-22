@@ -26,7 +26,6 @@ namespace Dziennik_v0._1.Presistence.Repositories
             useredit.Height = user.Height;
             useredit.BodyFat = user.BodyFat;
             useredit.Age = user.Age;
-            useredit.Weight = user.Weight;
             useredit.Sex = user.Sex;
             useredit.Target = user.Target;
         }

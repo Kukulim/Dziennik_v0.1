@@ -18,15 +18,18 @@
     <div class="col-sm-2">
         @Html.ActionLink("<", "Index", "Diet", new { dateTime = @Model.DailyMenu.DailyMenuDate.AddDays(-1) }, new { @class = "btn btn-info" })
     </div>
-    <div class="col-sm-8 text-center">
-        <h3>@Html.DisplayFor(model => model.DailyMenu.DailyMenuDate)</h3>
+    <div class="col-sm-8">
+        <div>
+            @Html.EditorFor(model => model.DailyMenu.DailyMenuDate,
+            new { htmlAttributes = new { @class = "form-control center-block", @id = "datepicker", @readonly = true, @style= "font-size:20px; background-color:#b4aaca" } })
+        </div>
     </div>
     <div class="col-sm-2 text-right">
         @Html.ActionLink(">", "Index", "Diet", new { dateTime = @Model.DailyMenu.DailyMenuDate.AddDays(1) }, new { @class = "btn btn-info" })
     </div>
 </div>
 
-<table class="table">
+<table class="table" style="margin-top:15px">
     <tr>
         <th>
             Nazwa:
@@ -256,3 +259,18 @@
         </tr>
     }
 </table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
+    @Scripts.Render("~/Scripts/datepicker-pl.js")
+    @Styles.Render("~/Content/themes/base/datepickercustom.css")
+
+    <script>
+        $(function () {
+            $('#datepicker').datepicker({
+                dateFormat:"yy.mm.dd"
+            });
+        });
+    </script>
+}

@@ -11,6 +11,8 @@
 <h2>Odżywianie:</h2>
 
 @Html.ActionLink("Profil", "UserProfile", "Diet", new { area = "" }, new { @class = "btn btn-info btn-lg" })
+@Html.ActionLink("Dodaj pomiar", "AddMeasurement", "Diet", new { area = "" }, new { @class = "btn btn-info btn-lg" })
+@Html.ActionLink("Podsumowanie", "UserProfile", "Diet", new { area = "" }, new { @class = "btn btn-info btn-lg" })
 
 <h2 class="text-center">Twoje posiłki:</h2>
 
@@ -21,7 +23,7 @@
     <div class="col-sm-8">
         <div>
             @Html.EditorFor(model => model.DailyMenu.DailyMenuDate,
-            new { htmlAttributes = new { @class = "form-control center-block", @id = "datepicker", @readonly = true, @style= "font-size:20px; background-color:#b4aaca" } })
+            new { htmlAttributes = new { @class = "form-control center-block", @id = "datepicker", @readonly = true, @style = "font-size:20px; background-color:#b4aaca" } })
         </div>
     </div>
     <div class="col-sm-2 text-right">
@@ -271,7 +273,7 @@
             $("#datepicker").datepicker({
                 dateFormat: "yy.mm.dd",
                 onSelect: function () {
-                    window.location.href ='Diet?datetime=' + this.value;
+                    window.location.href = 'Diet?datetime=' + this.value;
                 }
             });
         });

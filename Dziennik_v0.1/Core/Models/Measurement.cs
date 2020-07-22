@@ -10,6 +10,7 @@ namespace Dziennik_v0._1.Core.Models
         [Display(Name = "Waga:")]
         public float Weight { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy/MM/dd}")]
         [Display(Name = "Data:")]
         public DateTime Date { get; set; }
 

@@ -110,5 +110,11 @@ namespace Dziennik_v0._1.Controllers
             System.IO.File.AppendAllText(newFileName, FoodToInsert);
             return Redirect(viewModel.Url);
         }
+        [HttpGet]
+        public ActionResult AddMeasurement()
+        {
+            var viewModel = new Measurement { Date=DateTime.Now };
+            return View(viewModel);
+        }
     }
 }

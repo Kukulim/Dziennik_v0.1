@@ -116,5 +116,41 @@ namespace Dziennik_v0._1.Controllers
             var viewModel = new Measurement { Date=DateTime.Now };
             return View(viewModel);
         }
+        public ActionResult AddMeasurement(Measurement viewModel)
+        {
+            var userId = User.Identity.GetUserId();
+            var user = _unitOfWork.Users.GetUser(userId);
+
+            var meas = (9.99 * viewModel.Weight) + (6.25 * user.Height) - (4.92 * user.Age);
+            if (user.Sex==SexType.Female)
+            {
+                viewModel.CaloricRequirement = (float)(meas - 161);
+            }
+            if (user.Sex == SexType.Male)
+            {
+                viewModel.CaloricRequirement = (float)(meas + 5);
+            }
+            viewModel.UserId = userId;
+
+            if (user.Target == viewModel.Weight)
+            {
+                viewModel.DietType = DietType.keep;
+            }
+            if (user.Target > viewModel.Weight)
+            {
+                viewModel.DietType = DietType.bulk;
+                viewModel.CaloricRequirement += 200;
+            }
+            if (user.Target < viewModel.Weight)
+            {
+                viewModel.DietType = DietType.cut;
+                viewModel.CaloricRequirement -= 200;
+            }
+
+            _unitOfWork.Measurements.AddMeasurement(viewModel);
+            _unitOfWork.Complete();
+
+            return RedirectToAction("Index");
+        }
     }
 }

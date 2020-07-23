@@ -18,7 +18,7 @@ namespace Dziennik_v0._1.Presistence.Repositories
         }
         public void AddMeasurement(Measurement Measurement)
         {
-            throw new NotImplementedException();
+            context.Measurements.Add(Measurement);
         }
 
         public void DeleteMeasurement(int id)

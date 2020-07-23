@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dziennik_v0._1.Core.Models.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Dziennik_v0._1.Core.Models
@@ -16,6 +17,9 @@ namespace Dziennik_v0._1.Core.Models
 
         [Display(Name = "Zapotrzebowanie kaloryczne:")]
         public float CaloricRequirement { get; set; }
+
+        [Display(Name = "Rodzaj Diety:")]
+        public DietType DietType { get; set; }
 
         public string UserId { get; set; }
     }

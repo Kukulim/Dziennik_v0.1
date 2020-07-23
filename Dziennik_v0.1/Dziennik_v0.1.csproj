@@ -234,6 +234,7 @@
     <Compile Include="Core\Models\CardioModel.cs" />
     <Compile Include="Core\Models\DailyMenu.cs" />
     <Compile Include="Core\Models\Enums\CardioType.cs" />
+    <Compile Include="Core\Models\Enums\DietType.cs" />
     <Compile Include="Core\Models\Enums\MealType.cs" />
     <Compile Include="Core\Models\Enums\SexType.cs" />
     <Compile Include="Core\Models\Enums\TraningType.cs" />
@@ -336,6 +337,10 @@
     <Compile Include="Migrations\202007221504382_userModelAddMeasurement.cs" />
     <Compile Include="Migrations\202007221504382_userModelAddMeasurement.Designer.cs">
       <DependentUpon>202007221504382_userModelAddMeasurement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007230752275_MeasurmentModelAddDietType.cs" />
+    <Compile Include="Migrations\202007230752275_MeasurmentModelAddDietType.Designer.cs">
+      <DependentUpon>202007230752275_MeasurmentModelAddDietType.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Presistence\ApplicationDbContext.cs" />
@@ -990,6 +995,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007221504382_userModelAddMeasurement.resx">
       <DependentUpon>202007221504382_userModelAddMeasurement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007230752275_MeasurmentModelAddDietType.resx">
+      <DependentUpon>202007230752275_MeasurmentModelAddDietType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

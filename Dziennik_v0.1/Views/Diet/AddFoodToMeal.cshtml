@@ -152,7 +152,24 @@
                     $('#tblFood').html(tr);
                 },
             });
-            $("body").delegate(".js-addFood", "click", function (e) {
+        });
+    </script>
+    <script>
+        $("body").delegate(".js-delete", "click", function (e) {
+            e.preventDefault();
+            var id = $(this).attr("id");
+                $.ajax({
+                    type: "DELETE",
+                    url: '../Diet/DeleteFood/',//url: '../Api/DietApi/DeleteFood/', nie dziala w api 
+                    data: { id: id },
+                    complete: function () {
+                        location.reload(true)
+                    }
+            });
+        });
+    </script>
+    <script>
+        $("body").delegate(".js-addFood", "click", function (e) {
                 var iterator = $(e.target).attr("value");
                 var foodWeight = $("#" + iterator).val();
                 globalData[iterator].Weight = foodWeight;
@@ -170,20 +187,5 @@
                     }
                 });
             });
-        });
-    </script>
-    <script>
-        $("body").delegate(".js-delete", "click", function (e) {
-            e.preventDefault();
-            var id = $(this).attr("id");
-                $.ajax({
-                    type: "DELETE",
-                    url: '../Diet/DeleteFood/',//url: '../Api/DietApi/DeleteFood/', nie dziala w api 
-                    data: { id: id },
-                    complete: function () {
-                        location.reload(true)
-                    }
-            });
-        });
     </script>
 }

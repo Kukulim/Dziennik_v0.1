@@ -6,7 +6,6 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Dziennik_v0._1.Controllers
@@ -19,7 +18,8 @@ namespace Dziennik_v0._1.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-        public ActionResult Index(DateTime? dateTime=null)
+
+        public ActionResult Index(DateTime? dateTime = null)
         {
             var userId = User.Identity.GetUserId();
             var ToDayDate = dateTime ?? DateTime.Now.Date;
@@ -34,7 +34,7 @@ namespace Dziennik_v0._1.Controllers
             viewModelToReturn.DailyMenu = viewModel;
             foreach (var item in viewModelToReturn.DailyMenu.FoodModels)
             {
-                if (item.MealType==MealType.breakfast)
+                if (item.MealType == MealType.breakfast)
                 {
                     viewModelToReturn.Breakfast.Calories += item.Calories;
                     viewModelToReturn.Breakfast.Fat += item.Fat;
@@ -62,15 +62,29 @@ namespace Dziennik_v0._1.Controllers
                     viewModelToReturn.Snack.Carbohydrates += item.Carbohydrates;
                     viewModelToReturn.Snack.Protein += item.Protein;
                 }
+
+                viewModelToReturn.AllDayMenuSumary.Calories = viewModelToReturn.Snack.Calories + viewModelToReturn.Breakfast.Calories
+                    + viewModelToReturn.Dinner.Calories + viewModelToReturn.Lunch.Calories;
+
+                viewModelToReturn.AllDayMenuSumary.Fat = viewModelToReturn.Snack.Fat + viewModelToReturn.Breakfast.Fat
+                    + viewModelToReturn.Dinner.Fat + viewModelToReturn.Lunch.Fat;
+
+                viewModelToReturn.AllDayMenuSumary.Protein = viewModelToReturn.Snack.Protein + viewModelToReturn.Breakfast.Protein
+                    + viewModelToReturn.Dinner.Protein + viewModelToReturn.Lunch.Protein;
+
+                viewModelToReturn.AllDayMenuSumary.Carbohydrates = viewModelToReturn.Snack.Carbohydrates + viewModelToReturn.Breakfast.Carbohydrates
+                    + viewModelToReturn.Dinner.Carbohydrates + viewModelToReturn.Lunch.Carbohydrates;
             }
             return View(viewModelToReturn);
         }
+
         public ActionResult UserProfile()
         {
             var userId = User.Identity.GetUserId();
             var user = _unitOfWork.Users.GetUser(userId);
             return View(user);
         }
+
         [HttpPost]
         public ActionResult UserProfile(ApplicationUser viewModel)
         {
@@ -78,6 +92,7 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Complete();
             return RedirectToAction("Index");
         }
+
         public ActionResult AddFoodToMeal(MealType mealType, DateTime dateTime)
         {
             var result = new AddFoodToMealViewModel();
@@ -89,11 +104,13 @@ namespace Dziennik_v0._1.Controllers
             result.MealType = mealType;
             return View(result);
         }
+
         public void DeleteFood(int id)
         {
             _unitOfWork.Foods.DeleteFoodModel(id);
             _unitOfWork.Complete();
         }
+
         [HttpGet]
         public ActionResult AddFoodToCSV()
         {
@@ -102,6 +119,7 @@ namespace Dziennik_v0._1.Controllers
             viewModel.Url = Request.UrlReferrer.ToString();
             return View(viewModel);
         }
+
         [HttpPost]
         public ActionResult AddFoodToCSV(AddFoodToCSVViewModel viewModel)
         {
@@ -110,19 +128,21 @@ namespace Dziennik_v0._1.Controllers
             System.IO.File.AppendAllText(newFileName, FoodToInsert);
             return Redirect(viewModel.Url);
         }
+
         [HttpGet]
         public ActionResult AddMeasurement()
         {
-            var viewModel = new Measurement { Date=DateTime.Now };
+            var viewModel = new Measurement { Date = DateTime.Now };
             return View(viewModel);
         }
+
         public ActionResult AddMeasurement(Measurement viewModel)
         {
             var userId = User.Identity.GetUserId();
             var user = _unitOfWork.Users.GetUser(userId);
 
             var meas = (9.99 * viewModel.Weight) + (6.25 * user.Height) - (4.92 * user.Age);
-            if (user.Sex==SexType.Female)
+            if (user.Sex == SexType.Female)
             {
                 viewModel.CaloricRequirement = (float)(meas - 161);
             }

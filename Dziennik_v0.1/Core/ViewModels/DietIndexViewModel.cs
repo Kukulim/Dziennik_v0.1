@@ -14,5 +14,7 @@ namespace Dziennik_v0._1.Core.ViewModels
         public MealSumaryDto Dinner { get; set; } = new MealSumaryDto();
         public MealSumaryDto Lunch { get; set; } = new MealSumaryDto();
         public MealSumaryDto Snack { get; set; } = new MealSumaryDto();
+        public MealSumaryDto AllDayMenuSumary { get; set; } = new MealSumaryDto();
+
     }
 }

@@ -16,6 +16,7 @@
 
 <h2 class="text-center">Twoje posiłki:</h2>
 
+
 <div class="row">
     <div class="col-sm-2">
         @Html.ActionLink("<", "Index", "Diet", new { dateTime = @Model.DailyMenu.DailyMenuDate.AddDays(-1) }, new { @class = "btn btn-info" })
@@ -23,7 +24,7 @@
     <div class="col-sm-8">
         <div>
             @Html.EditorFor(model => model.DailyMenu.DailyMenuDate,
-            new { htmlAttributes = new { @class = "form-control center-block", @id = "datepicker", @readonly = true, @style = "font-size:20px; background-color:#b4aaca" } })
+     new { htmlAttributes = new { @class = "form-control center-block", @id = "datepicker", @readonly = true, @style = "font-size:20px; background-color:#b4aaca" } })
         </div>
     </div>
     <div class="col-sm-2 text-right">
@@ -32,6 +33,7 @@
 </div>
 
 <table class="table" style="margin-top:15px">
+
     <tr>
         <th>
             Nazwa:
@@ -56,6 +58,15 @@
         <th>
             Waga:
         </th>
+    </tr>
+
+    <tr class="MealAllDayRow">
+        <td>Cały dzień:</td>
+        <td>@Model.AllDayMenuSumary.Calories</td>
+        <td>@Model.AllDayMenuSumary.Protein</td>
+        <td>@Model.AllDayMenuSumary.Fat</td>
+        <td>@Model.AllDayMenuSumary.Carbohydrates</td>
+        <td></td>
     </tr>
 
     @if (BreakfestCount == 0)

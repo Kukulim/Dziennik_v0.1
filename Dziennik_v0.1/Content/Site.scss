@@ -1,4 +1,4 @@
-﻿/*VARIBLES*/
+﻿meal/*VARIBLES*/
 
 $paleBud: #E5F77D;
 $mirando: #F4F7BE;
@@ -182,7 +182,11 @@ textarea {
 .MealTableRow {
     background: #b4aaca !important;
     color: #272b30;
-    font-size:18px;
+}
+.MealAllDayRow {
+    background: #b4aaca !important;
+    color: #272b30;
+    font-size:16px;
 }
 
 .searchbar {

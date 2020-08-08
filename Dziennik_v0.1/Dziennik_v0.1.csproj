@@ -934,6 +934,7 @@
     <Content Include="Views\Diet\AddFoodToMeal.cshtml" />
     <Content Include="Views\Diet\AddFoodToCSV.cshtml" />
     <Content Include="Views\Diet\AddMeasurement.cshtml" />
+    <Content Include="Views\Diet\DietSummary.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -137,7 +137,8 @@ namespace Dziennik_v0._1.Controllers
             var viewModel = new Measurement { Date = DateTime.Now };
             return View(viewModel);
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddMeasurement(Measurement viewModel)
         {
             var userId = User.Identity.GetUserId();
@@ -173,6 +174,11 @@ namespace Dziennik_v0._1.Controllers
             _unitOfWork.Complete();
 
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult DietSummary()
+        {
+            return View();
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Dziennik_v0._1.Controllers
 {
+    [Authorize]
     public class DietController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -86,6 +87,7 @@ namespace Dziennik_v0._1.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult UserProfile(ApplicationUser viewModel)
         {
             _unitOfWork.Users.EditUser(viewModel);

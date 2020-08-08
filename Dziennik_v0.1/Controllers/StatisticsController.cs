@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Dziennik_v0._1.Controllers
 {
+    [Authorize]
     public class StatisticsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

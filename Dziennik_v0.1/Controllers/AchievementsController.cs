@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace Dziennik_v0._1.Controllers
 {
+    [Authorize]
     public class AchievementsController : Controller
     {
         private IUnitOfWork _unitOfWork;

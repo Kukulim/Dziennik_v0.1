@@ -16,6 +16,7 @@ using System.Web.Script.Serialization;
 
 namespace Dziennik_v0._1.Controllers
 {
+    [Authorize]
     public class WelcomePageController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

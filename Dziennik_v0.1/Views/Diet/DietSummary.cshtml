@@ -3,5 +3,73 @@
     ViewBag.Title = "DietSummary";
 }
 
-<h2>DietSummary</h2>
+<h2>Podsumowanie:</h2>
+
+<figure class="highcharts-figure" style="margin-top:15px; margin-bottom:30px">
+    <div id="container"></div>
+</figure>
+
+<div class="text-center">
+    @Html.ActionLink("Powrót do odżywianie", "Index", null, new { @class = "btn btn-primary" })
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/highchartjs")
+    @Scripts.Render("~/bundles/highchartcss")
+    <script>
+        Highcharts.setOptions({
+            chart: {
+                style: {
+                    fontFamily: 'Lato'
+                },
+            },
+            lang: {
+                months: [
+                    'Styczeń', 'Luty', 'Marzec', 'Kwiecień',
+                    'Maj', 'Czerwiec', 'Lipiec', 'Sierpień',
+                    'Wrzesień', 'Pażdziernik', 'Listopad', 'Grudzień'
+                ],
+                shortMonths: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'],
+                noData: "Brak treningow w tym okresie",
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: "/Api/StatisticsApi/WorkoutVolumeSumaryList/",
+                method: "GET"
+            })
+                .done(function (data) {
+                    Highcharts.chart('container', {
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: 'Objętość treningowa:'
+                        },
+                        xAxis: {
+                            categories: data.yearsWithTraning
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: 'Objętość w kg.'
+                            },
+                        },
+                        series: [{
+                            name: 'Trening siłowy',
+                            data: data.workoutVolume,
+                            color: '#62c462',
+                        }]
+                    });
+                })
+                .fail(function () {
+                    alert("Something failed!");
+                });
+
+        })
+    </script>
+    }
 

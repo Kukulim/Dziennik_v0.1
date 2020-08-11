@@ -33,7 +33,7 @@ namespace Dziennik_v0._1.Presistence.Repositories
 
         public IEnumerable<Measurement> GetAllMeasurements(string id)
         {
-            throw new NotImplementedException();
+            return context.Measurements.Where(x => x.UserId == id).ToList();
         }
 
         public Measurement GetMeasurement(int MeasurementId)

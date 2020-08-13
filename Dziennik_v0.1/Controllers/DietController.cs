@@ -76,7 +76,7 @@ namespace Dziennik_v0._1.Controllers
                 viewModelToReturn.AllDayMenuSumary.Carbohydrates = viewModelToReturn.Snack.Carbohydrates + viewModelToReturn.Breakfast.Carbohydrates
                     + viewModelToReturn.Dinner.Carbohydrates + viewModelToReturn.Lunch.Carbohydrates;
             }
-            var measurementModel = _unitOfWork.Measurements.GetAllMeasurements(userId).OrderBy(m => m.Date).FirstOrDefault();
+            var measurementModel = _unitOfWork.Measurements.GetAllMeasurements(userId).OrderByDescending(m => m.Date).FirstOrDefault();
             var limit = 0;
             if (measurementModel != null)
             {

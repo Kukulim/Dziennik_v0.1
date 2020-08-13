@@ -1,10 +1,18 @@
-﻿
+﻿@model IEnumerable<int>
 @{
     ViewBag.Title = "DietSummary";
 }
 
 <h2>Podsumowanie:</h2>
 <h4>Wybierz rok:</h4>
+<div>
+    @foreach (var item in Model)
+    {
+        <a href="#" class="js-year btn btn-info" data="@item.ToString()">
+            @item.ToString()
+        </a>
+    }
+</div>
 
 <figure class="highcharts-figure" style="margin-top:15px; margin-bottom:30px">
     <div id="container"></div>
@@ -39,7 +47,7 @@
     <script>
         $(document).ready(function () {
             $.ajax({
-                url: "/Api/DietApi/WeightPerYearList/" + 2020,
+                url: "/Api/DietApi/WeightPerYearList/" +@DateTime.Now.Year,
                 method: "GET"
             })
                 .done(function (data) {
@@ -50,11 +58,84 @@
                             }
                         },
                         title: {
-                            text: 'Waga:'
+                            text: 'Waga w @DateTime.Now.Year:'
                         },
                         xAxis: {
                             allowDecimals: true,
-                            categories:data.date,
+                            type: 'datetime',
+                            dateTimeLabelFormats: {
+                                day: '%e of %b'
+                            },
+                            categories: data.date,
+                        },
+                        yAxis: {
+                            min: 0,
+                            title: {
+                                text: 'Waga w kg.'
+                            },
+                        },
+                        tooltip: {
+                            shared: true,
+                            crosshairs: true
+                        },
+
+                        plotOptions: {
+                            series: {
+                                cursor: 'pointer',
+                                point: {
+                                    events: {
+                                        click: function (e) {
+                                            hs.htmlExpand(null, {
+                                                pageOrigin: {
+                                                    x: e.pageX || e.clientX,
+                                                    y: e.pageY || e.clientY
+                                                },
+                                                headingText: this.series.name,
+                                                maincontentText: Highcharts.dateFormat('%A, %b %e, %Y', this.x) + ':<br/> ' +
+                                                    this.y + ' sessions',
+                                                width: 200
+                                            });
+                                        }
+                                    }
+                                },
+                                marker: {
+                                    lineWidth: 1
+                                }
+                            }
+                        },
+                        series: [{
+                            name: 'Waga',
+                            data: data.weight,
+                            color: '#b4aaca',
+                        }]
+                    });
+                })
+                .fail(function () {
+                    alert("Something failed!");
+                });
+
+        })
+    </script>
+
+    <script>
+        $(".js-year").click(function (e) {
+            $.ajax({
+                url: "/Api/DietApi/WeightPerYearList/" + $(e.target).attr("data"),
+                method: "GET"
+            })
+                .done(function (data) {
+                    Highcharts.chart('container', {
+                        chart: {
+                            scrollablePlotArea: {
+                                minWidth: 700
+                            }
+                        },
+                        title: {
+                            text: 'Waga w ' + $(e.target).attr("data")+':',
+                        },
+                        xAxis: {
+                            allowDecimals: true,
+                            categories: data.date,
                         },
                         yAxis: {
                             min: 0,

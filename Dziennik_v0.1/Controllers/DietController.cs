@@ -188,7 +188,17 @@ namespace Dziennik_v0._1.Controllers
         [HttpGet]
         public ActionResult DietSummary()
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var YearsWithTraning = new List<int>();
+            var Measurments =_unitOfWork.Measurements.GetAllMeasurements(userId);
+
+            foreach (var item in Measurments)
+            {
+                YearsWithTraning.Add(Convert.ToInt32(item.Date.Year.ToString()));
+            }
+            YearsWithTraning = YearsWithTraning.Distinct().OrderBy(c => c).ToList();
+
+            return View(YearsWithTraning);
         }
     }
 }

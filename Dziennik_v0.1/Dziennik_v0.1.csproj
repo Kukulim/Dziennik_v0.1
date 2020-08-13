@@ -260,6 +260,7 @@
     <Compile Include="Core\ViewModels\StatisticsViewModels\TraningsLengthListViewModel.cs" />
     <Compile Include="Core\ViewModels\StatisticsViewModels\WorkoutStatisticsViewModel.cs" />
     <Compile Include="Core\ViewModels\StatisticsViewModels\WorkoutVolumePerMonthListViewModel.cs" />
+    <Compile Include="Core\ViewModels\WeightPerYearViewModel.cs" />
     <Compile Include="Core\ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Core\ViewModels\WorkoutCreateViewModel.cs" />
     <Compile Include="Global.asax.cs">

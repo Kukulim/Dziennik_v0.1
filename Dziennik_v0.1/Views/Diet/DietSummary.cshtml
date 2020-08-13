@@ -4,6 +4,7 @@
 }
 
 <h2>Podsumowanie:</h2>
+<h4>Wybierz rok:</h4>
 
 <figure class="highcharts-figure" style="margin-top:15px; margin-bottom:30px">
     <div id="container"></div>
@@ -30,7 +31,7 @@
                     'Wrzesień', 'Pażdziernik', 'Listopad', 'Grudzień'
                 ],
                 shortMonths: ['Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'],
-                noData: "Brak treningow w tym okresie",
+                noData: "Brak pomiarów w tym okresie",
             }
         });
     </script>
@@ -38,30 +39,62 @@
     <script>
         $(document).ready(function () {
             $.ajax({
-                url: "/Api/StatisticsApi/WorkoutVolumeSumaryList/",
+                url: "/Api/DietApi/WeightPerYearList/" + 2020,
                 method: "GET"
             })
                 .done(function (data) {
                     Highcharts.chart('container', {
                         chart: {
-                            type: 'column'
+                            scrollablePlotArea: {
+                                minWidth: 700
+                            }
                         },
                         title: {
-                            text: 'Objętość treningowa:'
+                            text: 'Waga:'
                         },
                         xAxis: {
-                            categories: data.yearsWithTraning
+                            allowDecimals: true,
+                            categories:data.date,
                         },
                         yAxis: {
                             min: 0,
                             title: {
-                                text: 'Objętość w kg.'
+                                text: 'Waga w kg.'
                             },
                         },
+                        tooltip: {
+                            shared: true,
+                            crosshairs: true
+                        },
+
+                        plotOptions: {
+                            series: {
+                                cursor: 'pointer',
+                                point: {
+                                    events: {
+                                        click: function (e) {
+                                            hs.htmlExpand(null, {
+                                                pageOrigin: {
+                                                    x: e.pageX || e.clientX,
+                                                    y: e.pageY || e.clientY
+                                                },
+                                                headingText: this.series.name,
+                                                maincontentText: Highcharts.dateFormat('%A, %b %e, %Y', this.x) + ':<br/> ' +
+                                                    this.y + ' sessions',
+                                                width: 200
+                                            });
+                                        }
+                                    }
+                                },
+                                marker: {
+                                    lineWidth: 1
+                                }
+                            }
+                        },
                         series: [{
-                            name: 'Trening siłowy',
-                            data: data.workoutVolume,
-                            color: '#62c462',
+                            name: 'Waga',
+                            data: data.weight,
+                            color: '#b4aaca',
                         }]
                     });
                 })
@@ -71,5 +104,5 @@
 
         })
     </script>
-    }
+}
 

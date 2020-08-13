@@ -1,5 +1,7 @@
 ﻿using Dziennik_v0._1.Core;
 using Dziennik_v0._1.Core.Models;
+using Dziennik_v0._1.Core.ViewModels;
+using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -70,6 +72,21 @@ namespace Dziennik_v0._1.Controllers.Api
             _unitOfWork.Foods.AddFoodModel(food);
             _unitOfWork.Complete();
             return Ok();
+        }
+        [HttpGet]
+        public IHttpActionResult WeightPerYearList(int year)
+        {
+            var userId = User.Identity.GetUserId();
+            var MeasurmentList = _unitOfWork.Measurements.GetAllMeasurements(userId).Where(c => c.Date.Year == year).OrderBy(d =>d.Date).ToList();
+
+            var viewModel = new WeightPerYearViewModel();
+
+            foreach (var item in MeasurmentList)
+            {
+                viewModel.Weight.Add(item.Weight);
+                viewModel.Date.Add(item.Date);
+            }
+            return Ok(viewModel);
         }
     }
 }

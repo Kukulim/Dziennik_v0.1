@@ -459,7 +459,6 @@
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="App_Data\TabeleKaloryczne.csv" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -690,6 +689,7 @@
     <Content Include="Scripts\highcharts\modules\wordcloud.js.map" />
     <Content Include="Scripts\highcharts\modules\xrange.js.map" />
     <Content Include="Scripts\highcharts\highcharts.js.map" />
+    <Content Include="Content\TabeleKaloryczne.csv" />
     <None Include="Properties\PublishProfiles\Dziennik-treningowy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -938,7 +938,9 @@
     <Content Include="Views\Diet\AddMeasurement.cshtml" />
     <Content Include="Views\Diet\DietSummary.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />

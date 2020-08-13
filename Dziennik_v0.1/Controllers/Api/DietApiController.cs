@@ -5,10 +5,12 @@ using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Web;
 using System.Web.Hosting;
 using System.Web.Http;
 
@@ -26,8 +28,10 @@ namespace Dziennik_v0._1.Controllers.Api
         public IHttpActionResult GetFoodData(string search=null)
         {
             List<FoodModel> foods = new List<FoodModel>();
-            string csvData = System.IO.File.ReadAllText(@"\App_Data\TabeleKaloryczne.csv", Encoding.GetEncoding("Windows-1250"));
-            //string csvData = HostingEnvironment.MapPath(@"/App_Data/TabeleKaloryczne.csv");
+            
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Content\TabeleKaloryczne.csv");
+            string csvData = File.ReadAllText(path, Encoding.GetEncoding("Windows-1250"));
+
             foreach (string row in csvData.Split('\n'))
             {
                 if (!string.IsNullOrEmpty(row))

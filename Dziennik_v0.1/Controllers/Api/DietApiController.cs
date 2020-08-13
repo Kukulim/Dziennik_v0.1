@@ -84,7 +84,7 @@ namespace Dziennik_v0._1.Controllers.Api
             foreach (var item in MeasurmentList)
             {
                 viewModel.Weight.Add(item.Weight);
-                viewModel.Date.Add(item.Date);
+                viewModel.Date.Add(item.Date.ToString("dd MMMM"));
             }
             return Ok(viewModel);
         }

@@ -61,11 +61,6 @@
                             text: 'Waga w @DateTime.Now.Year:'
                         },
                         xAxis: {
-                            allowDecimals: true,
-                            type: 'datetime',
-                            dateTimeLabelFormats: {
-                                day: '%e of %b'
-                            },
                             categories: data.date,
                         },
                         yAxis: {
@@ -73,6 +68,7 @@
                             title: {
                                 text: 'Waga w kg.'
                             },
+
                         },
                         tooltip: {
                             shared: true,

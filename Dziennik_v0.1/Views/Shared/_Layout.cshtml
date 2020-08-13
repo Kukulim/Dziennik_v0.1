@@ -71,7 +71,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script>
-        $(document).ready($.getJSON("https://localhost:44369/api/AchievementsApi/AchievementsIsNewCount", function (data) {
+        $(document).ready($.getJSON("../api/AchievementsApi/AchievementsIsNewCount", function (data) {
             if (data == 0) {
                 return;
             }

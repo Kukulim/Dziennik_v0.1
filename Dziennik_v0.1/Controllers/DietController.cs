@@ -81,8 +81,8 @@ namespace Dziennik_v0._1.Controllers
             if (measurementModel != null)
             {
                 limit = (int)measurementModel.CaloricRequirement;
-                viewModelToReturn.CalorieLimit.Protein = (decimal)measurementModel.Weight * 2;
-                viewModelToReturn.CalorieLimit.Fat = (decimal)(limit *0.25)/9;
+                viewModelToReturn.CalorieLimit.Protein = Decimal.Round((decimal)measurementModel.Weight * 2,2);
+                viewModelToReturn.CalorieLimit.Fat = Decimal.Round((decimal)(limit *0.25)/9,2);
                 viewModelToReturn.CalorieLimit.Carbohydrates = Decimal.Round(((decimal)measurementModel.CaloricRequirement - (viewModelToReturn.CalorieLimit.Fat*9+viewModelToReturn.CalorieLimit.Protein*4))/4,2);
             }
             viewModelToReturn.CalorieLimit.Calories = limit;

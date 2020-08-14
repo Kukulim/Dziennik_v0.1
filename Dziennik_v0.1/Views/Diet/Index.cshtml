@@ -16,7 +16,6 @@
 
 <h2 class="text-center">Twoje posiłki:</h2>
 
-
 <div class="row">
     <div class="col-sm-2">
         @Html.ActionLink("<", "Index", "Diet", new { dateTime = @Model.DailyMenu.DailyMenuDate.AddDays(-1) }, new { @class = "btn btn-info" })
@@ -70,7 +69,16 @@
     </tr>
     <tr class="MealAllDayRow">
         <td>Zapotrzebowanie:</td>
-        <td>@Model.CalorieLimit.Calories</td>
+        @if (Model.CalorieLimit.Calories == 0)
+        {
+            <td>
+                Uzupełnij profil i pomiar
+            </td>
+        }
+        @if (Model.CalorieLimit.Calories != 0)
+        {
+            <td>@Model.CalorieLimit.Calories</td>
+        }
         <td>@Model.CalorieLimit.Protein</td>
         <td>@Model.CalorieLimit.Fat</td>
         <td>@Model.CalorieLimit.Carbohydrates</td>

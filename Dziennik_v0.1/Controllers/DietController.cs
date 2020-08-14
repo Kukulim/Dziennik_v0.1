@@ -5,6 +5,7 @@ using Dziennik_v0._1.Core.ViewModels;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -136,6 +137,11 @@ namespace Dziennik_v0._1.Controllers
         public ActionResult AddFoodToCSV(AddFoodToCSVViewModel viewModel)
         {
             string newFileName = "D:/Dziennik_v0.1/Dziennik_v0.1/App_Data/TabeleKaloryczne.csv";
+
+            //var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Content\TabeleKaloryczne.csv");
+            //string csvData = File.ReadAllText(path, Encoding.GetEncoding("Windows-1250"));
+            // TO DO
+
             string FoodToInsert = Environment.NewLine + viewModel.FoodModel.Name + "." + viewModel.FoodModel.Calories + "." + viewModel.FoodModel.Protein + "." + viewModel.FoodModel.Fat + "." + viewModel.FoodModel.Carbohydrates;
             System.IO.File.AppendAllText(newFileName, FoodToInsert);
             return Redirect(viewModel.Url);

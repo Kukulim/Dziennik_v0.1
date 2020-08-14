@@ -11,7 +11,7 @@ namespace Dziennik_v0._1.Core.Models
 
         public Workout Workout { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Pole Wymagane")]
         [Display(Name = "Ćwiczenie:")]
         public string Name { get; set; }
 
